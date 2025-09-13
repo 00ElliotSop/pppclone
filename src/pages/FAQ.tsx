@@ -150,21 +150,21 @@ const FAQ = () => {
                 <MapPin className="text-gray-800" size={24} />
               </div>
               <h3 className="font-semibold text-gray-800 mb-2">Address</h3>
-              <p className="text-gray-600 break-words">Toronto, ON<br />Canada</p>
+              <p className="text-gray-600 text-sm">Toronto, ON<br />Canada</p>
             </div>
             <div className="text-center">
               <div className="bg-[#F7E7CE] w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Phone className="text-gray-800" size={24} />
               </div>
               <h3 className="font-semibold text-gray-800 mb-2">Phone</h3>
-              <p className="text-gray-600 break-words">647-957-2057</p>
+              <p className="text-gray-600 text-sm">647-957-2057</p>
             </div>
             <div className="text-center">
               <div className="bg-[#F7E7CE] w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Mail className="text-gray-800" size={24} />
               </div>
               <h3 className="font-semibold text-gray-800 mb-2">Email</h3>
-              <p className="text-gray-600 text-xs whitespace-nowrap overflow-hidden">info@projectpartyproductions.com</p>
+              <p className="text-gray-600 text-sm">info@projectpartyproductions.com</p>
             </div>
             <div className="text-center">
               <div className="bg-[#F7E7CE] w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -173,7 +173,7 @@ const FAQ = () => {
               <h3 className="font-semibold text-gray-800 mb-2">Google Business</h3>
               <div className="mt-4">
                 <a href="https://share.google/VArZF5bOJjrN8uNCH" className="text-[#B5A99A] hover:text-[#F7E7CE] transition-colors text-sm">
-                View Our Reviews
+                  View Our Reviews
                 </a>
               </div>
             </div>
