@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Eye, EyeOff, Calendar, Save, LogOut } from 'lucide-react';
+import { Eye, EyeOff, Calendar, Save, LogOut, Plus, Minus } from 'lucide-react';
 
 const Login = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -23,6 +23,8 @@ const Login = () => {
     message: 'We are currently booking events! Contact us to check availability for your date.'
   });
   const [newDate, setNewDate] = useState('');
+  const [selectedDates, setSelectedDates] = useState<string[]>([]);
+  const [showMultiSelect, setShowMultiSelect] = useState(false);
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
   const [showChangeCredentials, setShowChangeCredentials] = useState(false);
@@ -104,6 +106,47 @@ const Login = () => {
     }
   };
 
+  const addMultipleDates = () => {
+    if (selectedDates.length === 0) return;
+    
+    const newDates = selectedDates.filter(date => !availability.unavailableDates.includes(date));
+    if (newDates.length === 0) {
+      setError('All selected dates are already marked as unavailable');
+      return;
+    }
+
+    const updatedAvailability = {
+      ...availability,
+      unavailableDates: [...availability.unavailableDates, ...newDates].sort()
+    };
+    setAvailability(updatedAvailability);
+    localStorage.setItem('siteAvailability', JSON.stringify(updatedAvailability));
+    setSelectedDates([]);
+    setShowMultiSelect(false);
+    setSuccess(`${newDates.length} date(s) added to unavailable list`);
+  };
+
+  const toggleDateSelection = (date: string) => {
+    setSelectedDates(prev => 
+      prev.includes(date) 
+        ? prev.filter(d => d !== date)
+        : [...prev, date]
+    );
+  };
+
+  const generateCalendarDates = () => {
+    const today = new Date();
+    const dates = [];
+    
+    // Generate next 90 days
+    for (let i = 0; i < 90; i++) {
+      const date = new Date(today);
+      date.setDate(today.getDate() + i);
+      dates.push(date.toISOString().split('T')[0]);
+    }
+    
+    return dates;
+  };
   const removeUnavailableDate = (dateToRemove: string) => {
     const updatedAvailability = {
       ...availability,
@@ -256,24 +299,103 @@ const Login = () => {
             <section>
               <h2 className="text-2xl font-bold text-gray-800 mb-4">Manage Unavailable Dates</h2>
               
-              {/* Add New Date */}
+              {/* Toggle between single and multiple date selection */}
               <div className="flex space-x-4 mb-6">
-                <input
-                  type="date"
-                  value={newDate}
-                  onChange={(e) => setNewDate(e.target.value)}
-                  min={new Date().toISOString().split('T')[0]}
-                  className="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#F7E7CE] focus:border-transparent"
-                />
                 <button
-                  onClick={addUnavailableDate}
-                  disabled={!newDate}
-                  className="flex items-center space-x-2 bg-red-500 text-white px-6 py-3 rounded-lg hover:bg-red-600 transition-colors disabled:bg-gray-300 disabled:cursor-not-allowed"
+                  onClick={() => setShowMultiSelect(!showMultiSelect)}
+                  className="flex items-center space-x-2 bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors"
                 >
-                  <Calendar size={20} />
-                  <span>Mark Unavailable</span>
+                  {showMultiSelect ? <Minus size={16} /> : <Plus size={16} />}
+                  <span>{showMultiSelect ? 'Single Date' : 'Multiple Dates'}</span>
                 </button>
               </div>
+
+              {!showMultiSelect ? (
+                /* Single Date Selection */
+                <div className="flex space-x-4 mb-6">
+                  <input
+                    type="date"
+                    value={newDate}
+                    onChange={(e) => setNewDate(e.target.value)}
+                    min={new Date().toISOString().split('T')[0]}
+                    className="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#F7E7CE] focus:border-transparent"
+                  />
+                  <button
+                    onClick={addUnavailableDate}
+                    disabled={!newDate}
+                    className="flex items-center space-x-2 bg-red-500 text-white px-6 py-3 rounded-lg hover:bg-red-600 transition-colors disabled:bg-gray-300 disabled:cursor-not-allowed"
+                  >
+                    <Calendar size={20} />
+                    <span>Mark Unavailable</span>
+                  </button>
+                </div>
+              ) : (
+                /* Multiple Date Selection */
+                <div className="mb-6">
+                  <div className="bg-gray-50 border border-gray-200 rounded-lg p-4">
+                    <div className="flex justify-between items-center mb-4">
+                      <h4 className="font-semibold text-gray-800">
+                        Select Multiple Dates ({selectedDates.length} selected)
+                      </h4>
+                      <div className="space-x-2">
+                        <button
+                          onClick={() => setSelectedDates([])}
+                          className="text-sm bg-gray-500 text-white px-3 py-1 rounded hover:bg-gray-600 transition-colors"
+                        >
+                          Clear All
+                        </button>
+                        <button
+                          onClick={addMultipleDates}
+                          disabled={selectedDates.length === 0}
+                          className="text-sm bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600 transition-colors disabled:bg-gray-300 disabled:cursor-not-allowed"
+                        >
+                          Mark {selectedDates.length} Date(s) Unavailable
+                        </button>
+                      </div>
+                    </div>
+                    
+                    {/* Calendar Grid */}
+                    <div className="grid grid-cols-7 gap-2 max-h-64 overflow-y-auto">
+                      {generateCalendarDates().map((date) => {
+                        const dateObj = new Date(date);
+                        const isSelected = selectedDates.includes(date);
+                        const isAlreadyUnavailable = availability.unavailableDates.includes(date);
+                        const dayName = dateObj.toLocaleDateString('en-US', { weekday: 'short' });
+                        const dayNumber = dateObj.getDate();
+                        const monthName = dateObj.toLocaleDateString('en-US', { month: 'short' });
+                        
+                        return (
+                          <button
+                            key={date}
+                            onClick={() => !isAlreadyUnavailable && toggleDateSelection(date)}
+                            disabled={isAlreadyUnavailable}
+                            className={`p-2 text-xs rounded border transition-colors ${
+                              isAlreadyUnavailable
+                                ? 'bg-red-100 text-red-400 border-red-200 cursor-not-allowed'
+                                : isSelected
+                                ? 'bg-red-500 text-white border-red-500'
+                                : 'bg-white text-gray-700 border-gray-200 hover:bg-gray-50'
+                            }`}
+                          >
+                            <div className="font-medium">{dayNumber}</div>
+                            <div className="text-xs opacity-75">{dayName}</div>
+                            <div className="text-xs opacity-75">{monthName}</div>
+                          </button>
+                        );
+                      })}
+                    </div>
+                    
+                    <div className="mt-3 text-xs text-gray-500">
+                      <span className="inline-block w-3 h-3 bg-red-100 border border-red-200 rounded mr-1"></span>
+                      Already unavailable
+                      <span className="inline-block w-3 h-3 bg-red-500 rounded mr-1 ml-4"></span>
+                      Selected
+                      <span className="inline-block w-3 h-3 bg-white border border-gray-200 rounded mr-1 ml-4"></span>
+                      Available
+                    </div>
+                  </div>
+                </div>
+              )}
 
               {/* Current Unavailable Dates */}
               <div>
