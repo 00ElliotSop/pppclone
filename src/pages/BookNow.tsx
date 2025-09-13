@@ -21,6 +21,7 @@ const BookNow = () => {
   const [showPopup, setShowPopup] = useState(false);
   const [popupType, setPopupType] = useState<'success' | 'error'>('success');
   const [popupMessage, setPopupMessage] = useState('');
+  const [showUnavailableDatePopup, setShowUnavailableDatePopup] = useState(false);
 
   // Load availability data on component mount
   useEffect(() => {
@@ -56,8 +57,24 @@ const BookNow = () => {
     setShowPopup(false);
   };
 
+  const closeUnavailableDatePopup = () => {
+    setShowUnavailableDatePopup(false);
+  };
+
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value, type } = e.target;
+    
+    // Check if an unavailable date is selected
+    if (name === 'eventDate' && value && isDateUnavailable(value)) {
+      setShowUnavailableDatePopup(true);
+      // Clear the selected date
+      setFormData(prev => ({
+        ...prev,
+        [name]: ''
+      }));
+      return;
+    }
+    
     setFormData(prev => ({
       ...prev,
       [name]: type === 'checkbox' ? (e.target as HTMLInputElement).checked : value
@@ -481,6 +498,35 @@ const BookNow = () => {
                   }`}
                 >
                   Close
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Unavailable Date Popup */}
+      {showUnavailableDatePopup && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
+          <div className="bg-white rounded-2xl shadow-xl max-w-md w-full mx-4">
+            <div className="p-6">
+              <div className="text-center">
+                <div className="w-16 h-16 mx-auto mb-4 rounded-full flex items-center justify-center bg-red-100">
+                  <svg className="w-8 h-8 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </div>
+                <h3 className="text-xl font-bold mb-4 text-red-800">
+                  Date Unavailable
+                </h3>
+                <p className="text-gray-600 mb-6">
+                  Sorry, the selected date is not available. Please choose a different date for your event.
+                </p>
+                <button
+                  onClick={closeUnavailableDatePopup}
+                  className="w-full py-3 px-4 rounded-lg font-semibold transition-colors bg-red-600 text-white hover:bg-red-700"
+                >
+                  Choose Another Date
                 </button>
               </div>
             </div>
