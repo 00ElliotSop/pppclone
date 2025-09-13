@@ -144,7 +144,7 @@ const FAQ = () => {
       <section className="py-20 bg-gray-50">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <h2 className="text-4xl font-bold text-gray-800 mb-8">How to Get in Touch with Us</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-8 lg:gap-12">
             <div className="text-center">
               <div className="bg-[#F7E7CE] w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                 <MapPin className="text-gray-800" size={24} />
@@ -164,16 +164,18 @@ const FAQ = () => {
                 <Mail className="text-gray-800" size={24} />
               </div>
               <h3 className="font-semibold text-gray-800 mb-2">Email</h3>
-              <p className="text-gray-600 break-words text-sm">info@projectpartyproductions.com</p>
+              <p className="text-gray-600 text-xs whitespace-nowrap overflow-hidden">info@projectpartyproductions.com</p>
             </div>
             <div className="text-center">
               <div className="bg-[#F7E7CE] w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                 <div className="text-gray-800 font-bold text-lg">G</div>
               </div>
               <h3 className="font-semibold text-gray-800 mb-2">Google Business</h3>
-              <a href="https://share.google/VArZF5bOJjrN8uNCH" className="text-[#B5A99A] hover:text-[#F7E7CE] transition-colors break-words text-sm">
+              <div className="mt-4">
+                <a href="https://share.google/VArZF5bOJjrN8uNCH" className="text-[#B5A99A] hover:text-[#F7E7CE] transition-colors text-sm">
                 View Our Reviews
-              </a>
+                </a>
+              </div>
             </div>
           </div>
         </div>
