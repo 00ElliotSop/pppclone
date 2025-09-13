@@ -350,12 +350,13 @@ const BookNow = () => {
                   <input
                     type="checkbox"
                     name="agreeToTermsAndTexts"
+                   id="agreeToTermsAndTexts"
                     checked={formData.agreeToTermsAndTexts}
                     onChange={handleInputChange}
                     required
                     className="mt-1 h-4 w-4 text-[#F7E7CE] focus:ring-[#F7E7CE] border-gray-300 rounded"
                   />
-                  <label className="text-sm text-gray-600">
+                 <label htmlFor="agreeToTermsAndTexts" className="text-sm text-gray-600 cursor-pointer">
                     I agree to receive text messages from Project Party Productions regarding my booking and event updates, and I agree to the{' '}
                     <a 
                       href="/terms-of-service" 
