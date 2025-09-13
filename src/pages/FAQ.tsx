@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { ChevronDown, ChevronUp, Phone, Mail, MapPin } from 'lucide-react';
 
 const FAQ = () => {
-  const [openQuestion, setOpenQuestion] = useState<number | null>(null);
+  const [openQuestions, setOpenQuestions] = useState<Set<number>>(new Set());
 
   const faqs = [
     {
@@ -71,7 +71,15 @@ const FAQ = () => {
   ];
 
   const toggleQuestion = (index: number) => {
-    setOpenQuestion(openQuestion === index ? null : index);
+    setOpenQuestions(prev => {
+      const newSet = new Set(prev);
+      if (newSet.has(index)) {
+        newSet.delete(index);
+      } else {
+        newSet.add(index);
+      }
+      return newSet;
+    });
   };
 
   return (
@@ -106,13 +114,13 @@ const FAQ = () => {
                   className="w-full px-6 py-4 text-left bg-gray-50 hover:bg-gray-100 transition-colors flex justify-between items-center"
                 >
                   <h3 className="text-lg font-semibold text-gray-800">{faq.question}</h3>
-                  {openQuestion === index ? (
+                  {openQuestions.has(index) ? (
                     <ChevronUp className="text-[#B5A99A]" size={24} />
                   ) : (
                     <ChevronDown className="text-[#B5A99A]" size={24} />
                   )}
                 </button>
-                {openQuestion === index && (
+                {openQuestions.has(index) && (
                   <div className="px-6 py-4 bg-white">
                     {faq.image && index < 3 && (
                       <img
