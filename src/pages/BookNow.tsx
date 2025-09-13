@@ -64,17 +64,6 @@ const BookNow = () => {
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value, type } = e.target;
     
-    // Check if an unavailable date is selected
-    if (name === 'eventDate' && value && isDateUnavailable(value)) {
-      setShowUnavailableDatePopup(true);
-      // Clear the selected date
-      setFormData(prev => ({
-        ...prev,
-        [name]: ''
-      }));
-      return;
-    }
-    
     setFormData(prev => ({
       ...prev,
       [name]: type === 'checkbox' ? (e.target as HTMLInputElement).checked : value
@@ -92,7 +81,7 @@ const BookNow = () => {
     
     // Check if selected date is unavailable
     if (isDateUnavailable(formData.eventDate)) {
-      alert('Sorry, the selected date is not available. Please choose a different date.');
+      setShowUnavailableDatePopup(true);
       return;
     }
     
