@@ -139,31 +139,6 @@ ${formData.agreeToTexts ? 'Yes, customer agrees to receive text messages' : 'No,
       {/* Booking Form Section */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4">
-          {/* Availability Message */}
-          <div className="max-w-4xl mx-auto mb-12">
-            <div className="bg-[#F7E7CE] border border-[#B5A99A] rounded-lg p-6 text-center">
-              <h3 className="text-xl font-semibold text-gray-800 mb-2">Current Availability</h3>
-              <p className="text-gray-700">{availability.message}</p>
-              {availability.unavailableDates.length > 0 && (
-                <div className="mt-4">
-                  <p className="text-sm text-gray-600 mb-2">Currently unavailable dates:</p>
-                  <div className="flex flex-wrap justify-center gap-2">
-                    {availability.unavailableDates.slice(0, 5).map((date) => (
-                      <span key={date} className="bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm">
-                        {new Date(date).toLocaleDateString()}
-                      </span>
-                    ))}
-                    {availability.unavailableDates.length > 5 && (
-                      <span className="text-gray-600 text-sm">
-                        +{availability.unavailableDates.length - 5} more
-                      </span>
-                    )}
-                  </div>
-                </div>
-              )}
-            </div>
-          </div>
-
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Form */}
             <div>
