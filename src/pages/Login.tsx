@@ -171,8 +171,8 @@ const Login = () => {
     const today = new Date();
     const dates = [];
     
-    // Generate next 90 days
-    for (let i = 0; i < 90; i++) {
+    // Generate next 2 years (730 days)
+    for (let i = 0; i < 730; i++) {
       const date = new Date(today);
       date.setDate(today.getDate() + i);
       dates.push(date.toISOString().split('T')[0]);
