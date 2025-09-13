@@ -38,6 +38,7 @@ const Login = () => {
   const [showChangeCredentials, setShowChangeCredentials] = useState(false);
   const [resetError, setResetError] = useState('');
   const [resetSuccess, setResetSuccess] = useState('');
+  const [showConfirmation, setShowConfirmation] = useState(false);
   const navigate = useNavigate();
 
   // Auto-logout timer
@@ -143,9 +144,14 @@ const Login = () => {
   const addSelectedDates = () => {
     if (selectedDates.length === 0) return;
     
+    setShowConfirmation(true);
+  };
+
+  const confirmAddDates = () => {
     const newDates = selectedDates.filter(date => !availability.unavailableDates.includes(date));
     if (newDates.length === 0) {
       setError('All selected dates are already marked as unavailable');
+      setShowConfirmation(false);
       return;
     }
 
@@ -156,6 +162,7 @@ const Login = () => {
     setAvailability(updatedAvailability);
     localStorage.setItem('siteAvailability', JSON.stringify(updatedAvailability));
     setSelectedDates([]);
+    setShowConfirmation(false);
     setSuccess(`${newDates.length} date(s) added to unavailable list`);
   };
 
@@ -622,6 +629,29 @@ const Login = () => {
                     </div>
                   </div>
                   
+                  {/* Selected Dates Preview */}
+                  {selectedDates.length > 0 && (
+                    <div className="mb-4 p-3 bg-yellow-50 border border-yellow-200 rounded-lg">
+                      <h5 className="font-medium text-yellow-800 mb-2">
+                        Selected Dates ({selectedDates.length}):
+                      </h5>
+                      <div className="flex flex-wrap gap-1 max-h-20 overflow-y-auto">
+                        {selectedDates.map((date) => (
+                          <span
+                            key={date}
+                            className="inline-block bg-yellow-200 text-yellow-800 px-2 py-1 rounded text-xs"
+                          >
+                            {new Date(date).toLocaleDateString('en-US', { 
+                              month: 'short', 
+                              day: 'numeric',
+                              year: 'numeric'
+                            })}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                  
                   {/* Calendar Grid */}
                   <div className="grid grid-cols-7 gap-2 max-h-64 overflow-y-auto">
                     {generateCalendarDates().map((date) => {
@@ -693,6 +723,56 @@ const Login = () => {
                 )}
               </div>
             </section>
+
+            {/* Confirmation Modal */}
+            {showConfirmation && (
+              <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
+                <div className="bg-white rounded-2xl shadow-xl max-w-md w-full mx-4">
+                  <div className="p-6">
+                    <h3 className="text-xl font-bold text-gray-800 mb-4">
+                      Confirm Unavailable Dates
+                    </h3>
+                    <p className="text-gray-600 mb-4">
+                      Are you sure you want to mark the following {selectedDates.length} date(s) as unavailable?
+                    </p>
+                    
+                    {/* Scrollable date list */}
+                    <div className="max-h-48 overflow-y-auto mb-6 p-3 bg-gray-50 rounded-lg">
+                      <div className="space-y-2">
+                        {selectedDates.map((date) => (
+                          <div
+                            key={date}
+                            className="flex justify-between items-center bg-white px-3 py-2 rounded border"
+                          >
+                            <span className="font-medium text-gray-800">
+                              {formatDate(date)}
+                            </span>
+                            <span className="text-sm text-gray-500">
+                              {new Date(date).toLocaleDateString('en-US', { weekday: 'short' })}
+                            </span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                    
+                    <div className="flex space-x-3">
+                      <button
+                        onClick={() => setShowConfirmation(false)}
+                        className="flex-1 bg-gray-500 text-white py-3 px-4 rounded-lg font-semibold hover:bg-gray-600 transition-colors"
+                      >
+                        Cancel
+                      </button>
+                      <button
+                        onClick={confirmAddDates}
+                        className="flex-1 bg-red-500 text-white py-3 px-4 rounded-lg font-semibold hover:bg-red-600 transition-colors"
+                      >
+                        Yes, Mark Unavailable
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
 
             {/* Change Credentials */}
             <section>
