@@ -50,6 +50,28 @@ const Header = () => {
     }
   }, [isMenuOpen]);
 
+  // Close dropdown when clicking outside on desktop
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (activeDropdown && !event.target) return;
+      
+      const target = event.target as Element;
+      const header = document.querySelector('header');
+      
+      if (activeDropdown && header && !header.contains(target)) {
+        setActiveDropdown(null);
+      }
+    };
+
+    if (activeDropdown) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [activeDropdown]);
+
   // Close mobile menu when clicking outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -219,7 +241,7 @@ const Header = () => {
 
             <Link
               to="/book-now"
-              className="bg-[#B5A99A] text-white px-6 py-2 rounded-full hover:bg-[#F7E7CE] hover:text-black transition-colors font-medium text-center"
+              className="bg-[#B5A99A] text-red-500 px-6 py-2 rounded-full hover:bg-[#F7E7CE] hover:text-black transition-colors font-medium text-center"
             >
               BOOK NOW
             </Link>
@@ -333,7 +355,7 @@ const Header = () => {
               
               <Link
                 to="/book-now"
-                className="bg-[#B5A99A] text-white px-6 py-2 rounded-full hover:bg-[#F7E7CE] hover:text-gray-900 transition-colors font-medium text-center"
+                className="bg-[#B5A99A] text-red-500 px-6 py-2 rounded-full hover:bg-[#F7E7CE] hover:text-gray-900 transition-colors font-medium text-center"
               >
                 BOOK NOW
               </Link>
