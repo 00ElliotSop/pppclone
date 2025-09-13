@@ -125,6 +125,15 @@ ${formData.agreeToTexts ? 'Yes, customer agrees to receive text messages' : 'No,
               input[type="date"]::-webkit-calendar-picker-indicator ~ * [aria-label*="${new Date(date).toLocaleDateString()}"] {
                 background-color: #fee2e2 !important;
                 color: #dc2626 !important;
+               cursor: not-allowed !important;
+             }
+             
+             input[type="date"]::-webkit-calendar-picker-indicator ~ * [data-date="${date}"]:hover,
+             input[type="date"]::-webkit-calendar-picker-indicator ~ * [aria-label*="${new Date(date).toLocaleDateString()}"]:hover {
+               background-color: #fca5a5 !important;
+               color: #991b1b !important;
+               transform: scale(0.95) !important;
+               transition: all 0.2s ease !important;
               }`;
     }).join('\n');
     
