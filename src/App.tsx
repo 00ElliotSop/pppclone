@@ -18,6 +18,7 @@ import Props from './pages/Props';
 import Lighting from './pages/Lighting';
 import BookingForm from './pages/BookingForm';
 import TermsOfService from './pages/TermsOfService';
+import Login from './pages/Login';
 
 function App() {
   return (
@@ -41,6 +42,7 @@ function App() {
             <Route path="/lighting" element={<Lighting />} />
             <Route path="/booking-form" element={<BookingForm />} />
             <Route path="/terms-of-service" element={<TermsOfService />} />
+            <Route path="/login" element={<Login />} />
           </Routes>
         </main>
         <Footer />
