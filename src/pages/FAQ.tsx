@@ -164,7 +164,7 @@ const FAQ = () => {
                 <Mail className="text-gray-800" size={24} />
               </div>
               <h3 className="font-semibold text-gray-800 mb-2">Email</h3>
-              <p className="text-gray-600 text-sm">info@projectpartyproductions.com</p>
+              <p className="text-gray-600 text-sm lg:transform lg:-translate-x-[8%]">info@projectpartyproductions.com</p>
             </div>
             <div className="text-center">
               <div className="bg-[#F7E7CE] w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
