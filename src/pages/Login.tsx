@@ -28,6 +28,10 @@ const Login = () => {
   const [showChangeCredentials, setShowChangeCredentials] = useState(false);
   const navigate = useNavigate();
 
+  // Auto-logout timer
+  const LOGOUT_TIME = 15 * 60 * 1000; // 15 minutes in milliseconds
+  const [lastActivity, setLastActivity] = useState(Date.now());
+
   // Load saved data on component mount
   useEffect(() => {
     const savedCredentials = localStorage.getItem('adminCredentials');
@@ -45,6 +49,37 @@ const Login = () => {
     }
   }, []);
 
+  // Auto-logout functionality
+  useEffect(() => {
+    if (!isLoggedIn) return;
+
+    const checkActivity = () => {
+      const now = Date.now();
+      if (now - lastActivity > LOGOUT_TIME) {
+        handleLogout();
+        alert('Session expired due to inactivity. Please log in again.');
+      }
+    };
+
+    // Check every minute
+    const interval = setInterval(checkActivity, 60000);
+
+    // Activity listeners
+    const updateActivity = () => setLastActivity(Date.now());
+    const events = ['mousedown', 'mousemove', 'keypress', 'scroll', 'touchstart', 'click'];
+    
+    events.forEach(event => {
+      document.addEventListener(event, updateActivity, true);
+    });
+
+    return () => {
+      clearInterval(interval);
+      events.forEach(event => {
+        document.removeEventListener(event, updateActivity, true);
+      });
+    };
+  }, [isLoggedIn, lastActivity]);
+
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
     setError('');
@@ -52,6 +87,7 @@ const Login = () => {
     if (loginData.username === credentials.username && loginData.password === credentials.password) {
       setIsLoggedIn(true);
       sessionStorage.setItem('isAdminAuthenticated', 'true');
+      setLastActivity(Date.now());
       setLoginData({ username: '', password: '' });
     } else {
       setError('Invalid username or password');
@@ -61,6 +97,7 @@ const Login = () => {
   const handleLogout = () => {
     setIsLoggedIn(false);
     sessionStorage.removeItem('isAdminAuthenticated');
+    setLastActivity(0);
     setLoginData({ username: '', password: '' });
   };
 
