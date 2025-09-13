@@ -116,8 +116,43 @@ ${formData.agreeToTexts ? 'Yes, customer agrees to receive text messages' : 'No,
     }
   };
 
+  // Generate CSS for unavailable dates
+  const generateUnavailableDateStyles = () => {
+    if (availability.unavailableDates.length === 0) return '';
+    
+    const styles = availability.unavailableDates.map(date => {
+      return `input[type="date"]::-webkit-calendar-picker-indicator ~ * [data-date="${date}"],
+              input[type="date"]::-webkit-calendar-picker-indicator ~ * [aria-label*="${new Date(date).toLocaleDateString()}"] {
+                background-color: #fee2e2 !important;
+                color: #dc2626 !important;
+              }`;
+    }).join('\n');
+    
+    return styles;
+  };
+
   return (
     <div className="pt-24">
+      {/* Dynamic styles for unavailable dates */}
+      <style>
+        {`
+          /* Style unavailable dates in date picker */
+          ${generateUnavailableDateStyles()}
+          
+          /* Additional styling for better visibility */
+          input[type="date"]::-webkit-calendar-picker-indicator {
+            filter: none;
+          }
+          
+          /* Custom styling for unavailable dates */
+          .date-unavailable {
+            background-color: #fee2e2 !important;
+            color: #dc2626 !important;
+            text-decoration: line-through;
+          }
+        `}
+      </style>
+      
       {/* Hero Section */}
       <section className="relative h-96">
         <link rel="preload" as="image" href="/360.jpg" />
@@ -197,12 +232,17 @@ ${formData.agreeToTexts ? 'Yes, customer agrees to receive text messages' : 'No,
                       value={formData.eventDate}
                       onChange={handleInputChange}
                       min={getMinDate()}
+                      max={new Date(Date.now() + 2 * 365 * 24 * 60 * 60 * 1000).toISOString().split('T')[0]}
                       required
                       className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-[#F7E7CE] focus:border-transparent ${
                         formData.eventDate && isDateUnavailable(formData.eventDate) 
                           ? 'border-red-300 bg-red-50' 
                           : 'border-gray-300'
                       }`}
+                      style={{
+                        backgroundImage: availability.unavailableDates.length > 0 ? 
+                          `linear-gradient(to right, transparent 0%, transparent 100%)` : 'none'
+                      }}
                     />
                     {formData.eventDate && isDateUnavailable(formData.eventDate) && (
                       <p className="text-red-600 text-sm mt-1">This date is not available. Please select a different date.</p>
