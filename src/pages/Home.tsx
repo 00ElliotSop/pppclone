@@ -328,7 +328,7 @@ const Home = () => {
 
       {/* Our Services Section */}
       <section className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-2 sm:px-4 bg-white rounded-2xl shadow-lg mx-4 py-12">
+        <div className="max-w-7xl mx-auto px-2 sm:px-4">
           <h2 className="font-bold text-center text-gray-800 mb-8 sm:mb-12 md:mb-16 px-1" style={{ 
             fontSize: 'clamp(1.6rem, 5.1vw, 3.2rem)',
             lineHeight: '1.2'
@@ -337,7 +337,7 @@ const Home = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
               <h3 className="font-bold text-gray-800 mb-8 px-1" style={{ 
-                fontSize: 'clamp(1.05rem, 3.375vw, 1.8rem)',
+                fontSize: 'clamp(0.87rem, 2.8vw, 1.49rem)',
                 lineHeight: '1.2'
               }}>WE OFFER A VAST RANGE OF CUSTOMIZABLE SERVICES</h3>
               
@@ -353,12 +353,16 @@ const Home = () => {
                         decoding="async"
                       />
                     </div>
-                    <div>
+                    <div className="min-w-0 flex-1">
                       <h4 className="font-semibold text-gray-800 mb-2" style={{ 
-                        fontSize: 'clamp(1.1rem, 3.2vw, 1.4rem)'
+                        fontSize: 'clamp(0.91rem, 2.66vw, 1.16rem)',
+                        wordWrap: 'break-word',
+                        overflowWrap: 'break-word'
                       }}>WEDDINGS</h4>
                       <p className="text-gray-600" style={{ 
-                        fontSize: 'clamp(0.9rem, 2.4vw, 1.1rem)'
+                        fontSize: 'clamp(0.75rem, 1.99vw, 0.91rem)',
+                        wordWrap: 'break-word',
+                        overflowWrap: 'break-word'
                       }}>Create magical moments for you and your guests.</p>
                     </div>
                   </div>
@@ -375,12 +379,16 @@ const Home = () => {
                         decoding="async"
                       />
                     </div>
-                    <div>
+                    <div className="min-w-0 flex-1">
                       <h4 className="font-semibold text-gray-800 mb-2" style={{ 
-                        fontSize: 'clamp(1.1rem, 3.2vw, 1.4rem)'
+                        fontSize: 'clamp(0.91rem, 2.66vw, 1.16rem)',
+                        wordWrap: 'break-word',
+                        overflowWrap: 'break-word'
                       }}>CORPORATE EVENTS</h4>
                       <p className="text-gray-600" style={{ 
-                        fontSize: 'clamp(0.9rem, 2.4vw, 1.1rem)'
+                        fontSize: 'clamp(0.75rem, 1.99vw, 0.91rem)',
+                        wordWrap: 'break-word',
+                        overflowWrap: 'break-word'
                       }}>Add fun and engagement to your brand activations.</p>
                     </div>
                   </div>
@@ -397,12 +405,16 @@ const Home = () => {
                         decoding="async"
                       />
                     </div>
-                    <div>
+                    <div className="min-w-0 flex-1">
                       <h4 className="font-semibold text-gray-800 mb-2" style={{ 
-                        fontSize: 'clamp(1.1rem, 3.2vw, 1.4rem)'
+                        fontSize: 'clamp(0.91rem, 2.66vw, 1.16rem)',
+                        wordWrap: 'break-word',
+                        overflowWrap: 'break-word'
                       }}>PRIVATE PARTIES</h4>
                       <p className="text-gray-600" style={{ 
-                        fontSize: 'clamp(0.9rem, 2.4vw, 1.1rem)'
+                        fontSize: 'clamp(0.75rem, 1.99vw, 0.91rem)',
+                        wordWrap: 'break-word',
+                        overflowWrap: 'break-word'
                       }}>Make birthday parties, baby showers, and anniversaries unforgettable.</p>
                     </div>
                   </div>
@@ -419,12 +431,16 @@ const Home = () => {
                         decoding="async"
                       />
                     </div>
-                    <div>
+                    <div className="min-w-0 flex-1">
                       <h4 className="font-semibold text-gray-800 mb-2" style={{ 
-                        fontSize: 'clamp(1.1rem, 3.2vw, 1.4rem)'
+                        fontSize: 'clamp(0.91rem, 2.66vw, 1.16rem)',
+                        wordWrap: 'break-word',
+                        overflowWrap: 'break-word'
                       }}>CUSTOM EXPERIENCES</h4>
                       <p className="text-gray-600" style={{ 
-                        fontSize: 'clamp(0.9rem, 2.4vw, 1.1rem)'
+                        fontSize: 'clamp(0.75rem, 1.99vw, 0.91rem)',
+                        wordWrap: 'break-word',
+                        overflowWrap: 'break-word'
                       }}>Tailored to your event theme, from backdrops to props.</p>
                     </div>
                   </div>
