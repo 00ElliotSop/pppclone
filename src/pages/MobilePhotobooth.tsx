@@ -1,7 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { X, ChevronLeft, ChevronRight } from 'lucide-react';
 
 const MobilePhotobooth = () => {
+  const [selectedImage, setSelectedImage] = React.useState<number | null>(null);
+
   const galleryImages = [
     '/mpg1.jpg', '/mpg2.jpg', '/mpg3.jpg', '/m5.jpg',
     '/m6.jpg', '/m7.jpg', '/m8.jpg', '/m9.jpg', '/mpg10.jpg',
@@ -9,6 +12,32 @@ const MobilePhotobooth = () => {
     '/mpg20.jpg', '/mpg21.jpg', '/mpg22.jpg', '/mpg23.jpg', 
     '/mpg25.jpg', '/mpg26.jpg', '/mpg27.jpg', '/mpg28.jpg', '/mpg29.jpg', '/mpg24.jpg', '/m30.jpg'
   ];
+
+  const openModal = (index: number) => {
+    setSelectedImage(index);
+  };
+
+  const closeModal = () => {
+    setSelectedImage(null);
+  };
+
+  const nextImage = () => {
+    if (selectedImage !== null) {
+      setSelectedImage((selectedImage + 1) % galleryImages.length);
+    }
+  };
+
+  const prevImage = () => {
+    if (selectedImage !== null) {
+      setSelectedImage((selectedImage - 1 + galleryImages.length) % galleryImages.length);
+    }
+  };
+
+  const handleOverlayClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (e.target === e.currentTarget) {
+      closeModal();
+    }
+  };
 
   return (
     <div className="pt-24">
@@ -152,19 +181,67 @@ const MobilePhotobooth = () => {
           <h2 className="text-4xl font-bold text-center text-gray-800 mb-16">GALLERY</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4">
             {galleryImages.map((image, index) => (
-              <div key={index} className="group cursor-pointer">
+              <div 
+                key={index} 
+                className="group cursor-pointer transform transition-all duration-300 hover:scale-105"
+                onClick={() => openModal(index)}
+              >
                 <img
                   src={image}
                   alt={`Gallery ${index + 1}`}
-                  className="w-full h-48 object-cover rounded-2xl shadow-lg transition-transform duration-300 group-hover:scale-105"
+                  className="w-full h-48 object-cover rounded-2xl shadow-lg transition-transform duration-300 group-hover:scale-110"
                   loading="eager"
                   decoding="sync"
                 />
+                <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-300 rounded-2xl" />
               </div>
             ))}
           </div>
         </div>
       </section>
+
+      {/* Modal */}
+      {selectedImage !== null && (
+        <div 
+          className="fixed inset-0 bg-black bg-opacity-90 z-50 flex items-center justify-center p-4"
+          onClick={handleOverlayClick}
+        >
+          <div className="relative max-w-4xl max-h-full">
+            <img
+              src={galleryImages[selectedImage]}
+              alt={`Mobile Photobooth Gallery ${selectedImage + 1}`}
+              className="max-w-full max-h-full object-contain rounded-lg"
+            />
+            
+            {/* Close Button */}
+            <button
+              onClick={closeModal}
+              className="absolute top-4 right-4 bg-black bg-opacity-60 hover:bg-opacity-80 text-white p-3 rounded-full transition-all border-2 border-white shadow-lg"
+            >
+              <X size={28} />
+            </button>
+
+            {/* Navigation Buttons */}
+            <button
+              onClick={prevImage}
+              className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-20 hover:bg-opacity-30 text-white p-2 rounded-full transition-all"
+            >
+              <ChevronLeft size={24} />
+            </button>
+            <button
+              onClick={nextImage}
+              className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-20 hover:bg-opacity-30 text-white p-2 rounded-full transition-all"
+            >
+              <ChevronRight size={24} />
+            </button>
+
+            {/* Image Counter */}
+            <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-black bg-opacity-50 text-white px-4 py-2 rounded-full">
+              {selectedImage + 1} / {galleryImages.length}
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

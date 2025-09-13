@@ -19,6 +19,12 @@ const Photobooth360 = () => {
     setSelectedImage(null);
   };
 
+  const handleOverlayClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (e.target === e.currentTarget) {
+      closeModal();
+    }
+  };
+
   const nextImage = () => {
     if (selectedImage !== null) {
       setSelectedImage((selectedImage + 1) % galleryImages.length);
@@ -169,7 +175,10 @@ const Photobooth360 = () => {
 
       {/* Modal */}
       {selectedImage !== null && (
-        <div className="fixed inset-0 bg-black bg-opacity-90 z-50 flex items-center justify-center p-4">
+        <div 
+          className="fixed inset-0 bg-black bg-opacity-90 z-50 flex items-center justify-center p-4"
+          onClick={handleOverlayClick}
+        >
           <div className="relative max-w-4xl max-h-full">
             <img
               src={galleryImages[selectedImage]}
