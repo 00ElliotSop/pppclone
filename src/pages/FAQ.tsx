@@ -159,7 +159,7 @@ const FAQ = () => {
               <h3 className="font-semibold text-gray-800 mb-2">Phone</h3>
               <p className="text-gray-600 text-sm">647-957-2057</p>
             </div>
-            <div className="text-center">
+            <div className="text-center lg:transform lg:-translate-x-[9%]">
               <div className="bg-[#F7E7CE] w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Mail className="text-gray-800" size={24} />
               </div>
