@@ -4,14 +4,44 @@ import { Mail, Phone, MapPin, Instagram, Facebook, Twitter } from 'lucide-react'
 
 const Footer = () => {
   const [email, setEmail] = useState('');
+  const [showNewsletterPopup, setShowNewsletterPopup] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const navigate = useNavigate();
 
-  const handleNewsletterSubmit = (e: React.FormEvent) => {
+  const handleNewsletterSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle newsletter subscription
-    console.log('Newsletter subscription:', email);
-    setEmail('');
-    alert('Thank you for subscribing to our newsletter!');
+    
+    if (!email.trim()) return;
+    
+    setIsSubmitting(true);
+    
+    try {
+      const response = await fetch('/api/newsletter-subscribe', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email }),
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        setShowNewsletterPopup(true);
+        setEmail('');
+      } else {
+        alert('There was an error subscribing to our newsletter. Please try again.');
+      }
+    } catch (error) {
+      console.error('Newsletter subscription error:', error);
+      alert('There was an error subscribing to our newsletter. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const closeNewsletterPopup = () => {
+    setShowNewsletterPopup(false);
   };
 
   const handleLinkClick = (path: string) => {
@@ -20,7 +50,8 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-gray-900 text-white">
+    <>
+      <footer className="bg-gray-900 text-white">
       {/* Newsletter Section */}
       <div className="bg-[#F7E7CE] text-gray-900 py-12">
         <div className="max-w-7xl mx-auto px-4 text-center">
@@ -37,9 +68,10 @@ const Footer = () => {
             />
             <button
               type="submit"
-              className="bg-[#B5A99A] text-white px-6 py-2 rounded-r-lg hover:bg-gray-700 transition-colors"
+              disabled={isSubmitting}
+              className="bg-[#B5A99A] text-white px-6 py-2 rounded-r-lg hover:bg-gray-700 transition-colors disabled:bg-gray-400 disabled:cursor-not-allowed"
             >
-              Subscribe
+              {isSubmitting ? 'Subscribing...' : 'Subscribe'}
             </button>
           </form>
         </div>
@@ -212,6 +244,36 @@ const Footer = () => {
         </div>
       </div>
     </footer>
+
+      {/* Newsletter Subscription Popup */}
+      {showNewsletterPopup && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
+          <div className="bg-white rounded-2xl shadow-xl max-w-md w-full mx-4">
+            <div className="p-6">
+              <div className="text-center">
+                <div className="w-16 h-16 mx-auto mb-4 rounded-full flex items-center justify-center bg-green-100">
+                  <svg className="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                </div>
+                <h3 className="text-xl font-bold mb-4 text-green-800">
+                  Thanks for Subscribing!
+                </h3>
+                <p className="text-gray-600 mb-6">
+                  Thank you for subscribing to our newsletter! You'll receive the latest news and updates from Project Party Productions.
+                </p>
+                <button
+                  onClick={closeNewsletterPopup}
+                  className="w-full py-3 px-4 rounded-lg font-semibold transition-colors bg-green-600 text-white hover:bg-green-700"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+    </>
   );
 };
 

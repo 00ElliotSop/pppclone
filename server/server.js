@@ -136,6 +136,74 @@ Project Party Productions Team
   }
 });
 
+// Newsletter subscription endpoint
+app.post('/api/newsletter-subscribe', async (req, res) => {
+  try {
+    const { email } = req.body;
+
+    // Validate email
+    if (!email || !email.includes('@')) {
+      return res.status(400).json({
+        success: false,
+        message: 'Please provide a valid email address'
+      });
+    }
+
+    // Email content for confirmation
+    const emailContent = `
+Thank you for subscribing to Project Party Productions Newsletter!
+
+We're excited to have you join our community! You'll now receive:
+
+• Latest news and updates about our services
+• Special offers and promotions
+• Event inspiration and tips
+• Behind-the-scenes content from our team
+
+Stay tuned for amazing content coming your way!
+
+Best regards,
+The Project Party Productions Team
+
+---
+If you no longer wish to receive these emails, please contact us at info@projectpartyproductions.com
+    `;
+
+    // Email options for subscriber
+    const mailOptions = {
+      from: process.env.EMAIL_FROM,
+      to: email,
+      subject: 'Welcome to Project Party Productions Newsletter!',
+      text: emailContent
+    };
+
+    // Send confirmation email
+    await transporter.sendMail(mailOptions);
+
+    // Optional: Send notification to admin about new subscriber
+    const adminNotification = {
+      from: process.env.EMAIL_FROM,
+      to: process.env.EMAIL_TO,
+      subject: 'New Newsletter Subscription',
+      text: `New newsletter subscription from: ${email}`
+    };
+
+    await transporter.sendMail(adminNotification);
+
+    res.json({
+      success: true,
+      message: 'Successfully subscribed to newsletter!'
+    });
+
+  } catch (error) {
+    console.error('Error processing newsletter subscription:', error);
+    res.status(500).json({
+      success: false,
+      message: 'There was an error subscribing to our newsletter. Please try again.'
+    });
+  }
+});
+
 // Password reset code endpoint
 app.post('/api/send-reset-code', async (req, res) => {
   try {
