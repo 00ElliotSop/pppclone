@@ -110,7 +110,7 @@ Event Details Received:
 - Venue: ${venue || 'Not specified'}
 
 If you have any immediate questions, please don't hesitate to contact us:
-Phone: 416-616-1121
+Phone: 647-957-2057
 Email: info@projectpartyproductions.com
 
 We look forward to making your event unforgettable!

@@ -18,6 +18,9 @@ const BookNow = () => {
     message: '',
     agreeToTexts: false
   });
+  const [showPopup, setShowPopup] = useState(false);
+  const [popupType, setPopupType] = useState<'success' | 'error'>('success');
+  const [popupMessage, setPopupMessage] = useState('');
 
   // Load availability data on component mount
   useEffect(() => {
@@ -35,6 +38,22 @@ const BookNow = () => {
   // Get the minimum date (today)
   const getMinDate = () => {
     return new Date().toISOString().split('T')[0];
+  };
+
+  const showSuccessPopup = () => {
+    setPopupType('success');
+    setPopupMessage('Your booking inquiry has been received! We will get back to you within 24 hours.');
+    setShowPopup(true);
+  };
+
+  const showErrorPopup = (message: string) => {
+    setPopupType('error');
+    setPopupMessage(message);
+    setShowPopup(true);
+  };
+
+  const closePopup = () => {
+    setShowPopup(false);
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -70,7 +89,8 @@ const BookNow = () => {
       const result = await response.json();
 
       if (result.success) {
-        alert(result.message);
+        // Show success popup
+        showSuccessPopup();
         // Reset form
         setFormData({
           name: '',
@@ -84,35 +104,11 @@ const BookNow = () => {
           agreeToTexts: false
         });
       } else {
-        alert(result.message || 'There was an error submitting your inquiry. Please try again.');
+        showErrorPopup(result.message || 'There was an error submitting your inquiry. Please try again.');
       }
     } catch (error) {
       console.error('Error submitting form:', error);
-      // Fallback: create mailto link if backend is not available
-      const subject = encodeURIComponent(`Booking Inquiry - ${formData.name} (${formData.eventDate})`);
-      const body = encodeURIComponent(`
-New Booking Inquiry - Project Party Productions
-
-CONTACT INFORMATION:
-Name: ${formData.name}
-Email: ${formData.email}
-Phone: ${formData.phone}
-
-EVENT DETAILS:
-Event Date: ${formData.eventDate}
-Event Type: ${formData.eventType}
-Expected Guest Count: ${formData.guestCount || 'Not specified'}
-Venue/Location: ${formData.venue || 'Not specified'}
-
-ADDITIONAL DETAILS:
-${formData.message || 'No additional details provided'}
-
-TEXT MESSAGE CONSENT:
-${formData.agreeToTexts ? 'Yes, customer agrees to receive text messages' : 'No, customer does not want text messages'}
-      `);
-      
-      window.location.href = `mailto:info@projectpartyproductions.com?subject=${subject}&body=${body}`;
-      alert('Opening your email client to send the inquiry. If this doesn\'t work, please contact us directly at info@projectpartyproductions.com');
+      showErrorPopup('There was an error submitting your inquiry. Please try again or contact us directly at info@projectpartyproductions.com');
     }
   };
 
@@ -426,6 +422,49 @@ ${formData.agreeToTexts ? 'Yes, customer agrees to receive text messages' : 'No,
           </div>
         </div>
       </section>
+
+      {/* Success/Error Popup */}
+      {showPopup && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
+          <div className="bg-white rounded-2xl shadow-xl max-w-md w-full mx-4">
+            <div className="p-6">
+              <div className="text-center">
+                <div className={`w-16 h-16 mx-auto mb-4 rounded-full flex items-center justify-center ${
+                  popupType === 'success' ? 'bg-green-100' : 'bg-red-100'
+                }`}>
+                  {popupType === 'success' ? (
+                    <svg className="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                  ) : (
+                    <svg className="w-8 h-8 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                  )}
+                </div>
+                <h3 className={`text-xl font-bold mb-4 ${
+                  popupType === 'success' ? 'text-green-800' : 'text-red-800'
+                }`}>
+                  {popupType === 'success' ? 'Inquiry Received!' : 'Error'}
+                </h3>
+                <p className="text-gray-600 mb-6">
+                  {popupMessage}
+                </p>
+                <button
+                  onClick={closePopup}
+                  className={`w-full py-3 px-4 rounded-lg font-semibold transition-colors ${
+                    popupType === 'success' 
+                      ? 'bg-green-600 text-white hover:bg-green-700' 
+                      : 'bg-red-600 text-white hover:bg-red-700'
+                  }`}
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
