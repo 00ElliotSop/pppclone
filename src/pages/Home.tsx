@@ -336,7 +336,7 @@ const Home = () => {
           
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h3 className="font-bold text-gray-800 mb-8 px-1" style={{ 
+              <h3 className="font-bold text-gray-800 mb-8 px-1 text-left" style={{ 
                 fontSize: 'clamp(0.87rem, 2.8vw, 1.49rem)',
                 lineHeight: '1.2'
               }}>WE OFFER A VAST RANGE OF CUSTOMIZABLE SERVICES</h3>
