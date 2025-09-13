@@ -353,8 +353,6 @@ const BookNow = () => {
                     I agree to receive text messages from Project Party Productions regarding my booking and event updates, and I agree to the{' '}
                     <a 
                       href="/terms-of-service" 
-                      target="_blank" 
-                      rel="noopener noreferrer"
                       className="text-[#B5A99A] hover:text-[#F7E7CE] underline transition-colors"
                     >
                       Terms of Service
