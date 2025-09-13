@@ -86,6 +86,10 @@ const BookNow = () => {
         body: JSON.stringify(formData),
       });
 
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
       const result = await response.json();
 
       if (result.success) {
@@ -108,7 +112,11 @@ const BookNow = () => {
       }
     } catch (error) {
       console.error('Error submitting form:', error);
-      showErrorPopup('There was an error submitting your inquiry. Please try again or contact us directly at info@projectpartyproductions.com');
+      if (error.message.includes('Failed to fetch') || error.message.includes('ECONNREFUSED')) {
+        showErrorPopup('Unable to connect to our booking system. Please try again in a moment or contact us directly at 647-957-2057 or info@projectpartyproductions.com');
+      } else {
+        showErrorPopup('There was an error submitting your inquiry. Please try again or contact us directly at info@projectpartyproductions.com');
+      }
     }
   };
 
