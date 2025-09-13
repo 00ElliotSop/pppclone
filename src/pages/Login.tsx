@@ -39,6 +39,8 @@ const Login = () => {
   const [resetError, setResetError] = useState('');
   const [resetSuccess, setResetSuccess] = useState('');
   const [showConfirmation, setShowConfirmation] = useState(false);
+  const [showRemoveConfirmation, setShowRemoveConfirmation] = useState(false);
+  const [dateToRemove, setDateToRemove] = useState<string | null>(null);
   const navigate = useNavigate();
 
   // Auto-logout timer
@@ -188,13 +190,27 @@ const Login = () => {
     return dates;
   };
   const removeUnavailableDate = (dateToRemove: string) => {
-    const updatedAvailability = {
-      ...availability,
-      unavailableDates: availability.unavailableDates.filter(date => date !== dateToRemove)
-    };
-    setAvailability(updatedAvailability);
-    localStorage.setItem('siteAvailability', JSON.stringify(updatedAvailability));
-    setSuccess('Date removed from unavailable list');
+    setDateToRemove(dateToRemove);
+    setShowRemoveConfirmation(true);
+  };
+
+  const confirmRemoveDate = () => {
+    if (dateToRemove) {
+      const updatedAvailability = {
+        ...availability,
+        unavailableDates: availability.unavailableDates.filter(date => date !== dateToRemove)
+      };
+      setAvailability(updatedAvailability);
+      localStorage.setItem('siteAvailability', JSON.stringify(updatedAvailability));
+      setSuccess('Date removed from unavailable list');
+      setShowRemoveConfirmation(false);
+      setDateToRemove(null);
+    }
+  };
+
+  const cancelRemoveDate = () => {
+    setShowRemoveConfirmation(false);
+    setDateToRemove(null);
   };
 
   const updateMessage = () => {
@@ -767,6 +783,46 @@ const Login = () => {
                         className="flex-1 bg-red-500 text-white py-3 px-4 rounded-lg font-semibold hover:bg-red-600 transition-colors"
                       >
                         Yes, Mark Unavailable
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {/* Remove Date Confirmation Modal */}
+            {showRemoveConfirmation && dateToRemove && (
+              <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
+                <div className="bg-white rounded-2xl shadow-xl max-w-md w-full mx-4">
+                  <div className="p-6">
+                    <h3 className="text-xl font-bold text-gray-800 mb-4">
+                      Confirm Remove Date
+                    </h3>
+                    <p className="text-gray-600 mb-4">
+                      Are you sure you want to remove this date from the unavailable list? This will make it available for booking again.
+                    </p>
+                    
+                    <div className="mb-6 p-4 bg-green-50 border border-green-200 rounded-lg">
+                      <div className="font-medium text-green-800">
+                        {formatDate(dateToRemove)}
+                      </div>
+                      <div className="text-sm text-green-600 mt-1">
+                        This date will become available for booking
+                      </div>
+                    </div>
+                    
+                    <div className="flex space-x-3">
+                      <button
+                        onClick={cancelRemoveDate}
+                        className="flex-1 bg-gray-500 text-white py-3 px-4 rounded-lg font-semibold hover:bg-gray-600 transition-colors"
+                      >
+                        Cancel
+                      </button>
+                      <button
+                        onClick={confirmRemoveDate}
+                        className="flex-1 bg-green-500 text-white py-3 px-4 rounded-lg font-semibold hover:bg-green-600 transition-colors"
+                      >
+                        Yes, Make Available
                       </button>
                     </div>
                   </div>
