@@ -72,11 +72,51 @@ const Footer = () => {
           <div>
             <h4 className="text-lg font-semibold mb-4">Quick Links</h4>
             <ul className="space-y-2">
-              <li><button onClick={() => handleLinkClick('/')} className="text-gray-300 hover:text-[#F7E7CE] transition-colors text-left">Home</button></li>
-              <li><button onClick={() => handleLinkClick('/about-us')} className="text-gray-300 hover:text-[#F7E7CE] transition-colors text-left">About Us</button></li>
-              <li><button onClick={() => handleLinkClick('/backdrops')} className="text-gray-300 hover:text-[#F7E7CE] transition-colors text-left">Backdrops</button></li>
-              <li><button onClick={() => handleLinkClick('/360-videobooth')} className="text-gray-300 hover:text-[#F7E7CE] transition-colors text-left">360 Videobooth</button></li>
-              <li><button onClick={() => handleLinkClick('/mobile-photobooth')} className="text-gray-300 hover:text-[#F7E7CE] transition-colors text-left">Mobile Photobooth</button></li>
+              <li>
+                <Link 
+                  to="/" 
+                  onClick={() => window.scrollTo(0, 0)}
+                  className="text-gray-300 hover:text-[#F7E7CE] transition-colors"
+                >
+                  Home
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  to="/about-us" 
+                  onClick={() => window.scrollTo(0, 0)}
+                  className="text-gray-300 hover:text-[#F7E7CE] transition-colors"
+                >
+                  About Us
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  to="/backdrops" 
+                  onClick={() => window.scrollTo(0, 0)}
+                  className="text-gray-300 hover:text-[#F7E7CE] transition-colors"
+                >
+                  Backdrops
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  to="/360-videobooth" 
+                  onClick={() => window.scrollTo(0, 0)}
+                  className="text-gray-300 hover:text-[#F7E7CE] transition-colors"
+                >
+                  360 Videobooth
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  to="/mobile-photobooth" 
+                  onClick={() => window.scrollTo(0, 0)}
+                  className="text-gray-300 hover:text-[#F7E7CE] transition-colors"
+                >
+                  Mobile Photobooth
+                </Link>
+              </li>
             </ul>
           </div>
 
@@ -84,11 +124,51 @@ const Footer = () => {
           <div>
             <h4 className="text-lg font-semibold mb-4">Services</h4>
             <ul className="space-y-2">
-              <li><button onClick={() => handleLinkClick('/faq')} className="text-gray-300 hover:text-[#F7E7CE] transition-colors text-left">FAQ</button></li>
-              <li><button onClick={() => handleLinkClick('/gallery')} className="text-gray-300 hover:text-[#F7E7CE] transition-colors text-left">Gallery</button></li>
-              <li><button onClick={() => handleLinkClick('/book-now')} className="text-gray-300 hover:text-[#F7E7CE] transition-colors text-left">Book Now</button></li>
-              <li><button onClick={() => handleLinkClick('/speakers')} className="text-gray-300 hover:text-[#F7E7CE] transition-colors text-left">Speakers</button></li>
-              <li><button onClick={() => handleLinkClick('/props')} className="text-gray-300 hover:text-[#F7E7CE] transition-colors text-left">Props</button></li>
+              <li>
+                <Link 
+                  to="/faq" 
+                  onClick={() => window.scrollTo(0, 0)}
+                  className="text-gray-300 hover:text-[#F7E7CE] transition-colors"
+                >
+                  FAQ
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  to="/gallery" 
+                  onClick={() => window.scrollTo(0, 0)}
+                  className="text-gray-300 hover:text-[#F7E7CE] transition-colors"
+                >
+                  Gallery
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  to="/book-now" 
+                  onClick={() => window.scrollTo(0, 0)}
+                  className="text-gray-300 hover:text-[#F7E7CE] transition-colors"
+                >
+                  Book Now
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  to="/speakers" 
+                  onClick={() => window.scrollTo(0, 0)}
+                  className="text-gray-300 hover:text-[#F7E7CE] transition-colors"
+                >
+                  Speakers
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  to="/props" 
+                  onClick={() => window.scrollTo(0, 0)}
+                  className="text-gray-300 hover:text-[#F7E7CE] transition-colors"
+                >
+                  Props
+                </Link>
+              </li>
             </ul>
           </div>
 
@@ -121,7 +201,13 @@ const Footer = () => {
           </p>
           <div className="flex space-x-6 mt-4 md:mt-0">
             
-            <button onClick={() => handleLinkClick('/terms-of-service')} className="text-gray-400 hover:text-[#F7E7CE] text-sm transition-colors">Terms of Service</button>
+            <Link 
+              to="/terms-of-service" 
+              onClick={() => window.scrollTo(0, 0)}
+              className="text-gray-400 hover:text-[#F7E7CE] text-sm transition-colors"
+            >
+              Terms of Service
+            </Link>
           </div>
         </div>
       </div>
