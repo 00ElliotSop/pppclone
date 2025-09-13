@@ -5,6 +5,8 @@ import { Mail, Phone, MapPin, Instagram, Facebook, Twitter } from 'lucide-react'
 const Footer = () => {
   const [email, setEmail] = useState('');
   const [showNewsletterPopup, setShowNewsletterPopup] = useState(false);
+  const [showNewsletterErrorPopup, setShowNewsletterErrorPopup] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const navigate = useNavigate();
 
@@ -30,11 +32,13 @@ const Footer = () => {
         setShowNewsletterPopup(true);
         setEmail('');
       } else {
-        alert('There was an error subscribing to our newsletter. Please try again.');
+        setErrorMessage(result.message || 'There was an error subscribing to our newsletter. Please try again.');
+        setShowNewsletterErrorPopup(true);
       }
     } catch (error) {
       console.error('Newsletter subscription error:', error);
-      alert('There was an error subscribing to our newsletter. Please try again.');
+      setErrorMessage('There was an error subscribing to our newsletter. Please try again.');
+      setShowNewsletterErrorPopup(true);
     } finally {
       setIsSubmitting(false);
     }
@@ -44,6 +48,10 @@ const Footer = () => {
     setShowNewsletterPopup(false);
   };
 
+  const closeNewsletterErrorPopup = () => {
+    setShowNewsletterErrorPopup(false);
+    setErrorMessage('');
+  };
   const handleLinkClick = (path: string) => {
     navigate(path);
     window.scrollTo(0, 0);
@@ -265,6 +273,35 @@ const Footer = () => {
                 <button
                   onClick={closeNewsletterPopup}
                   className="w-full py-3 px-4 rounded-lg font-semibold transition-colors bg-green-600 text-white hover:bg-green-700"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Newsletter Error Popup */}
+      {showNewsletterErrorPopup && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
+          <div className="bg-white rounded-2xl shadow-xl max-w-md w-full mx-4">
+            <div className="p-6">
+              <div className="text-center">
+                <div className="w-16 h-16 mx-auto mb-4 rounded-full flex items-center justify-center bg-red-100">
+                  <svg className="w-8 h-8 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </div>
+                <h3 className="text-xl font-bold mb-4 text-red-800">
+                  Subscription Error
+                </h3>
+                <p className="text-gray-600 mb-6">
+                  {errorMessage}
+                </p>
+                <button
+                  onClick={closeNewsletterErrorPopup}
+                  className="w-full py-3 px-4 rounded-lg font-semibold transition-colors bg-red-600 text-white hover:bg-red-700"
                 >
                   Close
                 </button>
