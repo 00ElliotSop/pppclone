@@ -5,10 +5,20 @@ import { Eye, EyeOff, Calendar, Save, LogOut, Plus, Minus } from 'lucide-react';
 const Login = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
+  const [showPasswordReset, setShowPasswordReset] = useState(false);
   const [loginData, setLoginData] = useState({
     username: '',
     password: ''
   });
+  const [resetData, setResetData] = useState({
+    email: '',
+    verificationCode: '',
+    newPassword: '',
+    confirmPassword: ''
+  });
+  const [resetStep, setResetStep] = useState<'email' | 'verify' | 'password'>('email');
+  const [generatedCode, setGeneratedCode] = useState('');
+  const [codeExpiry, setCodeExpiry] = useState<number>(0);
   const [credentials, setCredentials] = useState({
     username: 'admin',
     password: 'projectparty2024'
@@ -26,6 +36,8 @@ const Login = () => {
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
   const [showChangeCredentials, setShowChangeCredentials] = useState(false);
+  const [resetError, setResetError] = useState('');
+  const [resetSuccess, setResetSuccess] = useState('');
   const navigate = useNavigate();
 
   // Auto-logout timer
@@ -201,6 +213,133 @@ const Login = () => {
     }
   }, [success]);
 
+  // Generate random 6-character code
+  const generateVerificationCode = () => {
+    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+    let code = '';
+    for (let i = 0; i < 6; i++) {
+      code += chars.charAt(Math.floor(Math.random() * chars.length));
+    }
+    return code;
+  };
+
+  // Send verification email
+  const sendVerificationEmail = async (email: string, code: string) => {
+    try {
+      const response = await fetch('http://localhost:3001/api/send-reset-code', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, code }),
+      });
+
+      const result = await response.json();
+      return result.success;
+    } catch (error) {
+      console.error('Error sending email:', error);
+      return false;
+    }
+  };
+
+  // Handle password reset request
+  const handlePasswordResetRequest = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setResetError('');
+    setResetSuccess('');
+
+    // Validate email domain
+    if (!resetData.email.endsWith('@projectpartyproductions.com')) {
+      setResetError('Email must end with @projectpartyproductions.com');
+      return;
+    }
+
+    // Generate and send verification code
+    const code = generateVerificationCode();
+    const emailSent = await sendVerificationEmail(resetData.email, code);
+
+    if (emailSent) {
+      setGeneratedCode(code);
+      setCodeExpiry(Date.now() + 10 * 60 * 1000); // 10 minutes expiry
+      setResetStep('verify');
+      setResetSuccess('Verification code sent to your email. Code expires in 10 minutes.');
+    } else {
+      // Fallback: show code in console for development
+      console.log('Verification code (for development):', code);
+      setGeneratedCode(code);
+      setCodeExpiry(Date.now() + 10 * 60 * 1000);
+      setResetStep('verify');
+      setResetSuccess('Email service unavailable. Check console for verification code (development mode).');
+    }
+  };
+
+  // Handle code verification
+  const handleCodeVerification = (e: React.FormEvent) => {
+    e.preventDefault();
+    setResetError('');
+
+    // Check if code expired
+    if (Date.now() > codeExpiry) {
+      setResetError('Verification code has expired. Please request a new one.');
+      setResetStep('email');
+      return;
+    }
+
+    // Verify code
+    if (resetData.verificationCode.toUpperCase() !== generatedCode) {
+      setResetError('Invalid verification code. Please try again.');
+      return;
+    }
+
+    setResetStep('password');
+    setResetSuccess('Code verified! Please enter your new password.');
+  };
+
+  // Handle password reset completion
+  const handlePasswordResetComplete = (e: React.FormEvent) => {
+    e.preventDefault();
+    setResetError('');
+
+    // Validate passwords
+    if (resetData.newPassword !== resetData.confirmPassword) {
+      setResetError('Passwords do not match');
+      return;
+    }
+
+    if (resetData.newPassword.length < 6) {
+      setResetError('Password must be at least 6 characters');
+      return;
+    }
+
+    // Update credentials
+    const updatedCredentials = {
+      ...credentials,
+      password: resetData.newPassword
+    };
+
+    setCredentials(updatedCredentials);
+    localStorage.setItem('adminCredentials', JSON.stringify(updatedCredentials));
+    
+    // Reset form and show success
+    setResetData({ email: '', verificationCode: '', newPassword: '', confirmPassword: '' });
+    setShowPasswordReset(false);
+    setResetStep('email');
+    setGeneratedCode('');
+    setCodeExpiry(0);
+    setSuccess('Password reset successfully! Please log in with your new password.');
+  };
+
+  // Cancel password reset
+  const cancelPasswordReset = () => {
+    setShowPasswordReset(false);
+    setResetStep('email');
+    setResetData({ email: '', verificationCode: '', newPassword: '', confirmPassword: '' });
+    setResetError('');
+    setResetSuccess('');
+    setGeneratedCode('');
+    setCodeExpiry(0);
+  };
+
   if (!isLoggedIn) {
     return (
       <div className="pt-24 min-h-screen bg-gray-50 flex items-center justify-center">
@@ -211,55 +350,194 @@ const Login = () => {
               <p className="text-gray-600">Access availability management</p>
             </div>
 
-            <form onSubmit={handleLogin} className="space-y-6">
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Username
-                </label>
-                <input
-                  type="text"
-                  value={loginData.username}
-                  onChange={(e) => setLoginData(prev => ({ ...prev, username: e.target.value }))}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#F7E7CE] focus:border-transparent"
-                  required
-                />
-              </div>
+            {!showPasswordReset ? (
+              <>
+                <form onSubmit={handleLogin} className="space-y-6">
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Username
+                    </label>
+                    <input
+                      type="text"
+                      value={loginData.username}
+                      onChange={(e) => setLoginData(prev => ({ ...prev, username: e.target.value }))}
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#F7E7CE] focus:border-transparent"
+                      required
+                    />
+                  </div>
 
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Password
-                </label>
-                <div className="relative">
-                  <input
-                    type={showPassword ? 'text' : 'password'}
-                    value={loginData.password}
-                    onChange={(e) => setLoginData(prev => ({ ...prev, password: e.target.value }))}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#F7E7CE] focus:border-transparent pr-12"
-                    required
-                  />
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Password
+                    </label>
+                    <div className="relative">
+                      <input
+                        type={showPassword ? 'text' : 'password'}
+                        value={loginData.password}
+                        onChange={(e) => setLoginData(prev => ({ ...prev, password: e.target.value }))}
+                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#F7E7CE] focus:border-transparent pr-12"
+                        required
+                      />
+                      <button
+                        type="button"
+                        onClick={() => setShowPassword(!showPassword)}
+                        className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-gray-700"
+                      >
+                        {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+                      </button>
+                    </div>
+                  </div>
+
+                  {error && (
+                    <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg">
+                      {error}
+                    </div>
+                  )}
+
+                  {success && (
+                    <div className="bg-green-50 border border-green-200 text-green-700 px-4 py-3 rounded-lg">
+                      {success}
+                    </div>
+                  )}
+
                   <button
-                    type="button"
-                    onClick={() => setShowPassword(!showPassword)}
-                    className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-gray-700"
+                    type="submit"
+                    className="w-full bg-[#B5A99A] text-white py-3 px-4 rounded-lg font-semibold hover:bg-[#F7E7CE] hover:text-black transition-all duration-300"
                   >
-                    {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+                    Login
+                  </button>
+                </form>
+
+                <div className="mt-6 text-center">
+                  <button
+                    onClick={() => setShowPasswordReset(true)}
+                    className="text-[#B5A99A] hover:text-[#F7E7CE] text-sm font-medium transition-colors"
+                  >
+                    Forgot Password?
+                  </button>
+                </div>
+              </>
+            ) : (
+              <div className="space-y-6">
+                <div className="text-center">
+                  <h2 className="text-xl font-semibold text-gray-800 mb-2">Reset Password</h2>
+                  <p className="text-sm text-gray-600">
+                    {resetStep === 'email' && 'Enter your Project Party Productions email'}
+                    {resetStep === 'verify' && 'Enter the verification code sent to your email'}
+                    {resetStep === 'password' && 'Create your new password'}
+                  </p>
+                </div>
+
+                {resetStep === 'email' && (
+                  <form onSubmit={handlePasswordResetRequest} className="space-y-4">
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                        Email Address
+                      </label>
+                      <input
+                        type="email"
+                        value={resetData.email}
+                        onChange={(e) => setResetData(prev => ({ ...prev, email: e.target.value }))}
+                        placeholder="your-email@projectpartyproductions.com"
+                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#F7E7CE] focus:border-transparent"
+                        required
+                      />
+                    </div>
+                    <button
+                      type="submit"
+                      className="w-full bg-[#B5A99A] text-white py-3 px-4 rounded-lg font-semibold hover:bg-[#F7E7CE] hover:text-black transition-all duration-300"
+                    >
+                      Send Verification Code
+                    </button>
+                  </form>
+                )}
+
+                {resetStep === 'verify' && (
+                  <form onSubmit={handleCodeVerification} className="space-y-4">
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                        Verification Code
+                      </label>
+                      <input
+                        type="text"
+                        value={resetData.verificationCode}
+                        onChange={(e) => setResetData(prev => ({ ...prev, verificationCode: e.target.value.toUpperCase() }))}
+                        placeholder="Enter 6-character code"
+                        maxLength={6}
+                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#F7E7CE] focus:border-transparent text-center text-lg font-mono"
+                        required
+                      />
+                      <p className="text-xs text-gray-500 mt-1">
+                        Code expires in {Math.max(0, Math.ceil((codeExpiry - Date.now()) / 60000))} minutes
+                      </p>
+                    </div>
+                    <button
+                      type="submit"
+                      className="w-full bg-[#B5A99A] text-white py-3 px-4 rounded-lg font-semibold hover:bg-[#F7E7CE] hover:text-black transition-all duration-300"
+                    >
+                      Verify Code
+                    </button>
+                  </form>
+                )}
+
+                {resetStep === 'password' && (
+                  <form onSubmit={handlePasswordResetComplete} className="space-y-4">
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                        New Password
+                      </label>
+                      <input
+                        type="password"
+                        value={resetData.newPassword}
+                        onChange={(e) => setResetData(prev => ({ ...prev, newPassword: e.target.value }))}
+                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#F7E7CE] focus:border-transparent"
+                        required
+                        minLength={6}
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                        Confirm New Password
+                      </label>
+                      <input
+                        type="password"
+                        value={resetData.confirmPassword}
+                        onChange={(e) => setResetData(prev => ({ ...prev, confirmPassword: e.target.value }))}
+                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#F7E7CE] focus:border-transparent"
+                        required
+                      />
+                    </div>
+                    <button
+                      type="submit"
+                      className="w-full bg-[#B5A99A] text-white py-3 px-4 rounded-lg font-semibold hover:bg-[#F7E7CE] hover:text-black transition-all duration-300"
+                    >
+                      Reset Password
+                    </button>
+                  </form>
+                )}
+
+                {resetError && (
+                  <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg">
+                    {resetError}
+                  </div>
+                )}
+
+                {resetSuccess && (
+                  <div className="bg-green-50 border border-green-200 text-green-700 px-4 py-3 rounded-lg">
+                    {resetSuccess}
+                  </div>
+                )}
+
+                <div className="text-center">
+                  <button
+                    onClick={cancelPasswordReset}
+                    className="text-gray-500 hover:text-gray-700 text-sm font-medium transition-colors"
+                  >
+                    Back to Login
                   </button>
                 </div>
               </div>
-
-              {error && (
-                <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg">
-                  {error}
-                </div>
-              )}
-
-              <button
-                type="submit"
-                className="w-full bg-[#B5A99A] text-white py-3 px-4 rounded-lg font-semibold hover:bg-[#F7E7CE] hover:text-black transition-all duration-300"
-              >
-                Login
-              </button>
-            </form>
+            )}
           </div>
         </div>
       </div>

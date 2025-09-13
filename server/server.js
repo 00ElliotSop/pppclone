@@ -11,7 +11,7 @@ app.use(cors());
 app.use(express.json());
 
 // Create transporter for sending emails
-const transporter = nodemailer.createTransport({
+const transporter = nodemailer.createTransporter({
   host: process.env.EMAIL_HOST,
   port: parseInt(process.env.EMAIL_PORT, 10),
   secure: process.env.EMAIL_SECURE === 'true',
@@ -132,6 +132,60 @@ Project Party Productions Team
     res.status(500).json({
       success: false,
       message: 'There was an error submitting your inquiry. Please try again or contact us directly.'
+    });
+  }
+});
+
+// Password reset code endpoint
+app.post('/api/send-reset-code', async (req, res) => {
+  try {
+    const { email, code } = req.body;
+
+    // Validate email domain
+    if (!email.endsWith('@projectpartyproductions.com')) {
+      return res.status(400).json({
+        success: false,
+        message: 'Invalid email domain'
+      });
+    }
+
+    // Email content
+    const emailContent = `
+Password Reset Request - Project Party Productions Admin
+
+You have requested to reset your admin password.
+
+Your verification code is: ${code}
+
+This code will expire in 10 minutes.
+
+If you did not request this password reset, please ignore this email.
+
+---
+Project Party Productions Admin System
+    `;
+
+    // Email options
+    const mailOptions = {
+      from: process.env.EMAIL_FROM,
+      to: email,
+      subject: 'Admin Password Reset - Verification Code',
+      text: emailContent
+    };
+
+    // Send email
+    await transporter.sendMail(mailOptions);
+
+    res.json({
+      success: true,
+      message: 'Verification code sent successfully'
+    });
+
+  } catch (error) {
+    console.error('Error sending reset code:', error);
+    res.status(500).json({
+      success: false,
+      message: 'Failed to send verification code'
     });
   }
 });
