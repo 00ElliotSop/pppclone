@@ -16,8 +16,7 @@ const BookNow = () => {
     guestCount: '',
     venue: '',
     message: '',
-    agreeToTexts: false,
-    agreeToTerms: false
+    agreeToTexts: false
   });
   const [showPopup, setShowPopup] = useState(false);
   const [popupType, setPopupType] = useState<'success' | 'error'>('success');
@@ -68,12 +67,6 @@ const BookNow = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
-    // Check if terms are agreed to
-    if (!formData.agreeToTerms) {
-      alert('Please agree to the Terms of Service before submitting.');
-      return;
-    }
-    
     // Check if selected date is unavailable
     if (isDateUnavailable(formData.eventDate)) {
       alert('Sorry, the selected date is not available. Please choose a different date.');
@@ -112,8 +105,7 @@ const BookNow = () => {
           guestCount: '',
           venue: '',
           message: '',
-          agreeToTexts: false,
-          agreeToTerms: false
+          agreeToTexts: false
         });
       } else {
         showErrorPopup(result.message || 'There was an error submitting your inquiry. Please try again.');
@@ -352,20 +344,6 @@ const BookNow = () => {
                   />
                   <label className="text-sm text-gray-600">
                     I agree to receive text messages from Project Party Productions regarding my booking and event updates.
-                  </label>
-                </div>
-
-                <div className="flex items-start space-x-3">
-                  <input
-                    type="checkbox"
-                    name="agreeToTerms"
-                    checked={formData.agreeToTerms}
-                    onChange={handleInputChange}
-                    required
-                    className="mt-1 h-4 w-4 text-[#F7E7CE] focus:ring-[#F7E7CE] border-gray-300 rounded"
-                  />
-                  <label className="text-sm text-gray-600">
-                    I agree to the <Link to="/terms-of-service" className="text-[#B5A99A] hover:text-[#F7E7CE] underline" target="_blank">Terms of Service</Link>. *
                   </label>
                 </div>
 
