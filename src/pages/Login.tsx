@@ -51,7 +51,8 @@ const Login = () => {
   useEffect(() => {
     const savedCredentials = localStorage.getItem('adminCredentials');
     const savedAvailability = localStorage.getItem('siteAvailability');
-    const isAuthenticated = sessionStorage.getItem('isAdminAuthenticated');
+    // Always logout on page reload - don't check sessionStorage
+    const isAuthenticated = null;
 
     if (savedCredentials) {
       setCredentials(JSON.parse(savedCredentials));
@@ -59,9 +60,9 @@ const Login = () => {
     if (savedAvailability) {
       setAvailability(JSON.parse(savedAvailability));
     }
-    if (isAuthenticated === 'true') {
-      setIsLoggedIn(true);
-    }
+    // Always start logged out on page reload
+    setIsLoggedIn(false);
+    sessionStorage.removeItem('isAdminAuthenticated');
   }, []);
 
   // Auto-logout functionality

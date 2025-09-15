@@ -190,9 +190,32 @@ const BookNow = () => {
           /* Style unavailable dates in date picker */
           ${generateUnavailableDateStyles()}
           
-          /* Additional styling for better visibility */
+          /* Additional styling for better visibility and mobile support */
           input[type="date"]::-webkit-calendar-picker-indicator {
             filter: none;
+            position: relative;
+            z-index: 1;
+          }
+          
+          /* Ensure calendar dropdown doesn't get cut off on mobile */
+          input[type="date"] {
+            position: relative;
+            z-index: 10;
+          }
+          
+          /* Mobile calendar positioning fix */
+          @media (max-width: 768px) {
+            input[type="date"]::-webkit-calendar-picker-indicator {
+              position: relative;
+              z-index: 20;
+            }
+            
+            /* Ensure calendar popup has proper stacking */
+            input[type="date"]:focus,
+            input[type="date"]:active {
+              z-index: 50 !important;
+              position: relative;
+            }
           }
           
           /* Custom styling for unavailable dates */
@@ -285,18 +308,22 @@ const BookNow = () => {
                       min={getMinDate()}
                       max={new Date(Date.now() + 2 * 365 * 24 * 60 * 60 * 1000).toISOString().split('T')[0]}
                       required
-                      className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-[#F7E7CE] focus:border-transparent ${
+                      className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-[#F7E7CE] focus:border-transparent relative z-10 ${
                         formData.eventDate && isDateUnavailable(formData.eventDate) 
                           ? 'border-red-300 bg-red-50' 
                           : 'border-gray-300'
                       }`}
                       style={{
                         backgroundImage: availability.unavailableDates.length > 0 ? 
-                          `linear-gradient(to right, transparent 0%, transparent 100%)` : 'none'
+                          `linear-gradient(to right, transparent 0%, transparent 100%)` : 'none',
+                        position: 'relative',
+                        zIndex: 10
                       }}
                     />
                     {formData.eventDate && isDateUnavailable(formData.eventDate) && (
-                      <p className="text-red-600 text-sm mt-1">This date is not available. Please select a different date.</p>
+                      <div className="text-red-600 text-sm mt-1 p-2 bg-red-50 border border-red-200 rounded">
+                        <strong>⚠️ Date Unavailable:</strong> This date is not available. Please select a different date.
+                      </div>
                     )}
                   </div>
                 </div>
