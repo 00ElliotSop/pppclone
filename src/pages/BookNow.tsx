@@ -489,7 +489,7 @@ const BookNow = () => {
                   </div>
                   <div>
                     <h3 className="font-semibold text-gray-800 mb-2">Phone</h3>
-                    <p className="text-gray-600">647-957-2057</p>
+                    <a href="tel:+16479572057" className="text-gray-600 hover:text-[#B5A99A] transition-colors">647-957-2057</a>
                     <p className="text-sm text-gray-500">Available 9 AM - 9 PM, 7 days a week</p>
                   </div>
                 </div>

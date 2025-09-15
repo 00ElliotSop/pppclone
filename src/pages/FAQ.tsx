@@ -157,7 +157,7 @@ const FAQ = () => {
                 <Phone className="text-gray-800" size={24} />
               </div>
               <h3 className="font-semibold text-gray-800 mb-2">Phone</h3>
-              <p className="text-gray-600 text-sm">647-957-2057</p>
+              <a href="tel:+16479572057" className="text-gray-600 text-sm hover:text-[#B5A99A] transition-colors">647-957-2057</a>
             </div>
             <div className="text-center lg:transform lg:-translate-x-[16%]">
               <div className="bg-[#F7E7CE] w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
