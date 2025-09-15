@@ -44,6 +44,17 @@ const Footer = () => {
     }
   };
 
+  const handleNewsletterPopupOverlayClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (e.target === e.currentTarget) {
+      closeNewsletterPopup();
+    }
+  };
+
+  const handleNewsletterErrorPopupOverlayClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (e.target === e.currentTarget) {
+      closeNewsletterErrorPopup();
+    }
+  };
   const closeNewsletterPopup = () => {
     setShowNewsletterPopup(false);
   };
@@ -255,7 +266,10 @@ const Footer = () => {
 
       {/* Newsletter Subscription Popup */}
       {showNewsletterPopup && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
+        <div 
+          className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4"
+          onClick={handleNewsletterPopupOverlayClick}
+        >
           <div className="bg-white rounded-2xl shadow-xl max-w-md w-full mx-4">
             <div className="p-6">
               <div className="text-center">
@@ -284,7 +298,10 @@ const Footer = () => {
 
       {/* Newsletter Error Popup */}
       {showNewsletterErrorPopup && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
+        <div 
+          className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4"
+          onClick={handleNewsletterErrorPopupOverlayClick}
+        >
           <div className="bg-white rounded-2xl shadow-xl max-w-md w-full mx-4">
             <div className="p-6">
               <div className="text-center">
