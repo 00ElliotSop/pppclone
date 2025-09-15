@@ -1042,4 +1042,4 @@ const Login = () => {
                       </button>
                       <button
                         onClick={confirmRemoveDate}
-                        className="flex-1 bg-green-500 text-white py-3 px-4 rounded-
+                        className="flex-1 bg-green-500 text-white py-3 px-4 rounded-lg font-semibold hover:bg-green-600 transition-colors"
