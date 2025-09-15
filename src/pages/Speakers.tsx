@@ -131,7 +131,7 @@ const Speakers = () => {
       <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4">
           <h2 className="text-4xl font-bold text-center text-gray-800 mb-16">Our Speaker Systems</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {galleryImages.map((image, index) => (
               <div 
                 key={index} 
@@ -141,7 +141,7 @@ const Speakers = () => {
                 <img
                   src={image}
                   alt={`Speaker System ${index + 1}`}
-                  className="w-full h-64 object-cover rounded-2xl shadow-lg transition-transform duration-300 group-hover:scale-110"
+                  className="w-full h-auto max-h-80 object-contain bg-gray-100 rounded-2xl shadow-lg transition-transform duration-300 group-hover:scale-110"
                  loading="eager"
                  decoding="sync"
                 />
