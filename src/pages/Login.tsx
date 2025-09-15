@@ -6,6 +6,9 @@ const Login = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [showPasswordReset, setShowPasswordReset] = useState(false);
+  const [isBlocked, setIsBlocked] = useState(false);
+  const [blockTimeRemaining, setBlockTimeRemaining] = useState(0);
+  const [attemptCount, setAttemptCount] = useState(0);
   const [loginData, setLoginData] = useState({
     username: '',
     password: ''
@@ -43,6 +46,128 @@ const Login = () => {
   const [dateToRemove, setDateToRemove] = useState<string | null>(null);
   const navigate = useNavigate();
 
+  // Rate limiting constants
+  const MAX_ATTEMPTS = 4;
+  const BASE_BLOCK_TIME = 15 * 60 * 1000; // 15 minutes in milliseconds
+
+  // Input sanitization function
+  const sanitizeInput = (input: string): string => {
+    // Remove script and image tags (case insensitive)
+    let sanitized = input.replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '');
+    sanitized = sanitized.replace(/<img\b[^>]*>/gi, '');
+    sanitized = sanitized.replace(/<\/img>/gi, '');
+    
+    // Remove other potentially dangerous tags
+    sanitized = sanitized.replace(/<iframe\b[^<]*(?:(?!<\/iframe>)<[^<]*)*<\/iframe>/gi, '');
+    sanitized = sanitized.replace(/<object\b[^<]*(?:(?!<\/object>)<[^<]*)*<\/object>/gi, '');
+    sanitized = sanitized.replace(/<embed\b[^>]*>/gi, '');
+    
+    return sanitized;
+  };
+
+  // Validate special characters (allow only @, -, _, . and alphanumeric)
+  const validateSpecialChars = (input: string, isEmail: boolean = false): string => {
+    if (isEmail) {
+      // For email, allow standard email characters
+      return input.replace(/[^a-zA-Z0-9@._-]/g, '');
+    } else {
+      // For other fields, allow basic special characters but remove most others
+      return input.replace(/[^a-zA-Z0-9@._\-\s]/g, '');
+    }
+  };
+
+  // Get user identifier (IP simulation using browser fingerprint)
+  const getUserIdentifier = (): string => {
+    // Create a simple browser fingerprint as IP substitute
+    const canvas = document.createElement('canvas');
+    const ctx = canvas.getContext('2d');
+    ctx!.textBaseline = 'top';
+    ctx!.font = '14px Arial';
+    ctx!.fillText('Browser fingerprint', 2, 2);
+    const fingerprint = canvas.toDataURL();
+    
+    return btoa(fingerprint.slice(-50) + navigator.userAgent.slice(-50)).slice(0, 20);
+  };
+
+  // Load rate limiting data
+  const loadRateLimitData = () => {
+    const userIdentifier = getUserIdentifier();
+    const rateLimitData = localStorage.getItem(`rateLimit_${userIdentifier}`);
+    
+    if (rateLimitData) {
+      const data = JSON.parse(rateLimitData);
+      const now = Date.now();
+      
+      if (data.blockUntil && now < data.blockUntil) {
+        setIsBlocked(true);
+        setBlockTimeRemaining(data.blockUntil - now);
+        setAttemptCount(data.attempts || 0);
+        return true;
+      } else if (data.blockUntil && now >= data.blockUntil) {
+        // Block period expired, reset attempts
+        localStorage.removeItem(`rateLimit_${userIdentifier}`);
+        setAttemptCount(0);
+      } else {
+        setAttemptCount(data.attempts || 0);
+      }
+    }
+    return false;
+  };
+
+  // Save rate limiting data
+  const saveRateLimitData = (attempts: number, blockUntil?: number) => {
+    const userIdentifier = getUserIdentifier();
+    const data = {
+      attempts,
+      blockUntil: blockUntil || null,
+      lastAttempt: Date.now()
+    };
+    localStorage.setItem(`rateLimit_${userIdentifier}`, JSON.stringify(data));
+  };
+
+  // Handle failed login attempt
+  const handleFailedAttempt = () => {
+    const newAttemptCount = attemptCount + 1;
+    setAttemptCount(newAttemptCount);
+    
+    if (newAttemptCount >= MAX_ATTEMPTS) {
+      // Calculate block time (increases exponentially)
+      const blockMultiplier = Math.pow(2, Math.floor(newAttemptCount / MAX_ATTEMPTS) - 1);
+      const blockTime = BASE_BLOCK_TIME * blockMultiplier;
+      const blockUntil = Date.now() + blockTime;
+      
+      setIsBlocked(true);
+      setBlockTimeRemaining(blockTime);
+      saveRateLimitData(newAttemptCount, blockUntil);
+      
+      setError(`Too many failed attempts. Account blocked for ${Math.ceil(blockTime / 60000)} minutes.`);
+    } else {
+      saveRateLimitData(newAttemptCount);
+      setError(`Invalid username or password. ${MAX_ATTEMPTS - newAttemptCount} attempts remaining.`);
+    }
+  };
+
+  // Block countdown timer
+  useEffect(() => {
+    if (isBlocked && blockTimeRemaining > 0) {
+      const timer = setInterval(() => {
+        setBlockTimeRemaining(prev => {
+          if (prev <= 1000) {
+            setIsBlocked(false);
+            setAttemptCount(0);
+            const userIdentifier = getUserIdentifier();
+            localStorage.removeItem(`rateLimit_${userIdentifier}`);
+            setError('');
+            return 0;
+          }
+          return prev - 1000;
+        });
+      }, 1000);
+      
+      return () => clearInterval(timer);
+    }
+  }, [isBlocked, blockTimeRemaining]);
+
   // Auto-logout timer
   const LOGOUT_TIME = 15 * 60 * 1000; // 15 minutes in milliseconds
   const [lastActivity, setLastActivity] = useState(Date.now());
@@ -53,6 +178,9 @@ const Login = () => {
     const savedAvailability = localStorage.getItem('siteAvailability');
     // Always logout on page reload - don't check sessionStorage
     const isAuthenticated = null;
+
+    // Load rate limiting data
+    loadRateLimitData();
 
     if (savedCredentials) {
       setCredentials(JSON.parse(savedCredentials));
@@ -99,14 +227,25 @@ const Login = () => {
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
     setError('');
+    
+    // Check if user is blocked
+    if (isBlocked) {
+      const minutes = Math.ceil(blockTimeRemaining / 60000);
+      setError(`Account is blocked. Try again in ${minutes} minute(s).`);
+      return;
+    }
 
     if (loginData.username === credentials.username && loginData.password === credentials.password) {
       setIsLoggedIn(true);
       sessionStorage.setItem('isAdminAuthenticated', 'true');
       setLastActivity(Date.now());
       setLoginData({ username: '', password: '' });
+      // Reset rate limiting on successful login
+      setAttemptCount(0);
+      const userIdentifier = getUserIdentifier();
+      localStorage.removeItem(`rateLimit_${userIdentifier}`);
     } else {
-      setError('Invalid username or password');
+      handleFailedAttempt();
     }
   };
 
@@ -115,6 +254,71 @@ const Login = () => {
     sessionStorage.removeItem('isAdminAuthenticated');
     setLastActivity(0);
     setLoginData({ username: '', password: '' });
+  };
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    const { name, value, type } = e.target;
+    
+    let sanitizedValue = value;
+    
+    // Sanitize input to remove script/image tags
+    if (type !== 'checkbox') {
+      sanitizedValue = sanitizeInput(value);
+      
+      // Apply special character validation based on field type
+      if (name === 'email') {
+        sanitizedValue = validateSpecialChars(sanitizedValue, true);
+      } else {
+        sanitizedValue = validateSpecialChars(sanitizedValue, false);
+      }
+    }
+    
+    setLoginData(prev => ({
+      ...prev,
+      [name]: sanitizedValue
+    }));
+  };
+
+  const handleResetInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    
+    let sanitizedValue = sanitizeInput(value);
+    
+    // Apply special character validation based on field type
+    if (name === 'email') {
+      sanitizedValue = validateSpecialChars(sanitizedValue, true);
+    } else {
+      sanitizedValue = validateSpecialChars(sanitizedValue, false);
+    }
+    
+    setResetData(prev => ({
+      ...prev,
+      [name]: sanitizedValue
+    }));
+  };
+
+  const handleCredentialsInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    
+    let sanitizedValue = sanitizeInput(value);
+    sanitizedValue = validateSpecialChars(sanitizedValue, false);
+    
+    setNewCredentials(prev => ({
+      ...prev,
+      [name]: sanitizedValue
+    }));
+  };
+
+  const handleAvailabilityInputChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    const { value } = e.target;
+    
+    let sanitizedValue = sanitizeInput(value);
+    sanitizedValue = validateSpecialChars(sanitizedValue, false);
+    
+    setAvailability(prev => ({
+      ...prev,
+      message: sanitizedValue
+    }));
   };
 
   const handleChangeCredentials = (e: React.FormEvent) => {
@@ -384,9 +588,11 @@ const Login = () => {
                     <input
                       type="text"
                       value={loginData.username}
-                      onChange={(e) => setLoginData(prev => ({ ...prev, username: e.target.value }))}
+                      onChange={handleInputChange}
+                      name="username"
                       className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#F7E7CE] focus:border-transparent"
                       required
+                      disabled={isBlocked}
                     />
                   </div>
 
@@ -398,9 +604,11 @@ const Login = () => {
                       <input
                         type={showPassword ? 'text' : 'password'}
                         value={loginData.password}
-                        onChange={(e) => setLoginData(prev => ({ ...prev, password: e.target.value }))}
+                        onChange={handleInputChange}
+                        name="password"
                         className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#F7E7CE] focus:border-transparent pr-12"
                         required
+                        disabled={isBlocked}
                       />
                       <button
                         type="button"
@@ -415,6 +623,11 @@ const Login = () => {
                   {error && (
                     <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg">
                       {error}
+                      {isBlocked && blockTimeRemaining > 0 && (
+                        <div className="mt-2 text-sm">
+                          Time remaining: {Math.floor(blockTimeRemaining / 60000)}:{String(Math.floor((blockTimeRemaining % 60000) / 1000)).padStart(2, '0')}
+                        </div>
+                      )}
                     </div>
                   )}
 
@@ -427,8 +640,9 @@ const Login = () => {
                   <button
                     type="submit"
                     className="w-full bg-[#B5A99A] text-white py-3 px-4 rounded-lg font-semibold hover:bg-[#F7E7CE] hover:text-black transition-all duration-300"
+                    disabled={isBlocked}
                   >
-                    Login
+                    {isBlocked ? `Blocked (${Math.ceil(blockTimeRemaining / 60000)}m)` : 'Login'}
                   </button>
                 </form>
 
@@ -461,7 +675,8 @@ const Login = () => {
                       <input
                         type="email"
                         value={resetData.email}
-                        onChange={(e) => setResetData(prev => ({ ...prev, email: e.target.value }))}
+                        onChange={handleResetInputChange}
+                        name="email"
                         placeholder="your-email@projectpartyproductions.com"
                         className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#F7E7CE] focus:border-transparent"
                         required
@@ -485,7 +700,11 @@ const Login = () => {
                       <input
                         type="text"
                         value={resetData.verificationCode}
-                        onChange={(e) => setResetData(prev => ({ ...prev, verificationCode: e.target.value.toUpperCase() }))}
+                        onChange={(e) => {
+                          const sanitized = sanitizeInput(e.target.value.toUpperCase());
+                          const validated = validateSpecialChars(sanitized, false);
+                          setResetData(prev => ({ ...prev, verificationCode: validated }));
+                        }}
                         placeholder="Enter 6-character code"
                         maxLength={6}
                         className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#F7E7CE] focus:border-transparent text-center text-lg font-mono"
@@ -513,7 +732,8 @@ const Login = () => {
                       <input
                         type="password"
                         value={resetData.newPassword}
-                        onChange={(e) => setResetData(prev => ({ ...prev, newPassword: e.target.value }))}
+                        onChange={handleResetInputChange}
+                        name="newPassword"
                         className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#F7E7CE] focus:border-transparent"
                         required
                         minLength={6}
@@ -526,7 +746,8 @@ const Login = () => {
                       <input
                         type="password"
                         value={resetData.confirmPassword}
-                        onChange={(e) => setResetData(prev => ({ ...prev, confirmPassword: e.target.value }))}
+                        onChange={handleResetInputChange}
+                        name="confirmPassword"
                         className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#F7E7CE] focus:border-transparent"
                         required
                       />
@@ -603,7 +824,7 @@ const Login = () => {
               <div className="space-y-4">
                 <textarea
                   value={availability.message}
-                  onChange={(e) => setAvailability(prev => ({ ...prev, message: e.target.value }))}
+                  onChange={handleAvailabilityInputChange}
                   rows={3}
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#F7E7CE] focus:border-transparent"
                   placeholder="Enter the message that will appear on the Book Now page"
@@ -821,91 +1042,4 @@ const Login = () => {
                       </button>
                       <button
                         onClick={confirmRemoveDate}
-                        className="flex-1 bg-green-500 text-white py-3 px-4 rounded-lg font-semibold hover:bg-green-600 transition-colors"
-                      >
-                        Yes, Make Available
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            )}
-
-            {/* Change Credentials */}
-            <section>
-              <div className="flex justify-between items-center mb-4">
-                <h2 className="text-2xl font-bold text-gray-800">Change Login Credentials</h2>
-                <button
-                  onClick={() => setShowChangeCredentials(!showChangeCredentials)}
-                  className="bg-gray-500 text-white px-4 py-2 rounded-lg hover:bg-gray-600 transition-colors"
-                >
-                  {showChangeCredentials ? 'Cancel' : 'Change Credentials'}
-                </button>
-              </div>
-
-              {showChangeCredentials && (
-                <form onSubmit={handleChangeCredentials} className="space-y-4">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">
-                        New Username
-                      </label>
-                      <input
-                        type="text"
-                        value={newCredentials.username}
-                        onChange={(e) => setNewCredentials(prev => ({ ...prev, username: e.target.value }))}
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#F7E7CE] focus:border-transparent"
-                        required
-                        minLength={3}
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">
-                        New Password
-                      </label>
-                      <input
-                        type="password"
-                        value={newCredentials.password}
-                        onChange={(e) => setNewCredentials(prev => ({ ...prev, password: e.target.value }))}
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#F7E7CE] focus:border-transparent"
-                        required
-                        minLength={6}
-                      />
-                    </div>
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Confirm New Password
-                    </label>
-                    <input
-                      type="password"
-                      value={newCredentials.confirmPassword}
-                      onChange={(e) => setNewCredentials(prev => ({ ...prev, confirmPassword: e.target.value }))}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#F7E7CE] focus:border-transparent"
-                      required
-                    />
-                  </div>
-
-                  {error && (
-                    <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg">
-                      {error}
-                    </div>
-                  )}
-
-                  <button
-                    type="submit"
-                    className="bg-[#B5A99A] text-white px-6 py-3 rounded-lg font-semibold hover:bg-[#F7E7CE] hover:text-black transition-all duration-300"
-                  >
-                    Update Credentials
-                  </button>
-                </form>
-              )}
-            </section>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-};
-
-export default Login;
+                        className="flex-1 bg-green-500 text-white py-3 px-4 rounded-
