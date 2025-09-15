@@ -351,13 +351,29 @@ const BookNow = () => {
                   </div>
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Expected Guest Count
+                      Expected Guest Count *
                     </label>
                     <input
                       type="number"
                       name="guestCount"
                       value={formData.guestCount}
                       onChange={handleInputChange}
+                      required
+                      min="2"
+                      step="1"
+                      onKeyPress={(e) => {
+                        // Only allow numbers
+                        if (!/[0-9]/.test(e.key) && e.key !== 'Backspace' && e.key !== 'Delete' && e.key !== 'Tab' && e.key !== 'Enter') {
+                          e.preventDefault();
+                        }
+                      }}
+                      onPaste={(e) => {
+                        // Prevent pasting non-numeric content
+                        const paste = e.clipboardData.getData('text');
+                        if (!/^\d+$/.test(paste)) {
+                          e.preventDefault();
+                        }
+                      }}
                       className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#F7E7CE] focus:border-transparent"
                     />
                   </div>
