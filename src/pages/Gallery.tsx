@@ -3,38 +3,41 @@ import { X, ChevronLeft, ChevronRight } from 'lucide-react';
 
 const Gallery = () => {
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
+  const [selectedMedia, setSelectedMedia] = useState<{index: number, type: 'image' | 'video'} | null>(null);
 
-  const galleryImages = [
-    '/20250804_204800341.jpg',
-    '/20250804_212732774.jpg',
-    '/20250804_205503768.jpg',
-    '/gallery4.jpg',
-    '/20250804_193822216.jpg',
-    '/20250804_200807927.jpg',
-    '/20250804_204137279.jpg',
-    '/20250804_205236101.jpg',
-    '/20250804_210506449.jpg',
-    '/20250804_204450963.jpg',
-    '/20250804_204900014.jpg',
-    '/20250804_194812971.jpg',
-    '/20250804_193618221.jpg',
-    '/20250804_181238676.jpg',
-    '/20250804_192508408.jpg',
-    '/20250804_212404754.jpg',
-    '/20250804_210722523.jpg',
-    '/20250804_210332810.jpg',
-    '/20250804_210043845.jpg',
-    '/20250804_205655968.jpg',
-    '/20250804_214331446.jpg',
-    '/DSC_0376 2.JPG',
-    '/20250804_213017940.jpg'
+  const galleryMedia = [
+    { src: '/20250804_204800341.jpg', type: 'image' as const },
+    { src: '/20250804_212732774.jpg', type: 'image' as const },
+    { src: '/20250804_205503768.jpg', type: 'image' as const },
+    { src: '/gallery4.jpg', type: 'image' as const },
+    { src: '/20250804_193822216.jpg', type: 'image' as const },
+    { src: '/20250804_200807927.jpg', type: 'image' as const },
+    { src: '/20250804_204137279.jpg', type: 'image' as const },
+    { src: '/20250804_205236101.jpg', type: 'image' as const },
+    { src: '/20250804_210506449.jpg', type: 'image' as const },
+    { src: '/20250804_204450963.jpg', type: 'image' as const },
+    { src: '/20250804_204900014.jpg', type: 'image' as const },
+    { src: '/20250804_194812971.jpg', type: 'image' as const },
+    { src: '/20250804_193618221.jpg', type: 'image' as const },
+    { src: '/20250804_181238676.jpg', type: 'image' as const },
+    { src: '/20250804_192508408.jpg', type: 'image' as const },
+    { src: '/20250804_212404754.jpg', type: 'image' as const },
+    { src: '/20250804_210722523.jpg', type: 'image' as const },
+    { src: '/20250804_210332810.jpg', type: 'image' as const },
+    { src: '/20250804_210043845.jpg', type: 'image' as const },
+    { src: '/20250804_205655968.jpg', type: 'image' as const },
+    { src: '/20250804_214331446.jpg', type: 'image' as const },
+    { src: '/DSC_0376 2.JPG', type: 'image' as const },
+    { src: '/20250804_213017940.jpg', type: 'image' as const }
   ];
 
-  const openModal = (index: number) => {
-    setSelectedImage(index);
+  const openModal = (index: number, type: 'image' | 'video') => {
+    setSelectedMedia({ index, type });
+    setSelectedImage(index); // Keep for backward compatibility
   };
 
   const closeModal = () => {
+    setSelectedMedia(null);
     setSelectedImage(null);
   };
 
@@ -45,14 +48,18 @@ const Gallery = () => {
   };
 
   const nextImage = () => {
-    if (selectedImage !== null) {
-      setSelectedImage((selectedImage + 1) % galleryImages.length);
+    if (selectedMedia !== null) {
+      const newIndex = (selectedMedia.index + 1) % galleryMedia.length;
+      setSelectedMedia({ index: newIndex, type: galleryMedia[newIndex].type });
+      setSelectedImage(newIndex);
     }
   };
 
   const prevImage = () => {
-    if (selectedImage !== null) {
-      setSelectedImage((selectedImage - 1 + galleryImages.length) % galleryImages.length);
+    if (selectedMedia !== null) {
+      const newIndex = (selectedMedia.index - 1 + galleryMedia.length) % galleryMedia.length;
+      setSelectedMedia({ index: newIndex, type: galleryMedia[newIndex].type });
+      setSelectedImage(newIndex);
     }
   };
 
@@ -83,25 +90,43 @@ const Gallery = () => {
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4">
           {/* Preload first few gallery images */}
-          <link rel="preload" as="image" href={galleryImages[0]} fetchpriority="high" />
-          <link rel="preload" as="image" href={galleryImages[1]} fetchpriority="high" />
-          <link rel="preload" as="image" href={galleryImages[2]} fetchpriority="high" />
+          <link rel="preload" as="image" href={galleryMedia[0].src} fetchpriority="high" />
+          <link rel="preload" as="image" href={galleryMedia[1].src} fetchpriority="high" />
+          <link rel="preload" as="image" href={galleryMedia[2].src} fetchpriority="high" />
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {galleryImages.map((imageSrc, index) => (
+            {galleryMedia.map((media, index) => (
               <div
                 key={index}
                 className="group cursor-pointer transform transition-all duration-300 hover:scale-105"
-                onClick={() => openModal(index)}
+                onClick={() => openModal(index, media.type)}
               >
                 <div className="relative overflow-hidden rounded-2xl shadow-lg">
-                  <img
-                    src={imageSrc}
-                    alt={`Gallery ${index + 1}`}
-                    className="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105"
-                    fetchpriority={index < 6 ? "high" : "auto"}
-                    loading={index < 6 ? "eager" : "lazy"}
-                    decoding={index < 6 ? "sync" : "async"}
-                  />
+                  {media.type === 'video' ? (
+                    <>
+                      <video
+                        src={media.src}
+                        className="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105"
+                        preload="metadata"
+                        muted
+                      />
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <div className="bg-black bg-opacity-60 rounded-full p-3">
+                          <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M8 5v14l11-7z"/>
+                          </svg>
+                        </div>
+                      </div>
+                    </>
+                  ) : (
+                    <img
+                      src={media.src}
+                      alt={`Gallery ${index + 1}`}
+                      className="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105"
+                      fetchpriority={index < 6 ? "high" : "auto"}
+                      loading={index < 6 ? "eager" : "lazy"}
+                      decoding={index < 6 ? "sync" : "async"}
+                    />
+                  )}
                   <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-300" />
                 </div>
               </div>
@@ -111,17 +136,26 @@ const Gallery = () => {
       </section>
 
       {/* Modal */}
-      {selectedImage !== null && (
+      {selectedMedia !== null && (
         <div 
           className="fixed inset-0 bg-black bg-opacity-90 z-50 flex items-center justify-center p-4"
           onClick={handleOverlayClick}
         >
           <div className="relative max-w-4xl max-h-full">
-            <img
-              src={galleryImages[selectedImage]}
-              alt={`Gallery ${selectedImage + 1}`}
-              className="max-w-full max-h-full object-contain rounded-lg"
-            />
+            {selectedMedia.type === 'video' ? (
+              <video
+                src={galleryMedia[selectedMedia.index].src}
+                className="max-w-full max-h-full object-contain rounded-lg"
+                controls
+                preload="metadata"
+              />
+            ) : (
+              <img
+                src={galleryMedia[selectedMedia.index].src}
+                alt={`Gallery ${selectedMedia.index + 1}`}
+                className="max-w-full max-h-full object-contain rounded-lg"
+              />
+            )}
             
             {/* Close Button */}
             <button
@@ -147,7 +181,7 @@ const Gallery = () => {
 
             {/* Image Counter */}
             <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-black bg-opacity-70 text-white px-6 py-4 rounded-lg max-w-md text-center">
-              <p className="text-xs opacity-75">{selectedImage + 1} / {galleryImages.length}</p>
+              <p className="text-xs opacity-75">{selectedMedia.index + 1} / {galleryMedia.length}</p>
             </div>
           </div>
         </div>
