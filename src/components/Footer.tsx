@@ -30,8 +30,8 @@ const Footer = () => {
     // Remove script/image tags first
     let sanitized = sanitizeInput(input);
     
-    // For email, allow only valid email characters
-    sanitized = sanitized.replace(/[^a-zA-Z0-9@._-]/g, '');
+    // For email, allow only valid email characters including +
+    sanitized = sanitized.replace(/[^a-zA-Z0-9@._+-]/g, '');
     
     return sanitized;
   };

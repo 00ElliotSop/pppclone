@@ -41,8 +41,8 @@ const BookNow = () => {
   // Validate special characters (allow only @, -, _, . and alphanumeric)
   const validateSpecialChars = (input: string, isEmail: boolean = false): string => {
     if (isEmail) {
-      // For email, allow standard email characters
-      return input.replace(/[^a-zA-Z0-9@._-]/g, '');
+      // For email, allow standard email characters including +
+      return input.replace(/[^a-zA-Z0-9@._+-]/g, '');
     } else {
       // For other fields, allow basic special characters but remove most others
       return input.replace(/[^a-zA-Z0-9@._\-\s]/g, '');
