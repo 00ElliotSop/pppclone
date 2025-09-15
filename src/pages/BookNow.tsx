@@ -23,6 +23,31 @@ const BookNow = () => {
   const [popupMessage, setPopupMessage] = useState('');
   const [showUnavailableDatePopup, setShowUnavailableDatePopup] = useState(false);
 
+  // Input sanitization function
+  const sanitizeInput = (input: string): string => {
+    // Remove script and image tags (case insensitive)
+    let sanitized = input.replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '');
+    sanitized = sanitized.replace(/<img\b[^>]*>/gi, '');
+    sanitized = sanitized.replace(/<\/img>/gi, '');
+    
+    // Remove other potentially dangerous tags
+    sanitized = sanitized.replace(/<iframe\b[^<]*(?:(?!<\/iframe>)<[^<]*)*<\/iframe>/gi, '');
+    sanitized = sanitized.replace(/<object\b[^<]*(?:(?!<\/object>)<[^<]*)*<\/object>/gi, '');
+    sanitized = sanitized.replace(/<embed\b[^>]*>/gi, '');
+    
+    return sanitized;
+  };
+
+  // Validate special characters (allow only @, -, _, . and alphanumeric)
+  const validateSpecialChars = (input: string, isEmail: boolean = false): string => {
+    if (isEmail) {
+      // For email, allow standard email characters
+      return input.replace(/[^a-zA-Z0-9@._-]/g, '');
+    } else {
+      // For other fields, allow basic special characters but remove most others
+      return input.replace(/[^a-zA-Z0-9@._\-\s]/g, '');
+    }
+  };
   // Load availability data on component mount
   useEffect(() => {
     const savedAvailability = localStorage.getItem('siteAvailability');
@@ -81,9 +106,26 @@ const BookNow = () => {
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value, type } = e.target;
     
+    let sanitizedValue = value;
+    
+    // Sanitize input to remove script/image tags
+    if (type !== 'checkbox') {
+      sanitizedValue = sanitizeInput(value);
+      
+      // Apply special character validation based on field type
+      if (name === 'email') {
+        sanitizedValue = validateSpecialChars(sanitizedValue, true);
+      } else if (name === 'name' || name === 'venue' || name === 'message') {
+        sanitizedValue = validateSpecialChars(sanitizedValue, false);
+      } else if (name === 'phone') {
+        // For phone, allow only numbers, spaces, hyphens, parentheses, and plus
+        sanitizedValue = sanitizedValue.replace(/[^0-9\s\-\(\)\+]/g, '');
+      }
+    }
+    
     setFormData(prev => ({
       ...prev,
-      [name]: type === 'checkbox' ? (e.target as HTMLInputElement).checked : value
+      [name]: type === 'checkbox' ? (e.target as HTMLInputElement).checked : sanitizedValue
     }));
   };
 

@@ -10,10 +10,41 @@ const Footer = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const navigate = useNavigate();
 
+  // Input sanitization function
+  const sanitizeInput = (input: string): string => {
+    // Remove script and image tags (case insensitive)
+    let sanitized = input.replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '');
+    sanitized = sanitized.replace(/<img\b[^>]*>/gi, '');
+    sanitized = sanitized.replace(/<\/img>/gi, '');
+    
+    // Remove other potentially dangerous tags
+    sanitized = sanitized.replace(/<iframe\b[^<]*(?:(?!<\/iframe>)<[^<]*)*<\/iframe>/gi, '');
+    sanitized = sanitized.replace(/<object\b[^<]*(?:(?!<\/object>)<[^<]*)*<\/object>/gi, '');
+    sanitized = sanitized.replace(/<embed\b[^>]*>/gi, '');
+    
+    return sanitized;
+  };
+
+  // Validate email format and special characters
+  const validateEmailInput = (input: string): string => {
+    // Remove script/image tags first
+    let sanitized = sanitizeInput(input);
+    
+    // For email, allow only valid email characters
+    sanitized = sanitized.replace(/[^a-zA-Z0-9@._-]/g, '');
+    
+    return sanitized;
+  };
+
   const handleNewsletterSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    if (!email.trim()) return;
+    const sanitizedEmail = validateEmailInput(email.trim());
+    
+    if (!sanitizedEmail) return;
+    
+    // Update state with sanitized email
+    setEmail(sanitizedEmail);
     
     setIsSubmitting(true);
     
@@ -23,7 +54,7 @@ const Footer = () => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ email }),
+        body: JSON.stringify({ email: sanitizedEmail }),
       });
 
       const result = await response.json();
@@ -80,7 +111,7 @@ const Footer = () => {
             <input
               type="email"
               value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={(e) => setEmail(validateEmailInput(e.target.value))}
               placeholder="Enter your email"
               className="flex-1 px-4 py-2 rounded-l-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#B5A99A]"
               required
