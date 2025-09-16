@@ -213,12 +213,12 @@ const Photobooth360 = () => {
                 <div className="relative">
                   {media.type === 'video' ? (
                     <>
-                      <video
-                        src={media.src}
+                      <img
+                        src={media.src + '#t=0.1'}
+                        alt={`Video ${index + 1} preview`}
                         className="w-full h-48 object-cover rounded-2xl shadow-lg transition-transform duration-300 group-hover:scale-110"
-                       preload="metadata"
-                       poster={media.src + '#t=0.1'}
-                        muted
+                        loading="lazy"
+                        decoding="async"
                       />
                       <div className="absolute inset-0 flex items-center justify-center">
                         <div className="bg-black bg-opacity-60 rounded-full p-3">
