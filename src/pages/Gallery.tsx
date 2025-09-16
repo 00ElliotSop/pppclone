@@ -106,7 +106,8 @@ const Gallery = () => {
                       <video
                         src={media.src}
                         className="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105"
-                        preload="metadata"
+                       preload="metadata"
+                       poster={media.src + '#t=0.1'}
                         muted
                       />
                       <div className="absolute inset-0 flex items-center justify-center">

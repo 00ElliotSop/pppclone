@@ -216,7 +216,8 @@ const Photobooth360 = () => {
                       <video
                         src={media.src}
                         className="w-full h-48 object-cover rounded-2xl shadow-lg transition-transform duration-300 group-hover:scale-110"
-                        preload="metadata"
+                       preload="metadata"
+                       poster={media.src + '#t=0.1'}
                         muted
                       />
                       <div className="absolute inset-0 flex items-center justify-center">
