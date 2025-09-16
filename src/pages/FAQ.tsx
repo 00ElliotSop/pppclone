@@ -58,7 +58,7 @@ const FAQ = () => {
     },
     {
       question: "Do you provide an attendant?",
-      answer: "Yes! All our packages include a professional attendant who will help guests, manage the equipment, and ensure everything runs smoothly throughout your event."
+      answer: "Yes! All our packages include at least two professional attendants who will help guests, manage the equipment, and ensure everything runs smoothly throughout your event."
     },
     {
       question: "Can we use our own backdrop?",
