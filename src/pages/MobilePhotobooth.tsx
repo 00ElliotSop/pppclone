@@ -39,6 +39,18 @@ const MobilePhotobooth = () => {
     }
   };
 
+  // Add escape key listener
+  React.useEffect(() => {
+    const handleEscapeKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && selectedImage !== null) {
+        closeModal();
+      }
+    };
+
+    document.addEventListener('keydown', handleEscapeKey);
+    return () => document.removeEventListener('keydown', handleEscapeKey);
+  }, [selectedImage]);
+
   return (
     <div className="pt-24">
       {/* Hero Section */}

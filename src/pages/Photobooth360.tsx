@@ -70,6 +70,18 @@ const Photobooth360 = () => {
     }
   };
 
+  // Add escape key listener
+  React.useEffect(() => {
+    const handleEscapeKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && selectedMedia !== null) {
+        closeModal();
+      }
+    };
+
+    document.addEventListener('keydown', handleEscapeKey);
+    return () => document.removeEventListener('keydown', handleEscapeKey);
+  }, [selectedMedia]);
+
   const nextImage = () => {
     if (selectedMedia !== null) {
       const newIndex = (selectedMedia.index + 1) % galleryMedia.length;

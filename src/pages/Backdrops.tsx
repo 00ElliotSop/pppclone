@@ -245,6 +245,18 @@ const Backdrops = () => {
     }
   };
 
+  // Add escape key listener
+  useEffect(() => {
+    const handleEscapeKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && (selectedBackdrop !== null || selectedImage !== null)) {
+        closeModal();
+      }
+    };
+
+    document.addEventListener('keydown', handleEscapeKey);
+    return () => document.removeEventListener('keydown', handleEscapeKey);
+  }, [selectedBackdrop, selectedImage]);
+
   const nextImage = () => {
     if (selectedBackdrop !== null && selectedImage !== null) {
       const currentGallery = backdrops[selectedBackdrop].gallery;
