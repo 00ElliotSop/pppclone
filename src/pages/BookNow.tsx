@@ -92,6 +92,13 @@ const BookNow = () => {
     return new Date().toISOString().split('T')[0];
   };
 
+  // Get the maximum date (2 years from today)
+  const getMaxDate = () => {
+    const maxDate = new Date();
+    maxDate.setFullYear(maxDate.getFullYear() + 2);
+    return maxDate.toISOString().split('T')[0];
+  };
+
   const showSuccessPopup = () => {
     setPopupType('success');
     setPopupMessage('Your booking inquiry has been received! We will get back to you within 24 hours.');
@@ -374,7 +381,7 @@ const BookNow = () => {
                       value={formData.eventDate}
                       onChange={handleInputChange}
                       min={getMinDate()}
-                      max={new Date(Date.now() + 2 * 365 * 24 * 60 * 60 * 1000).toISOString().split('T')[0]}
+                      max={getMaxDate()}
                       required
                       className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-[#F7E7CE] focus:border-transparent relative z-10 ${
                         formData.eventDate && isDateUnavailable(formData.eventDate) 

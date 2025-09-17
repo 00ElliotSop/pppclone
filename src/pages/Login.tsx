@@ -176,8 +176,6 @@ const Login = () => {
   useEffect(() => {
     const savedCredentials = localStorage.getItem('adminCredentials');
     const savedAvailability = localStorage.getItem('siteAvailability');
-    // Always logout on page reload - don't check sessionStorage
-    const isAuthenticated = null;
 
     // Load rate limiting data
     loadRateLimitData();
@@ -186,9 +184,21 @@ const Login = () => {
       setCredentials(JSON.parse(savedCredentials));
     }
     if (savedAvailability) {
-      setAvailability(JSON.parse(savedAvailability));
+      try {
+        const parsedAvailability = JSON.parse(savedAvailability);
+        setAvailability(parsedAvailability);
+        console.log('Admin loaded availability data:', parsedAvailability);
+      } catch (error) {
+        console.error('Error parsing availability data in admin:', error);
+        // Reset to default if corrupted
+        const defaultAvailability = {
+          unavailableDates: [],
+          message: 'We are currently booking events! Contact us to check availability for your date.'
+        };
+        setAvailability(defaultAvailability);
+        localStorage.setItem('siteAvailability', JSON.stringify(defaultAvailability));
+      }
     }
-    // Always start logged out on page reload
     setIsLoggedIn(false);
     sessionStorage.removeItem('isAdminAuthenticated');
   }, []);
@@ -368,6 +378,8 @@ const Login = () => {
     };
     setAvailability(updatedAvailability);
     localStorage.setItem('siteAvailability', JSON.stringify(updatedAvailability));
+    console.log('Admin added unavailable dates:', newDates);
+    console.log('Total unavailable dates:', updatedAvailability.unavailableDates);
     setSelectedDates([]);
     setShowConfirmation(false);
     setSuccess(`${newDates.length} date(s) added to unavailable list`);
@@ -385,8 +397,8 @@ const Login = () => {
     const today = new Date();
     const dates = [];
     
-    // Generate next 2 years (730 days)
-    for (let i = 0; i < 730; i++) {
+    // Generate next 2 years (731 days to match book now page)
+    for (let i = 0; i < 731; i++) {
       const date = new Date(today);
       date.setDate(today.getDate() + i);
       dates.push(date.toISOString().split('T')[0]);
@@ -407,6 +419,8 @@ const Login = () => {
       };
       setAvailability(updatedAvailability);
       localStorage.setItem('siteAvailability', JSON.stringify(updatedAvailability));
+      console.log('Admin removed unavailable date:', dateToRemove);
+      console.log('Remaining unavailable dates:', updatedAvailability.unavailableDates);
       setSuccess('Date removed from unavailable list');
       setShowRemoveConfirmation(false);
       setDateToRemove(null);
@@ -420,6 +434,7 @@ const Login = () => {
 
   const updateMessage = () => {
     localStorage.setItem('siteAvailability', JSON.stringify(availability));
+    console.log('Admin updated availability message:', availability.message);
     setSuccess('Availability message updated!');
   };
 
