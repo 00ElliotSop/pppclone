@@ -279,7 +279,7 @@ const Footer = () => {
       <div className="border-t border-gray-800 py-6">
         <div className="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center text-center md:text-left">
           <p className="text-gray-400 text-sm text-center md:text-left">
-            © 2024 Project Party Productions. Developed and Designed by <a href="https://elliotsop.com" target="_blank" rel="noopener noreferrer" className="hover:text-[#F7E7CE] transition-colors">ElliotSop</a>.
+            © 2025 Project Party Productions. Developed and Designed by <a href="https://elliotsop.com" target="_blank" rel="noopener noreferrer" className="hover:text-[#F7E7CE] transition-colors">ElliotSop</a>.
           </p>
           <div className="flex space-x-6 mt-4 md:mt-0">
             
