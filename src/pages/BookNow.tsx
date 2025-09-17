@@ -54,6 +54,12 @@ const BookNow = () => {
     if (savedAvailability) {
       try {
         const parsedAvailability = JSON.parse(savedAvailability);
+        // Normalize all dates to ensure consistent format
+        if (parsedAvailability.unavailableDates) {
+          parsedAvailability.unavailableDates = parsedAvailability.unavailableDates.map(date => 
+            new Date(date).toISOString().split('T')[0]
+          );
+        }
         setAvailability(parsedAvailability);
         console.log('Loaded availability data:', parsedAvailability); // Debug log
       } catch (error) {
@@ -68,6 +74,12 @@ const BookNow = () => {
       if (e.key === 'siteAvailability' && e.newValue) {
         try {
           const parsedAvailability = JSON.parse(e.newValue);
+          // Normalize all dates to ensure consistent format
+          if (parsedAvailability.unavailableDates) {
+            parsedAvailability.unavailableDates = parsedAvailability.unavailableDates.map(date => 
+              new Date(date).toISOString().split('T')[0]
+            );
+          }
           setAvailability(parsedAvailability);
           console.log('Availability updated from storage:', parsedAvailability); // Debug log
         } catch (error) {
@@ -82,8 +94,11 @@ const BookNow = () => {
 
   // Check if a date is unavailable
   const isDateUnavailable = (date: string) => {
-    const isUnavailable = availability.unavailableDates.includes(date);
-    console.log(`Checking date ${date}: ${isUnavailable ? 'UNAVAILABLE' : 'available'}`); // Debug log
+    // Normalize the date format to ensure consistent comparison
+    const normalizedDate = new Date(date).toISOString().split('T')[0];
+    const isUnavailable = availability.unavailableDates.includes(normalizedDate);
+    console.log(`Checking date ${date} (normalized: ${normalizedDate}): ${isUnavailable ? 'UNAVAILABLE' : 'available'}`);
+    console.log('Available unavailable dates:', availability.unavailableDates);
     return isUnavailable;
   };
 

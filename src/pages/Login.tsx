@@ -365,7 +365,11 @@ const Login = () => {
   };
 
   const confirmAddDates = () => {
-    const newDates = selectedDates.filter(date => !availability.unavailableDates.includes(date));
+    // Normalize all dates to ensure consistent format
+    const normalizedNewDates = selectedDates.map(date => new Date(date).toISOString().split('T')[0]);
+    const normalizedExistingDates = availability.unavailableDates.map(date => new Date(date).toISOString().split('T')[0]);
+    const newDates = normalizedNewDates.filter(date => !normalizedExistingDates.includes(date));
+    
     if (newDates.length === 0) {
       setError('All selected dates are already marked as unavailable');
       setShowConfirmation(false);
@@ -374,7 +378,7 @@ const Login = () => {
 
     const updatedAvailability = {
       ...availability,
-      unavailableDates: [...availability.unavailableDates, ...newDates].sort()
+      unavailableDates: [...normalizedExistingDates, ...newDates].sort()
     };
     setAvailability(updatedAvailability);
     localStorage.setItem('siteAvailability', JSON.stringify(updatedAvailability));
@@ -401,7 +405,9 @@ const Login = () => {
     for (let i = 0; i < 731; i++) {
       const date = new Date(today);
       date.setDate(today.getDate() + i);
-      dates.push(date.toISOString().split('T')[0]);
+      // Ensure consistent date format
+      const dateString = date.toISOString().split('T')[0];
+      dates.push(dateString);
     }
     
     return dates;
@@ -413,9 +419,13 @@ const Login = () => {
 
   const confirmRemoveDate = () => {
     if (dateToRemove) {
+      // Normalize dates for consistent comparison
+      const normalizedDateToRemove = new Date(dateToRemove).toISOString().split('T')[0];
+      const normalizedUnavailableDates = availability.unavailableDates.map(date => new Date(date).toISOString().split('T')[0]);
+      
       const updatedAvailability = {
         ...availability,
-        unavailableDates: availability.unavailableDates.filter(date => date !== dateToRemove)
+        unavailableDates: normalizedUnavailableDates.filter(date => date !== normalizedDateToRemove)
       };
       setAvailability(updatedAvailability);
       localStorage.setItem('siteAvailability', JSON.stringify(updatedAvailability));
@@ -910,7 +920,10 @@ const Login = () => {
                     {generateCalendarDates().map((date) => {
                       const dateObj = new Date(date);
                       const isSelected = selectedDates.includes(date);
-                      const isAlreadyUnavailable = availability.unavailableDates.includes(date);
+                      // Normalize date for comparison
+                      const normalizedDate = new Date(date).toISOString().split('T')[0];
+                      const normalizedUnavailableDates = availability.unavailableDates.map(d => new Date(d).toISOString().split('T')[0]);
+                      const isAlreadyUnavailable = normalizedUnavailableDates.includes(normalizedDate);
                       const dayName = dateObj.toLocaleDateString('en-US', { weekday: 'short' });
                       const dayNumber = dateObj.getDate();
                       const monthName = dateObj.toLocaleDateString('en-US', { month: 'short' });
