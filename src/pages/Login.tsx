@@ -24,7 +24,7 @@ const Login = () => {
   const [codeExpiry, setCodeExpiry] = useState<number>(0);
   const [credentials, setCredentials] = useState({
     username: 'admin',
-    password: 'projectparty2024'
+    password: 'projectparty2025'
   });
   const [newCredentials, setNewCredentials] = useState({
     username: '',
