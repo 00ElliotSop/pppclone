@@ -52,13 +52,39 @@ const BookNow = () => {
   useEffect(() => {
     const savedAvailability = localStorage.getItem('siteAvailability');
     if (savedAvailability) {
-      setAvailability(JSON.parse(savedAvailability));
+      try {
+        const parsedAvailability = JSON.parse(savedAvailability);
+        setAvailability(parsedAvailability);
+        console.log('Loaded availability data:', parsedAvailability); // Debug log
+      } catch (error) {
+        console.error('Error parsing availability data:', error);
+      }
     }
+  }, []);
+
+  // Listen for storage changes (when admin updates availability)
+  useEffect(() => {
+    const handleStorageChange = (e: StorageEvent) => {
+      if (e.key === 'siteAvailability' && e.newValue) {
+        try {
+          const parsedAvailability = JSON.parse(e.newValue);
+          setAvailability(parsedAvailability);
+          console.log('Availability updated from storage:', parsedAvailability); // Debug log
+        } catch (error) {
+          console.error('Error parsing updated availability data:', error);
+        }
+      }
+    };
+
+    window.addEventListener('storage', handleStorageChange);
+    return () => window.removeEventListener('storage', handleStorageChange);
   }, []);
 
   // Check if a date is unavailable
   const isDateUnavailable = (date: string) => {
-    return availability.unavailableDates.includes(date);
+    const isUnavailable = availability.unavailableDates.includes(date);
+    console.log(`Checking date ${date}: ${isUnavailable ? 'UNAVAILABLE' : 'available'}`); // Debug log
+    return isUnavailable;
   };
 
   // Get the minimum date (today)
