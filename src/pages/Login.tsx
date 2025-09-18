@@ -46,6 +46,28 @@ const Login = () => {
   const [dateToRemove, setDateToRemove] = useState<string | null>(null);
   const navigate = useNavigate();
 
+  // Robust date normalization function
+  const normalizeDate = (dateInput: string | Date): string => {
+    try {
+      const date = typeof dateInput === 'string' ? new Date(dateInput + 'T00:00:00') : dateInput;
+      if (isNaN(date.getTime())) {
+        console.error('Invalid date:', dateInput);
+        return '';
+      }
+      return date.toISOString().split('T')[0];
+    } catch (error) {
+      console.error('Date normalization error:', error, dateInput);
+      return '';
+    }
+  };
+
+  // Trigger update event for same-tab synchronization
+  const triggerAvailabilityUpdate = () => {
+    // Dispatch custom event for same-tab updates
+    window.dispatchEvent(new CustomEvent('availabilityUpdated'));
+    console.log('🔔 Triggered availability update event');
+  };
+
   // Rate limiting constants
   const MAX_ATTEMPTS = 4;
   const BASE_BLOCK_TIME = 15 * 60 * 1000; // 15 minutes in milliseconds
@@ -366,8 +388,12 @@ const Login = () => {
 
   const confirmAddDates = () => {
     // Normalize all dates to ensure consistent format
-    const normalizedNewDates = selectedDates.map(date => new Date(date).toISOString().split('T')[0]);
-    const normalizedExistingDates = availability.unavailableDates.map(date => new Date(date).toISOString().split('T')[0]);
+    const normalizedNewDates = selectedDates
+      .map(date => normalizeDate(date))
+      .filter(date => date !== '');
+    const normalizedExistingDates = availability.unavailableDates
+      .map(date => normalizeDate(date))
+      .filter(date => date !== '');
     const newDates = normalizedNewDates.filter(date => !normalizedExistingDates.includes(date));
     
     if (newDates.length === 0) {
@@ -378,12 +404,19 @@ const Login = () => {
 
     const updatedAvailability = {
       ...availability,
-      unavailableDates: [...normalizedExistingDates, ...newDates].sort()
+      unavailableDates: [...normalizedExistingDates, ...newDates]
+        .filter((date, index, arr) => arr.indexOf(date) === index) // Remove duplicates
+        .sort()
     };
+    
     setAvailability(updatedAvailability);
     localStorage.setItem('siteAvailability', JSON.stringify(updatedAvailability));
-    console.log('Admin added unavailable dates:', newDates);
-    console.log('Total unavailable dates:', updatedAvailability.unavailableDates);
+    console.log('🔒 Admin added unavailable dates:', newDates);
+    console.log('📋 Total unavailable dates:', updatedAvailability.unavailableDates);
+    
+    // Trigger update for same-tab sync
+    triggerAvailabilityUpdate();
+    
     setSelectedDates([]);
     setShowConfirmation(false);
     setSuccess(`${newDates.length} date(s) added to unavailable list`);
@@ -420,17 +453,24 @@ const Login = () => {
   const confirmRemoveDate = () => {
     if (dateToRemove) {
       // Normalize dates for consistent comparison
-      const normalizedDateToRemove = new Date(dateToRemove).toISOString().split('T')[0];
-      const normalizedUnavailableDates = availability.unavailableDates.map(date => new Date(date).toISOString().split('T')[0]);
+      const normalizedDateToRemove = normalizeDate(dateToRemove);
+      const normalizedUnavailableDates = availability.unavailableDates
+        .map(date => normalizeDate(date))
+        .filter(date => date !== '');
       
       const updatedAvailability = {
         ...availability,
         unavailableDates: normalizedUnavailableDates.filter(date => date !== normalizedDateToRemove)
       };
+      
       setAvailability(updatedAvailability);
       localStorage.setItem('siteAvailability', JSON.stringify(updatedAvailability));
-      console.log('Admin removed unavailable date:', dateToRemove);
-      console.log('Remaining unavailable dates:', updatedAvailability.unavailableDates);
+      console.log('🗑️ Admin removed unavailable date:', dateToRemove);
+      console.log('📋 Remaining unavailable dates:', updatedAvailability.unavailableDates);
+      
+      // Trigger update for same-tab sync
+      triggerAvailabilityUpdate();
+      
       setSuccess('Date removed from unavailable list');
       setShowRemoveConfirmation(false);
       setDateToRemove(null);
@@ -444,7 +484,11 @@ const Login = () => {
 
   const updateMessage = () => {
     localStorage.setItem('siteAvailability', JSON.stringify(availability));
-    console.log('Admin updated availability message:', availability.message);
+    console.log('💬 Admin updated availability message:', availability.message);
+    
+    // Trigger update for same-tab sync
+    triggerAvailabilityUpdate();
+    
     setSuccess('Availability message updated!');
   };
 
@@ -921,8 +965,10 @@ const Login = () => {
                       const dateObj = new Date(date);
                       const isSelected = selectedDates.includes(date);
                       // Normalize date for comparison
-                      const normalizedDate = new Date(date).toISOString().split('T')[0];
-                      const normalizedUnavailableDates = availability.unavailableDates.map(d => new Date(d).toISOString().split('T')[0]);
+                      const normalizedDate = normalizeDate(date);
+                      const normalizedUnavailableDates = availability.unavailableDates
+                        .map(d => normalizeDate(d))
+                        .filter(d => d !== '');
                       const isAlreadyUnavailable = normalizedUnavailableDates.includes(normalizedDate);
                       const dayName = dateObj.toLocaleDateString('en-US', { weekday: 'short' });
                       const dayNumber = dateObj.getDate();

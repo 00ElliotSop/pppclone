@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useEffect } from 'react';
+import { useEffect, useCallback } from 'react';
 import { Phone, Mail, MapPin, Calendar } from 'lucide-react';
 
 const BookNow = () => {
@@ -23,6 +23,58 @@ const BookNow = () => {
   const [popupMessage, setPopupMessage] = useState('');
   const [showUnavailableDatePopup, setShowUnavailableDatePopup] = useState(false);
 
+  // Robust date normalization function
+  const normalizeDate = useCallback((dateInput: string | Date): string => {
+    try {
+      const date = typeof dateInput === 'string' ? new Date(dateInput + 'T00:00:00') : dateInput;
+      if (isNaN(date.getTime())) {
+        console.error('Invalid date:', dateInput);
+        return '';
+      }
+      return date.toISOString().split('T')[0];
+    } catch (error) {
+      console.error('Date normalization error:', error, dateInput);
+      return '';
+    }
+  }, []);
+
+  // Force reload availability data
+  const reloadAvailabilityData = useCallback(() => {
+    try {
+      const savedAvailability = localStorage.getItem('siteAvailability');
+      console.log('🔄 Reloading availability data:', savedAvailability);
+      
+      if (savedAvailability) {
+        const parsedAvailability = JSON.parse(savedAvailability);
+        
+        // Normalize all dates and remove duplicates
+        if (parsedAvailability.unavailableDates && Array.isArray(parsedAvailability.unavailableDates)) {
+          const normalizedDates = parsedAvailability.unavailableDates
+            .map(date => normalizeDate(date))
+            .filter(date => date !== '')
+            .filter((date, index, arr) => arr.indexOf(date) === index) // Remove duplicates
+            .sort();
+          
+          parsedAvailability.unavailableDates = normalizedDates;
+          console.log('📅 Normalized unavailable dates:', normalizedDates);
+        }
+        
+        setAvailability(parsedAvailability);
+      } else {
+        console.log('📅 No availability data found, using defaults');
+        setAvailability({
+          unavailableDates: [],
+          message: 'We are currently booking events! Contact us to check availability for your date.'
+        });
+      }
+    } catch (error) {
+      console.error('❌ Error loading availability data:', error);
+      setAvailability({
+        unavailableDates: [],
+        message: 'We are currently booking events! Contact us to check availability for your date.'
+      });
+    }
+  }, [normalizeDate]);
   // Input sanitization function
   const sanitizeInput = (input: string): string => {
     // Remove script and image tags (case insensitive)
@@ -48,57 +100,58 @@ const BookNow = () => {
       return input.replace(/[^a-zA-Z0-9@._\-\s]/g, '');
     }
   };
+
   // Load availability data on component mount
   useEffect(() => {
-    const savedAvailability = localStorage.getItem('siteAvailability');
-    if (savedAvailability) {
-      try {
-        const parsedAvailability = JSON.parse(savedAvailability);
-        // Normalize all dates to ensure consistent format
-        if (parsedAvailability.unavailableDates) {
-          parsedAvailability.unavailableDates = parsedAvailability.unavailableDates.map(date => 
-            new Date(date).toISOString().split('T')[0]
-          );
-        }
-        setAvailability(parsedAvailability);
-        console.log('Loaded availability data:', parsedAvailability); // Debug log
-      } catch (error) {
-        console.error('Error parsing availability data:', error);
-      }
-    }
-  }, []);
+    console.log('🚀 BookNow component mounted, loading availability data');
+    reloadAvailabilityData();
+  }, [reloadAvailabilityData]);
+
+  // Periodic sync check (every 2 seconds)
+  useEffect(() => {
+    const interval = setInterval(() => {
+      reloadAvailabilityData();
+    }, 2000);
+
+    return () => clearInterval(interval);
+  }, [reloadAvailabilityData]);
 
   // Listen for storage changes (when admin updates availability)
   useEffect(() => {
     const handleStorageChange = (e: StorageEvent) => {
+      console.log('📡 Storage change detected:', e.key, e.newValue);
       if (e.key === 'siteAvailability' && e.newValue) {
-        try {
-          const parsedAvailability = JSON.parse(e.newValue);
-          // Normalize all dates to ensure consistent format
-          if (parsedAvailability.unavailableDates) {
-            parsedAvailability.unavailableDates = parsedAvailability.unavailableDates.map(date => 
-              new Date(date).toISOString().split('T')[0]
-            );
-          }
-          setAvailability(parsedAvailability);
-          console.log('Availability updated from storage:', parsedAvailability); // Debug log
-        } catch (error) {
-          console.error('Error parsing updated availability data:', error);
-        }
+        reloadAvailabilityData();
       }
     };
 
+    // Listen for custom events (for same-tab updates)
+    const handleCustomUpdate = () => {
+      console.log('🔔 Custom availability update event received');
+      reloadAvailabilityData();
+    };
+
     window.addEventListener('storage', handleStorageChange);
-    return () => window.removeEventListener('storage', handleStorageChange);
-  }, []);
+    window.addEventListener('availabilityUpdated', handleCustomUpdate);
+    
+    return () => {
+      window.removeEventListener('storage', handleStorageChange);
+      window.removeEventListener('availabilityUpdated', handleCustomUpdate);
+    };
+  }, [reloadAvailabilityData]);
 
   // Check if a date is unavailable
   const isDateUnavailable = (date: string) => {
-    // Normalize the date format to ensure consistent comparison
-    const normalizedDate = new Date(date).toISOString().split('T')[0];
+    if (!date) return false;
+    
+    const normalizedDate = normalizeDate(date);
+    if (!normalizedDate) return false;
+    
     const isUnavailable = availability.unavailableDates.includes(normalizedDate);
-    console.log(`Checking date ${date} (normalized: ${normalizedDate}): ${isUnavailable ? 'UNAVAILABLE' : 'available'}`);
-    console.log('Available unavailable dates:', availability.unavailableDates);
+    
+    console.log(`🔍 Checking date: ${date} → ${normalizedDate} → ${isUnavailable ? '❌ UNAVAILABLE' : '✅ Available'}`);
+    console.log('📋 All unavailable dates:', availability.unavailableDates);
+    
     return isUnavailable;
   };
 
@@ -403,15 +456,9 @@ const BookNow = () => {
                           ? 'border-red-300 bg-red-50' 
                           : 'border-gray-300'
                       }`}
-                      style={{
-                        backgroundImage: availability.unavailableDates.length > 0 ? 
-                          `linear-gradient(to right, transparent 0%, transparent 100%)` : 'none',
-                        position: 'relative',
-                        zIndex: 10
-                      }}
                     />
                     {formData.eventDate && isDateUnavailable(formData.eventDate) && (
-                      <div className="text-red-600 text-sm mt-1 p-2 bg-red-50 border border-red-200 rounded">
+                      <div className="text-red-600 text-sm mt-1 p-3 bg-red-50 border border-red-200 rounded-lg">
                         <strong>⚠️ Date Unavailable:</strong> This date is not available. Please select a different date.
                       </div>
                     )}
