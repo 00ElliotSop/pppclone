@@ -410,7 +410,12 @@ const Login = () => {
     };
     
     setAvailability(updatedAvailability);
-    localStorage.setItem('siteAvailability', JSON.stringify(updatedAvailability));
+   await fetch('/api/availability', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify(updatedAvailability),
+});
+
     console.log('🔒 Admin added unavailable dates:', newDates);
     console.log('📋 Total unavailable dates:', updatedAvailability.unavailableDates);
     
@@ -464,7 +469,12 @@ const Login = () => {
       };
       
       setAvailability(updatedAvailability);
-      localStorage.setItem('siteAvailability', JSON.stringify(updatedAvailability));
+     await fetch('/api/availability', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify(updatedAvailability),
+});
+
       console.log('🗑️ Admin removed unavailable date:', dateToRemove);
       console.log('📋 Remaining unavailable dates:', updatedAvailability.unavailableDates);
       
