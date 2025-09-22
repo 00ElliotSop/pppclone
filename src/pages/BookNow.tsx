@@ -16,7 +16,7 @@ const BookNow = () => {
     guestCount: '',
     venue: '',
     message: '',
-    agreeToTermsAndTexts: false
+    agreeToTexts: false
   });
   const [showPopup, setShowPopup] = useState(false);
   const [popupType, setPopupType] = useState<'success' | 'error'>('success');
@@ -234,7 +234,7 @@ const BookNow = () => {
     e.preventDefault();
     
     // Check if user agreed to terms and texts
-    if (!formData.agreeToTermsAndTexts) {
+    if (!formData.agreeToTexts) {
       alert('Please agree to the Terms of Service and text message consent to continue.');
       return;
     }
@@ -250,7 +250,7 @@ const BookNow = () => {
 
   const submitBookingForm = async () => {
     try {
-      const response = await fetch('/api/book-now', {
+      const response = await fetch('https://projectpartyproductions.com/api/book-now', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -277,7 +277,7 @@ const BookNow = () => {
           guestCount: '',
           venue: '',
           message: '',
-          agreeToTermsAndTexts: false
+          agreeToTexts: false
         });
       } else {
         showErrorPopup(result.message || 'There was an error submitting your inquiry. Please try again.');
@@ -546,14 +546,14 @@ const BookNow = () => {
                 <div className="flex items-start space-x-3">
                   <input
                     type="checkbox"
-                    name="agreeToTermsAndTexts"
-                   id="agreeToTermsAndTexts"
-                    checked={formData.agreeToTermsAndTexts}
+                    name="agreeToTexts"
+                   id="agreeToTexts"
+                    checked={formData.agreeToTexts}
                     onChange={handleInputChange}
                     required
                     className="mt-1 h-4 w-4 text-[#F7E7CE] focus:ring-[#F7E7CE] border-gray-300 rounded"
                   />
-                 <label htmlFor="agreeToTermsAndTexts" className="text-sm text-gray-600 cursor-pointer">
+                 <label htmlFor="agreeToTexts" className="text-sm text-gray-600 cursor-pointer">
                     I agree to receive text messages from Project Party Productions regarding my booking and event updates, and I agree to the{' '}
                     <a 
                       href="/terms-of-service" 
