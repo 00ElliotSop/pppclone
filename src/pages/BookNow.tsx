@@ -250,7 +250,7 @@ const BookNow = () => {
 
   const submitBookingForm = async () => {
     try {
-      const response = await fetch('https://first.projectpartyproductions.com/api/book-now', {
+      const response = await fetch('https://api.projectpartyproductions.com/api/book-now', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
