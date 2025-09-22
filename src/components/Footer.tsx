@@ -49,7 +49,7 @@ const Footer = () => {
     setIsSubmitting(true);
     
     try {
-      const response = await fetch('/api/newsletter-subscribe', {
+      const response = await fetch('https://api.projectpartyproductions.com/api/newsletter-subscribe', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
