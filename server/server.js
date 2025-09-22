@@ -10,6 +10,12 @@ const PORT = process.env.PORT || 3001;
 app.use(cors());
 app.use(express.json());
 
+// Availability storage (in-memory)
+let availability = {
+  unavailableDates: [],
+  message: 'We are currently booking events! Contact us to check availability for your date.'
+};
+
 // Create transporter for sending emails
 const transporter = nodemailer.createTransport({
   host: process.env.EMAIL_HOST,
@@ -261,6 +267,17 @@ Project Party Productions Admin System
 // Health check endpoint
 app.get('/api/health', (req, res) => {
   res.json({ status: 'OK', message: 'Server is running' });
+});
+// Get availability
+app.get('/api/availability', (req, res) => {
+  res.json(availability);
+});
+
+// Update availability
+app.post('/api/availability', (req, res) => {
+  const { unavailableDates, message } = req.body;
+  availability = { unavailableDates, message };
+  res.json({ success: true, availability });
 });
 
 app.listen(PORT, () => {
