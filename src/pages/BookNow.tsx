@@ -41,11 +41,28 @@ const BookNow = () => {
   // Force reload availability data
   const reloadAvailabilityData = useCallback(() => {
     try {
-      const savedAvailability = localStorage.getItem('siteAvailability');
+      try {
+  const res = await fetch('/api/availability');
+  if (res.ok) {
+    const data = await res.json();
+    setAvailability(data);
+  }
+} catch (err) {
+  console.error('❌ Failed to fetch availability:', err);
+}
+
       console.log('🔄 Reloading availability data:', savedAvailability);
       
-      if (savedAvailability) {
-        const parsedAvailability = JSON.parse(savedAvailability);
+     try {
+  const res = await fetch('/api/availability');
+  if (res.ok) {
+    const data = await res.json();
+    setAvailability(data);
+  }
+} catch (err) {
+  console.error('❌ Failed to fetch availability:', err);
+}
+
         
         // Normalize all dates and remove duplicates
         if (parsedAvailability.unavailableDates && Array.isArray(parsedAvailability.unavailableDates)) {
@@ -59,7 +76,16 @@ const BookNow = () => {
           console.log('📅 Normalized unavailable dates:', normalizedDates);
         }
         
-        setAvailability(parsedAvailability);
+        try {
+  const res = await fetch('/api/availability');
+  if (res.ok) {
+    const data = await res.json();
+    setAvailability(data);
+  }
+} catch (err) {
+  console.error('❌ Failed to fetch availability:', err);
+}
+
       } else {
         console.log('📅 No availability data found, using defaults');
         setAvailability({
