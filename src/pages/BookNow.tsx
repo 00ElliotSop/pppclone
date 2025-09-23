@@ -39,19 +39,34 @@ const BookNow = () => {
   }, []);
 
   // Force reload availability data
-  const reloadAvailabilityData = useCallback(() => {
+  const reloadAvailabilityData = useCallback(async () => {
     try {
-      try {
-  const res = await fetch('/api/availability');
-  if (res.ok) {
-    const data = await res.json();
-    setAvailability(data);
-  }
-} catch (err) {
-  console.error('❌ Failed to fetch availability:', err);
-}
+      const res = await fetch('/api/availability');
+      if (res.ok) {
+        const data = await res.json();
 
-      console.log('🔄 Reloading availability data:', savedAvailability);
+        // Normalize dates and remove duplicates
+        if (Array.isArray(data.unavailableDates)) {
+          data.unavailableDates = data.unavailableDates
+            .map(date => normalizeDate(date))
+            .filter(date => date !== '')
+            .filter((date, index, arr) => arr.indexOf(date) === index)
+            .sort();
+        }
+
+        setAvailability(data);
+      } else {
+        console.error('❌ Failed to fetch availability, status:', res.status);
+      }
+    } catch (err) {
+      console.error('❌ Error fetching availability:', err);
+      setAvailability({
+        unavailableDates: [],
+        message: 'We are currently booking events! Contact us to check availability for your date.'
+      });
+    }
+  }, [normalizeDate]);
+
       
      try {
   const res = await fetch('/api/availability');
@@ -64,17 +79,7 @@ const BookNow = () => {
 }
 
         
-        // Normalize all dates and remove duplicates
-        if (parsedAvailability.unavailableDates && Array.isArray(parsedAvailability.unavailableDates)) {
-          const normalizedDates = parsedAvailability.unavailableDates
-            .map(date => normalizeDate(date))
-            .filter(date => date !== '')
-            .filter((date, index, arr) => arr.indexOf(date) === index) // Remove duplicates
-            .sort();
-          
-          parsedAvailability.unavailableDates = normalizedDates;
-          console.log('📅 Normalized unavailable dates:', normalizedDates);
-        }
+
         
         try {
   const res = await fetch('/api/availability');
@@ -276,7 +281,7 @@ const BookNow = () => {
 
   const submitBookingForm = async () => {
     try {
-      const response = await fetch('https://api.projectpartyproductions.com/api/book-now', {
+      const response = await fetch('https://api.projectpartyproductions.com:4180/api/book-now', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
