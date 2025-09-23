@@ -386,7 +386,7 @@ const Login = () => {
     setShowConfirmation(true);
   };
 
-  const confirmAddDates = () => {
+const confirmAddDates = async () => {
     // Normalize all dates to ensure consistent format
     const normalizedNewDates = selectedDates
       .map(date => normalizeDate(date))
@@ -455,7 +455,7 @@ const Login = () => {
     setShowRemoveConfirmation(true);
   };
 
-  const confirmRemoveDate = () => {
+const confirmRemoveDate = async () => {
     if (dateToRemove) {
       // Normalize dates for consistent comparison
       const normalizedDateToRemove = normalizeDate(dateToRemove);
@@ -469,12 +469,15 @@ const Login = () => {
       };
       
       setAvailability(updatedAvailability);
-     await fetch('/api/availability', {
+   try {
+      await fetch('/api/availability', {
   method: 'POST',
   headers: { 'Content-Type': 'application/json' },
   body: JSON.stringify(updatedAvailability),
 });
-
+     } catch (err) {
+  console.error('Error saving availability:', err);
+}
       console.log('🗑️ Admin removed unavailable date:', dateToRemove);
       console.log('📋 Remaining unavailable dates:', updatedAvailability.unavailableDates);
       
