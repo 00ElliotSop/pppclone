@@ -67,44 +67,6 @@ const BookNow = () => {
     }
   }, [normalizeDate]);
 
-      
-     try {
-  const res = await fetch('/api/availability');
-  if (res.ok) {
-    const data = await res.json();
-    setAvailability(data);
-  }
-} catch (err) {
-  console.error('❌ Failed to fetch availability:', err);
-}
-
-        
-
-        
-        try {
-  const res = await fetch('/api/availability');
-  if (res.ok) {
-    const data = await res.json();
-    setAvailability(data);
-  }
-} catch (err) {
-  console.error('❌ Failed to fetch availability:', err);
-}
-
-      } else {
-        console.log('📅 No availability data found, using defaults');
-        setAvailability({
-          unavailableDates: [],
-          message: 'We are currently booking events! Contact us to check availability for your date.'
-        });
-      }
-    } catch (error) {
-      console.error('❌ Error loading availability data:', error);
-      setAvailability({
-        unavailableDates: [],
-        message: 'We are currently booking events! Contact us to check availability for your date.'
-      });
-    }
   }, [normalizeDate]);
   // Input sanitization function
   const sanitizeInput = (input: string): string => {
