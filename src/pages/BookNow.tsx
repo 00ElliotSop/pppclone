@@ -65,7 +65,6 @@ const BookNow = () => {
         message: 'We are currently booking events! Contact us to check availability for your date.'
       });
     }
-  }, [normalizeDate]);
 
   }, [normalizeDate]);
   // Input sanitization function
