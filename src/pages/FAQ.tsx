@@ -86,9 +86,9 @@ const FAQ = () => {
     <div className="pt-24">
       {/* Hero Section */}
       <section className="relative h-96">
-        <link rel="preload" as="image" href="/360.jpg" />
+        <link rel="preload" as="image" href="https://sub.projectpartyproductions.com/360.jpg" />
         <img
-          src="/360.jpg"
+          src="https://sub.projectpartyproductions.com/360.jpg"
           alt="FAQ Hero"
           className="w-full h-full object-cover"
           loading="eager"
