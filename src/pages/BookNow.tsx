@@ -41,16 +41,17 @@ const BookNow: React.FC = () => {
             </div>
 
             <p className="mt-3 text-sm text-gray-500">
-              Having trouble? Open it directly:&nbsp;
-              <a
-                className="text-gray-700 underline"
-                href="https://cal.com/YOUR_TEAM_OR_USERNAME/YOUR_EVENT_TYPE"
-                target="_blank"
-                rel="noreferrer"
-              >
-                cal.com/YOUR_TEAM_OR_USERNAME/YOUR_EVENT_TYPE
-              </a>
-            </p>
+  Having trouble? Open it directly:&nbsp;
+  <a
+    className="text-gray-700 underline"
+    href="https://book.projectpartyproductions.com/index.php/booking"
+    target="_blank"
+    rel="noreferrer"
+  >
+    book.projectpartyproductions.com
+  </a>
+</p>
+
           </div>
 
           {/* Contact Info (kept) */}
