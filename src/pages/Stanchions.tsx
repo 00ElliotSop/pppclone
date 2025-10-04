@@ -6,7 +6,7 @@ const Stanchions = () => {
   const [selectedImage, setSelectedImage] = React.useState<number | null>(null);
 
   const galleryImages = [
-    '/stanz1.gif', '/stanz2.gif', '/stanz3.gif', '/stanz4x1.jpg', '/stanz5x1.jpg', '/stanz7x1.jpg'
+    'https://sub.projectpartyproductions.com/stanz1.gif', 'https://sub.projectpartyproductions.com/stanz2.gif', 'https://sub.projectpartyproductions.com/stanz3.gif', 'https://sub.projectpartyproductions.com/stanz4x1.jpg', 'https://sub.projectpartyproductions.com/stanz5x1.jpg', 'https://sub.projectpartyproductions.com/stanz7x1.jpg'
   ];
 
   const openModal = (index: number) => {
@@ -51,9 +51,9 @@ const Stanchions = () => {
     <div className="pt-24">
       {/* Hero Section */}
       <section className="relative h-96">
-        <link rel="preload" as="image" href="/360.jpg" />
+        <link rel="preload" as="image" href="https://sub.projectpartyproductions.com/360.jpg" />
         <img
-          src="/360.jpg"
+          src="https://sub.projectpartyproductions.com/360.jpg"
           alt="Stanchions and Red Carpet"
           className="w-full h-full object-cover"
           loading="eager"
