@@ -32,12 +32,12 @@ const BookNow: React.FC = () => {
             {/* Replace the URL below with your actual Cal.com booking link */}
             <div className="w-full rounded-2xl border border-gray-200 overflow-hidden">
               <iframe
-                title="Booking calendar"
-                src="https://cal.com/YOUR_TEAM_OR_USERNAME/YOUR_EVENT_TYPE?embed=1&hide_event_type_details=1"
-                style={{ width: '100%', height: '900px', border: 0 }}
-                allow="payment *; microphone *; camera *; clipboard-write *; fullscreen *"
-                loading="lazy"
-              />
+  title="Booking calendar"
+  src="https://book.projectpartyproductions.com/index.php/booking"
+  style={{ width: '100%', height: '900px', border: 0 }}
+  loading="lazy"
+/>
+
             </div>
 
             <p className="mt-3 text-sm text-gray-500">
