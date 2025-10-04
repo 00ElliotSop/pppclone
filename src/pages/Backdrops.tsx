@@ -11,221 +11,221 @@ const Backdrops = () => {
     { 
       id: 1, 
       name: 'White', 
-      image: '/white.jpg', 
+      image: 'https://sub.projectpartyproductions.com/white.jpg', 
       category: '8ft x 8ft',
-      gallery: ['/white1.jpg']
+      gallery: ['https://sub.projectpartyproductions.com/white1.jpg']
     },
     { 
       id: 2, 
       name: 'White marble', 
-      image: '/white-m.jpg', 
+      image: 'https://sub.projectpartyproductions.com/white-m.jpg', 
       category: '8ft x 8ft',
-      gallery: ['/white-m1.jpg', '/white-m2.jpg']
+      gallery: ['https://sub.projectpartyproductions.com/white-m1.jpg', 'https://sub.projectpartyproductions.com/white-m2.jpg']
     },
     { 
       id: 3, 
       name: 'Black', 
-      image: '/black.jpg', 
+      image: 'https://sub.projectpartyproductions.com/black.jpg', 
       category: '8ft x 8ft',
-      gallery: ['/black1.jpg', '/black2.jpg']
+      gallery: ['https://sub.projectpartyproductions.com/black1.jpg', 'https://sub.projectpartyproductions.com/black2.jpg']
     },
     { 
       id: 4, 
       name: 'Black with PPP logo', 
-      image: '/pppb.jpg', 
+      image: 'https://sub.projectpartyproductions.com/pppb.jpg', 
       category: '8ft x 8ft',
-      gallery: ['/ppp-b1.jpg', '/ppp-b2.jpg', '/ppp-b3.jpg']
+      gallery: ['https://sub.projectpartyproductions.com/ppp-b1.jpg', 'https://sub.projectpartyproductions.com/ppp-b2.jpg', 'https://sub.projectpartyproductions.com/ppp-b3.jpg']
     },
     { 
       id: 5, 
       name: 'Pink roses in enchanted forest', 
-      image: '/p-e.jpg', 
+      image: 'https://sub.projectpartyproductions.com/p-e.jpg', 
       category: '8ft x 8ft',
-      gallery: ['/p-e1.jpg', '/p-e2.jpg']
+      gallery: ['https://sub.projectpartyproductions.com/p-e1.jpg', 'https://sub.projectpartyproductions.com/p-e2.jpg']
     },
     { 
       id: 6, 
       name: 'White, pink and purple flowerwall', 
-      image: '/w-p.jpg', 
+      image: 'https://sub.projectpartyproductions.com/w-p.jpg', 
       category: '8ft x 8ft',
-      gallery: ['/w-p1.jpg', '/w-p2.jpg']
+      gallery: ['https://sub.projectpartyproductions.com/w-p1.jpg', 'https://sub.projectpartyproductions.com/w-p2.jpg']
     },
     { 
       id: 7, 
       name: 'White and pink flowers with green leaves', 
-      image: '/w-p-g.jpg', 
+      image: 'https://sub.projectpartyproductions.com/w-p-g.jpg', 
       category: '8ft x 8ft',
-      gallery: ['/w-p-g1.jpg', '/w-p-g2.jpg']
+      gallery: ['https://sub.projectpartyproductions.com/w-p-g1.jpg', 'https://sub.projectpartyproductions.com/w-p-g2.jpg']
     },
     { 
       id: 8, 
       name: 'Flowers around wedding arch', 
-      image: '/wedd.jpg', 
+      image: 'https://sub.projectpartyproductions.com/wedd.jpg', 
       category: '8ft x 8ft',
-      gallery: ['/wedd1.jpg', '/wedd2.jpg', '/wedd3.jpg']
+      gallery: ['https://sub.projectpartyproductions.com/wedd1.jpg', 'https://sub.projectpartyproductions.com/wedd2.jpg', 'https://sub.projectpartyproductions.com/wedd3.jpg']
     },
     { 
       id: 9, 
       name: 'Gold shimmer wall', 
-      image: '/goldb.jpg', 
+      image: 'https://sub.projectpartyproductions.com/goldb.jpg', 
       category: '8ft x 8ft',
-      gallery: ['/gold-b1.jpg', '/gold-b2.jpg']
+      gallery: ['https://sub.projectpartyproductions.com/gold-b1.jpg', 'https://sub.projectpartyproductions.com/gold-b2.jpg']
     },
     { 
       id: 10, 
       name: 'Rose gold shimmer wall', 
-      image: '/rose-b.jpg', 
+      image: 'https://sub.projectpartyproductions.com/rose-b.jpg', 
       category: '8ft x 8ft',
-      gallery: ['/gold-rose-w1.jpg', '/gold-rose-w2.jpg']
+      gallery: ['https://sub.projectpartyproductions.com/gold-rose-w1.jpg', 'https://sub.projectpartyproductions.com/gold-rose-w2.jpg']
     },
     { 
       id: 11, 
       name: 'White and pink flower wall', 
-      image: '/w-p-b.jpg', 
+      image: 'https://sub.projectpartyproductions.com/w-p-b.jpg', 
       category: '8ft x 8ft',
-      gallery: ['/w-p-b1.jpg', '/w-p-b2.jpg']
+      gallery: ['https://sub.projectpartyproductions.com/w-p-b1.jpg', 'https://sub.projectpartyproductions.com/w-p-b2.jpg']
     },
     { 
       id: 12, 
       name: 'VIP hollywood red carpet', 
-      image: '/vip.jpg', 
+      image: 'https://sub.projectpartyproductions.com/vip.jpg', 
       category: '8ft x 8ft',
-      gallery: ['/vip1.jpg', '/vip2.jpg']
+      gallery: ['https://sub.projectpartyproductions.com/vip1.jpg', 'https://sub.projectpartyproductions.com/vip2.jpg']
     },
     { 
       id: 13, 
       name: 'Red roses flowerwall', 
-      image: '/roses-b.jpg', 
+      image: 'https://sub.projectpartyproductions.com/roses-b.jpg', 
       category: '8ft x 8ft',
-      gallery: ['/roses-b1.jpg', '/roses-b2.jpg']
+      gallery: ['https://sub.projectpartyproductions.com/roses-b1.jpg', 'https://sub.projectpartyproductions.com/roses-b2.jpg']
     },
     { 
       id: 14, 
       name: 'White and pink flower wall', 
-      image: '/white-f-b.jpg', 
+      image: 'https://sub.projectpartyproductions.com/white-f-b.jpg', 
       category: '8ft x 8ft',
-      gallery: ['/white-f-b1.jpg', '/white-f-b2.jpg']
+      gallery: ['https://sub.projectpartyproductions.com/white-f-b1.jpg', 'https://sub.projectpartyproductions.com/white-f-b2.jpg']
     },
     { 
       id: 15, 
       name: 'Pink roses flower wall', 
-      image: '/pink-roses.jpg', 
+      image: 'https://sub.projectpartyproductions.com/pink-roses.jpg', 
       category: '8ft x 8ft',
-      gallery: ['/pink-rose2.jpg', '/pink-rose3.jpg']
+      gallery: ['https://sub.projectpartyproductions.com/pink-rose2.jpg', 'https://sub.projectpartyproductions.com/pink-rose3.jpg']
     },
     { 
       id: 16, 
       name: 'Presents in front of fireplace and Christmas tree', 
-      image: '/christmas.jpg', 
+      image: 'https://sub.projectpartyproductions.com/christmas.jpg', 
       category: '8ft x 8ft',
-      gallery: ['/christmas1.jpg', '/christmas2.jpg']
+      gallery: ['https://sub.projectpartyproductions.com/christmas1.jpg', 'https://sub.projectpartyproductions.com/christmas2.jpg']
     },
     { 
       id: 17, 
       name: 'Red carpet going up stairs to Christmas tree', 
-      image: '/stairsxchristmas.jpg', 
+      image: 'https://sub.projectpartyproductions.com/stairsxchristmas.jpg', 
       category: '8ft x 8ft',
-      gallery: ['/stairs-christmas1.jpg', '/stairs-christmas2.jpg']
+      gallery: ['https://sub.projectpartyproductions.com/stairs-christmas1.jpg', 'https://sub.projectpartyproductions.com/stairs-christmas2.jpg']
     },
     
     // 7ft x 7ft Backdrops
     { 
       id: 18, 
       name: 'Green Screen', 
-      image: '/greenxscreen.jpg', 
+      image: 'https://sub.projectpartyproductions.com/greenxscreen.jpg', 
       category: '7ft x 7ft',
-      gallery: ['/green-screen3.JPG', '/green-screen4.JPG']
+      gallery: ['https://sub.projectpartyproductions.com/green-screen3.JPG', 'https://sub.projectpartyproductions.com/green-screen4.JPG']
     },
     { 
       id: 19, 
       name: 'Green leaves heart', 
-      image: '/greenxheart.jpg', 
+      image: 'https://sub.projectpartyproductions.com/greenxheart.jpg', 
       category: '7ft x 7ft',
-      gallery: ['/green-wall-3.jpg', '/green-wall-2.jpg', '/green-wall-1.jpg']
+      gallery: ['https://sub.projectpartyproductions.com/green-wall-3.jpg', 'https://sub.projectpartyproductions.com/green-wall-2.jpg', 'https://sub.projectpartyproductions.com/green-wall-1.jpg']
     },
     { 
       id: 20, 
       name: 'Purple, blue, white, and pink flower wall', 
-      image: '/purplexbluexwhitexf.jpg', 
+      image: 'https://sub.projectpartyproductions.com/purplexbluexwhitexf.jpg', 
       category: '7ft x 7ft',
-      gallery: ['/purple-blue-white-f1.jpg', '/purple-blue-white-f2.jpg']
+      gallery: ['https://sub.projectpartyproductions.com/purple-blue-white-f1.jpg', 'https://sub.projectpartyproductions.com/purple-blue-white-f2.jpg']
     },
     { 
       id: 21, 
       name: 'Blue and white flower wall', 
-      image: '/bluexflowers.jpg', 
+      image: 'https://sub.projectpartyproductions.com/bluexflowers.jpg', 
       category: '7ft x 7ft',
-      gallery: ['/blue-flowers1.jpg', '/blue-flowers2.jpg']
+      gallery: ['https://sub.projectpartyproductions.com/blue-flowers1.jpg', 'https://sub.projectpartyproductions.com/blue-flowers2.jpg']
     },
     { 
       id: 22, 
       name: 'White, pink, blue, and purple flower wall', 
-      image: '/white-pink-blue-flowers.jpg', 
+      image: 'https://sub.projectpartyproductions.com/white-pink-blue-flowers.jpg', 
       category: '7ft x 7ft',
-      gallery: ['/white-pink-blue-flowers1.jpg', '/white-pink-blue-flowers2.jpg']
+      gallery: ['https://sub.projectpartyproductions.com/white-pink-blue-flowers1.jpg', 'https://sub.projectpartyproductions.com/white-pink-blue-flowers2.jpg']
     },
     { 
       id: 23, 
       name: 'Toronto Skyline', 
-      image: '/tdot.jpg', 
+      image: 'https://sub.projectpartyproductions.com/tdot.jpg', 
       category: '7ft x 7ft',
-      gallery: ['/tdot1.jpg', '/tdot2.jpg']
+      gallery: ['https://sub.projectpartyproductions.com/tdot1.jpg', 'https://sub.projectpartyproductions.com/tdot2.jpg']
     },
     { 
       id: 24, 
       name: 'Flower wall going down white brick', 
-      image: '/hangingxflowers.jpg', 
+      image: 'https://sub.projectpartyproductions.com/hangingxflowers.jpg', 
       category: '7ft x 7ft',
-      gallery: ['/hanging-flowers1.jpg', '/hanging-flowers2.jpg']
+      gallery: ['https://sub.projectpartyproductions.com/hanging-flowers1.jpg', 'https://sub.projectpartyproductions.com/hanging-flowers2.jpg']
     },
     { 
       id: 25, 
       name: 'Gold shimmers going down', 
-      image: '/goldxhanging.jpg', 
+      image: 'https://sub.projectpartyproductions.com/goldxhanging.jpg', 
       category: '7ft x 7ft',
-      gallery: ['/gold-hanging1.jpg', '/gold-hanging2.jpg']
+      gallery: ['https://sub.projectpartyproductions.com/gold-hanging1.jpg', 'https://sub.projectpartyproductions.com/gold-hanging2.jpg']
     },
     { 
       id: 26, 
       name: 'Red shimmer wall', 
-      image: '/redxshimmers.jpg', 
+      image: 'https://sub.projectpartyproductions.com/redxshimmers.jpg', 
       category: '7ft x 7ft',
-      gallery: ['/red-shimmers1.jpg', '/red-shimmers2.jpg']
+      gallery: ['https://sub.projectpartyproductions.com/red-shimmers1.jpg', 'https://sub.projectpartyproductions.com/red-shimmers2.jpg']
     },
     { 
       id: 27, 
       name: 'White roses flower wall', 
-      image: '/white-f-wall.jpg', 
+      image: 'https://sub.projectpartyproductions.com/white-f-wall.jpg', 
       category: '7ft x 7ft',
-      gallery: ['/white-f-wall1.jpg', '/white-f-wall2.jpg']
+      gallery: ['https://sub.projectpartyproductions.com/white-f-wall1.jpg', 'https://sub.projectpartyproductions.com/white-f-wall2.jpg']
     },
     { 
       id: 28, 
       name: 'Gold shimmer wall', 
-      image: '/goldxshimmers.jpg', 
+      image: 'https://sub.projectpartyproductions.com/goldxshimmers.jpg', 
       category: '7ft x 7ft',
-      gallery: ['/gold-wall-7x71.jpg', '/gold-wall-7x72.jpg']
+      gallery: ['https://sub.projectpartyproductions.com/gold-wall-7x71.jpg', 'https://sub.projectpartyproductions.com/gold-wall-7x72.jpg']
     },
     { 
       id: 29, 
       name: 'Silver shimmer wall', 
-      image: '/silverxwall.jpg', 
+      image: 'https://sub.projectpartyproductions.com/silverxwall.jpg', 
       category: '7ft x 7ft',
-      gallery: ['/silver-wall1.jpg', '/silver-wall2.jpg']
+      gallery: ['https://sub.projectpartyproductions.com/silver-wall1.jpg', 'https://sub.projectpartyproductions.com/silver-wall2.jpg']
     },
     { 
       id: 30, 
       name: 'Ornaments from tree and wood', 
-      image: '/ornaments.jpg', 
+      image: 'https://sub.projectpartyproductions.com/ornaments.jpg', 
       category: '7ft x 7ft',
-      gallery: ['/ornaments1.jpg', '/ornaments2.jpg']
+      gallery: ['https://sub.projectpartyproductions.com/ornaments1.jpg', 'https://sub.projectpartyproductions.com/ornaments2.jpg']
     },
     { 
       id: 31, 
       name: 'Gold lights around wood boards', 
-      image: '/goldxxwood.jpg', 
+      image: 'https://sub.projectpartyproductions.com/goldxxwood.jpg', 
       category: '7ft x 7ft',
-      gallery: ['/gold-over-wood1.jpg', '/gold-over-wood2.jpg']
+      gallery: ['https://sub.projectpartyproductions.com/gold-over-wood1.jpg', 'https://sub.projectpartyproductions.com/gold-over-wood2.jpg']
     }
   ];
 
