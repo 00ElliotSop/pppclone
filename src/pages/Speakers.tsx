@@ -6,7 +6,7 @@ const Speakers = () => {
   const [selectedImage, setSelectedImage] = React.useState<number | null>(null);
 
   const galleryImages = [
-    '/speak1.gif', '/speak2.gif', '/speak3.gif', '/speakz4.png', '/speak5.jpg', '/speakz6.jpg'
+    'https://sub.projectpartyproductions.com/speak1.gif', 'https://sub.projectpartyproductions.com/speak2.gif', 'https://sub.projectpartyproductions.com/speak3.gif', 'https://sub.projectpartyproductions.com/speakz4.png', 'https://sub.projectpartyproductions.com/speak5.jpg', 'https://sub.projectpartyproductions.com/speakz6.jpg'
   ];
 
   const openModal = (index: number) => {
@@ -51,9 +51,9 @@ const Speakers = () => {
     <div className="pt-24">
       {/* Hero Section */}
       <section className="relative h-96">
-        <link rel="preload" as="image" href="/spkz.jpg" />
+        <link rel="preload" as="image" href="https://sub.projectpartyproductions.com/spkz.jpg" />
         <img
-          src="/spkz.jpg"
+          src="https://sub.projectpartyproductions.com/spkz.jpg"
           alt="Professional Speakers"
           className="w-full h-full object-cover"
           loading="eager"
