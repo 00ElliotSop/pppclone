@@ -77,7 +77,7 @@ const Home = () => {
 
   const whyChooseUsFeatures = [
     {
-      image: '/360.jpg',
+      image: 'https://sub.projectpartyproductions.com/360.jpg',
       title: 'Project Party Productions brings a professional studio ambience to your event, all of our equipment is fully mobile, no need to connect to any outlets!',
       description: 'Professional mobile setup with no power requirements.'
     },
@@ -87,12 +87,12 @@ const Home = () => {
       description: 'Crystal clear photos that capture every moment perfectly.'
     },
     {
-      image: '/DSC_0381 2.JPG',
+      image: 'https://sub.projectpartyproductions.com/DSC_0381 2.JPG',
       title: 'We offer a variety of backdrops to suit any taste, ensuring your photos are unique and memorable. (32+ Backdrops and also custom backdrops available)',
       description: 'Choose from 32+ backdrops plus custom options.'
     },
     {
-      image: '/DSC_1148.JPG',
+      image: 'https://sub.projectpartyproductions.com/DSC_1148.JPG',
       title: 'Our modern, fun props will create hilarious photo opportunities and keep your guests entertained. (We offer props for different events, seasons, holidays, and custom props).',
       description: 'Props for every occasion including custom options.'
     },
