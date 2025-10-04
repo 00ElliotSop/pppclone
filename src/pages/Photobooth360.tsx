@@ -7,51 +7,51 @@ const Photobooth360 = () => {
   const [selectedMedia, setSelectedMedia] = React.useState<{index: number, type: 'image' | 'video'} | null>(null);
 
   const galleryMedia = [
-    { src: '/videob1.mp4', type: 'video' as const },
-    { src: '/videob2.mp4', type: 'video' as const },
-    { src: '/videob3.mp4', type: 'video' as const },
-    { src: '/videob4.mp4', type: 'video' as const },
-    { src: '/videob5.mp4', type: 'video' as const },
-    { src: '/videob6.mp4', type: 'video' as const },
-    { src: '/videob7.mp4', type: 'video' as const },
-    { src: '/videob8.mp4', type: 'video' as const },
-    { src: '/videob9.mp4', type: 'video' as const },
-    { src: '/videob10.jpg', type: 'image' as const },
-    { src: '/videob11.jpg', type: 'image' as const },
-    { src: '/videob12.jpg', type: 'image' as const },
-    { src: '/videob13.jpg', type: 'image' as const },
-    { src: '/videob14.jpg', type: 'image' as const },
-    { src: '/videob15.jpg', type: 'image' as const },
-    { src: '/videob16.jpg', type: 'image' as const },
-    { src: '/videob17.jpg', type: 'image' as const },
-    { src: '/videob18.mp4', type: 'video' as const },
-    { src: '/videob19.jpg', type: 'image' as const },
-    { src: '/videob20.jpg', type: 'image' as const },
-    { src: '/videob21.mp4', type: 'video' as const },
-    { src: '/videob22.mp4', type: 'video' as const },
-    { src: '/videob23.mp4', type: 'video' as const },
-    { src: '/videob24.mp4', type: 'video' as const },
-    { src: '/videob25.mp4', type: 'video' as const },
-    { src: '/videob26.mp4', type: 'video' as const },
-    { src: '/videob27.mp4', type: 'video' as const },
-    { src: '/videob28.mp4', type: 'video' as const },
-    { src: '/videob29.mp4', type: 'video' as const },
-    { src: '/videob30.mp4', type: 'video' as const },
-    { src: '/videob31.jpg', type: 'image' as const },
-    { src: '/videob32.jpg', type: 'image' as const },
-    { src: '/videob33.jpg', type: 'image' as const },
-    { src: '/videob34.mp4', type: 'video' as const },
-    { src: '/videob35.mp4', type: 'video' as const },
-    { src: '/videob36.mp4', type: 'video' as const },
-    { src: '/videob37.mp4', type: 'video' as const },
-    { src: '/videob38.mp4', type: 'video' as const },
-    { src: '/videob39.mp4', type: 'video' as const },
-    { src: '/videob40.mp4', type: 'video' as const },
-    { src: '/videob41.mp4', type: 'video' as const },
-    { src: '/videob42.jpg', type: 'image' as const },
-    { src: '/videob43.mp4', type: 'video' as const },
-    { src: '/videob44.jpg', type: 'image' as const },
-    { src: '/videob45.mp4', type: 'video' as const },
+    { src: 'https://sub.projectpartyproductions.com/videob1.mp4', type: 'video' as const },
+    { src: 'https://sub.projectpartyproductions.com/videob2.mp4', type: 'video' as const },
+    { src: 'https://sub.projectpartyproductions.com/videob3.mp4', type: 'video' as const },
+    { src: 'https://sub.projectpartyproductions.com/videob4.mp4', type: 'video' as const },
+    { src: 'https://sub.projectpartyproductions.com/videob5.mp4', type: 'video' as const },
+    { src: 'https://sub.projectpartyproductions.com/videob6.mp4', type: 'video' as const },
+    { src: 'https://sub.projectpartyproductions.com/videob7.mp4', type: 'video' as const },
+    { src: 'https://sub.projectpartyproductions.com/videob8.mp4', type: 'video' as const },
+    { src: 'https://sub.projectpartyproductions.com/videob9.mp4', type: 'video' as const },
+    { src: 'https://sub.projectpartyproductions.com/videob10.jpg', type: 'image' as const },
+    { src: 'https://sub.projectpartyproductions.com/videob11.jpg', type: 'image' as const },
+    { src: 'https://sub.projectpartyproductions.com/videob12.jpg', type: 'image' as const },
+    { src: 'https://sub.projectpartyproductions.com/videob13.jpg', type: 'image' as const },
+    { src: 'https://sub.projectpartyproductions.com/videob14.jpg', type: 'image' as const },
+    { src: 'https://sub.projectpartyproductions.com/videob15.jpg', type: 'image' as const },
+    { src: 'https://sub.projectpartyproductions.com/videob16.jpg', type: 'image' as const },
+    { src: 'https://sub.projectpartyproductions.com/videob17.jpg', type: 'image' as const },
+    { src: 'https://sub.projectpartyproductions.com/videob18.mp4', type: 'video' as const },
+    { src: 'https://sub.projectpartyproductions.com/videob19.jpg', type: 'image' as const },
+    { src: 'https://sub.projectpartyproductions.com/videob20.jpg', type: 'image' as const },
+    { src: 'https://sub.projectpartyproductions.com/videob21.mp4', type: 'video' as const },
+    { src: 'https://sub.projectpartyproductions.com/videob22.mp4', type: 'video' as const },
+    { src: 'https://sub.projectpartyproductions.com/videob23.mp4', type: 'video' as const },
+    { src: 'https://sub.projectpartyproductions.com/videob24.mp4', type: 'video' as const },
+    { src: 'https://sub.projectpartyproductions.com/videob25.mp4', type: 'video' as const },
+    { src: 'https://sub.projectpartyproductions.com/videob26.mp4', type: 'video' as const },
+    { src: 'https://sub.projectpartyproductions.com/videob27.mp4', type: 'video' as const },
+    { src: 'https://sub.projectpartyproductions.com/videob28.mp4', type: 'video' as const },
+    { src: 'https://sub.projectpartyproductions.com/videob29.mp4', type: 'video' as const },
+    { src: 'https://sub.projectpartyproductions.com/videob30.mp4', type: 'video' as const },
+    { src: 'https://sub.projectpartyproductions.com/videob31.jpg', type: 'image' as const },
+    { src: 'https://sub.projectpartyproductions.com/videob32.jpg', type: 'image' as const },
+    { src: 'https://sub.projectpartyproductions.com/videob33.jpg', type: 'image' as const },
+    { src: 'https://sub.projectpartyproductions.com/videob34.mp4', type: 'video' as const },
+    { src: 'https://sub.projectpartyproductions.com/videob35.mp4', type: 'video' as const },
+    { src: 'https://sub.projectpartyproductions.com/videob36.mp4', type: 'video' as const },
+    { src: 'https://sub.projectpartyproductions.com/videob37.mp4', type: 'video' as const },
+    { src: 'https://sub.projectpartyproductions.com/videob38.mp4', type: 'video' as const },
+    { src: 'https://sub.projectpartyproductions.com/videob39.mp4', type: 'video' as const },
+    { src: 'https://sub.projectpartyproductions.com/videob40.mp4', type: 'video' as const },
+    { src: 'https://sub.projectpartyproductions.com/videob41.mp4', type: 'video' as const },
+    { src: 'https://sub.projectpartyproductions.com/videob42.jpg', type: 'image' as const },
+    { src: 'https://sub.projectpartyproductions.com/videob43.mp4', type: 'video' as const },
+    { src: 'https://sub.projectpartyproductions.com/videob44.jpg', type: 'image' as const },
+    { src: 'https://sub.projectpartyproductions.com/videob45.mp4', type: 'video' as const },
   ];
 
   const openModal = (index: number, type: 'image' | 'video') => {
@@ -102,9 +102,9 @@ const Photobooth360 = () => {
     <div className="pt-24">
       {/* Hero Section */}
       <section className="relative h-screen">
-        <link rel="preload" as="image" href="/360.jpg" />
+        <link rel="preload" as="image" href="https://sub.projectpartyproductions.com/360.jpg" />
         <img
-          src="/360.jpg"
+          src="https://sub.projectpartyproductions.com/360.jpg"
           alt="360 Videobooth"
           className="w-full h-full object-cover"
           loading="eager"
@@ -133,7 +133,7 @@ const Photobooth360 = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="relative">
               <img
-                src="/ultimate-360.gif"
+                src="https://sub.projectpartyproductions.com/ultimate-360.gif"
                 alt="360 Booth Demo"
                 className="w-full rounded-2xl shadow-lg"
                 loading="eager"
@@ -198,9 +198,9 @@ const Photobooth360 = () => {
               </p>
             </div>
             <div className="relative">
-              <link rel="preload" as="image" href="/capture-moments-all-sides.gif" />
+              <link rel="preload" as="image" href="https://sub.projectpartyproductions.com/capture-moments-all-sides.gif" />
               <img
-                src="/capture-moments-all-sides.gif"
+                src="https://sub.projectpartyproductions.com/capture-moments-all-sides.gif"
                 alt="360 Videobooth Experience"
                 className="w-full rounded-2xl shadow-lg"
                 loading="eager"
