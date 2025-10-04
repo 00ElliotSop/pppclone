@@ -6,11 +6,11 @@ const MobilePhotobooth = () => {
   const [selectedImage, setSelectedImage] = React.useState<number | null>(null);
 
   const galleryImages = [
-    '/mpg1.jpg', '/mpg2.jpg', '/mpg3.jpg', '/m5.jpg',
-    '/m6.jpg', '/m7.jpg', '/m8.jpg', '/m9.jpg', '/mpg10.jpg',
-    '/mpg11.jpg', '/mpg12.jpg', '/mpg13.jpg', '/mpg14.jpg', '/mpg15.jpg', '/mpg16.jpg', '/mpg17.jpg', '/mpg18.jpg', '/mpg19.jpg',
-    '/mpg20.jpg', '/mpg21.jpg', '/mpg22.jpg', '/mpg23.jpg', 
-    '/mpg25.jpg', '/mpg26.jpg', '/mpg27.jpg', '/mpg28.jpg', '/mpg29.jpg', '/mpg24.jpg', '/m30.jpg'
+    'https://sub.projectpartyproductions.com/mpg1.jpg', 'https://sub.projectpartyproductions.com/mpg2.jpg', 'https://sub.projectpartyproductions.com/mpg3.jpg', 'https://sub.projectpartyproductions.com/m5.jpg',
+    'https://sub.projectpartyproductions.com/m6.jpg', 'https://sub.projectpartyproductions.com/m7.jpg', 'https://sub.projectpartyproductions.com/m8.jpg', 'https://sub.projectpartyproductions.com/m9.jpg', 'https://sub.projectpartyproductions.com/mpg10.jpg',
+    'https://sub.projectpartyproductions.com/mpg11.jpg', 'https://sub.projectpartyproductions.com/mpg12.jpg', 'https://sub.projectpartyproductions.com/mpg13.jpg', 'https://sub.projectpartyproductions.com/mpg14.jpg', 'https://sub.projectpartyproductions.com/mpg15.jpg', 'https://sub.projectpartyproductions.com/mpg16.jpg', 'https://sub.projectpartyproductions.com/mpg17.jpg', 'https://sub.projectpartyproductions.com/mpg18.jpg', 'https://sub.projectpartyproductions.com/mpg19.jpg',
+    'https://sub.projectpartyproductions.com/mpg20.jpg', 'https://sub.projectpartyproductions.com/mpg21.jpg', 'https://sub.projectpartyproductions.com/mpg22.jpg', 'https://sub.projectpartyproductions.com/mpg23.jpg', 
+    'https://sub.projectpartyproductions.com/mpg25.jpg', 'https://sub.projectpartyproductions.com/mpg26.jpg', 'https://sub.projectpartyproductions.com/mpg27.jpg', 'https://sub.projectpartyproductions.com/mpg28.jpg', 'https://sub.projectpartyproductions.com/mpg29.jpg', 'https://sub.projectpartyproductions.com/mpg24.jpg', 'https://sub.projectpartyproductions.com/m30.jpg'
   ];
 
   const openModal = (index: number) => {
@@ -55,9 +55,9 @@ const MobilePhotobooth = () => {
     <div className="pt-24">
       {/* Hero Section */}
       <section className="relative h-screen">
-        <link rel="preload" as="image" href="/mpbhero.jpg" />
+        <link rel="preload" as="image" href="https://sub.projectpartyproductions.com/mpbhero.jpg" />
         <img
-          src="/mpbhero.jpg"
+          src="https://sub.projectpartyproductions.com/mpbhero.jpg"
           alt="Mobile Photobooth"
           className="w-full h-full object-cover"
           loading="eager"
@@ -85,9 +85,9 @@ const MobilePhotobooth = () => {
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="relative">
-              <link rel="preload" as="image" href="/ultimate-mobile2.gif" />
+              <link rel="preload" as="image" href="https://sub.projectpartyproductions.com/ultimate-mobile2.gif" />
               <img
-                src="/ultimate-mobile2.gif"
+                src="https://sub.projectpartyproductions.com/ultimate-mobile2.gif"
                 alt="Mobile Photobooth Setup"
                 className="w-full rounded-2xl shadow-lg"
                 loading="eager"
@@ -174,9 +174,9 @@ const MobilePhotobooth = () => {
      
               </div>
                       <div className="relative">
-              <link rel="preload" as="image" href="/Hiiighqualtiy.gif" />
+              <link rel="preload" as="image" href="https://sub.projectpartyproductions.com/Hiiighqualtiy.gif" />
               <img
-                src="/Hiiighqualtiy.gif"
+                src="https://sub.projectpartyproductions.com/Hiiighqualtiy.gif"
                 alt="Mobile Photobooth Setup"
                 className="w-full rounded-2xl shadow-lg"
                 loading="eager"
