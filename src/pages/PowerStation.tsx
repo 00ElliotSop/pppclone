@@ -6,7 +6,7 @@ const PowerStation = () => {
   const [selectedImage, setSelectedImage] = React.useState<number | null>(null);
 
   const galleryImages = [
-    'https://sub.projectpartyproductions.com/ecoflow1.png', 'https://sub.projectpartyproductions.com/ecoflow2.png', 'https://sub.projectpartyproductions.com/ecoflow3.png', 'https://sub.projectpartyproductions.com/ecoflow4.png', '/ecoflow5.png', '/ecoflow6.png'
+    'https://sub.projectpartyproductions.com/ecoflow1.png', 'https://sub.projectpartyproductions.com/ecoflow2.png', 'https://sub.projectpartyproductions.com/ecoflow3.png', 'https://sub.projectpartyproductions.com/ecoflow4.png', 'https://sub.projectpartyproductions.com/ecoflow5.png', 'https://sub.projectpartyproductions.com/ecoflow6.png'
   ];
 
   const openModal = (index: number) => {
