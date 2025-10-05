@@ -17,7 +17,6 @@ const Photobooth360 = () => {
     { src: 'https://sub.projectpartyproductions.com/videob8.mp4', type: 'video' as const },
     { src: 'https://sub.projectpartyproductions.com/videob9.mp4', type: 'video' as const },
     { src: 'https://sub.projectpartyproductions.com/videob10.jpg', type: 'image' as const },
-    { src: 'https://sub.projectpartyproductions.com/videob11.jpg', type: 'image' as const },
     { src: 'https://sub.projectpartyproductions.com/videob12.jpg', type: 'image' as const },
     { src: 'https://sub.projectpartyproductions.com/videob13.jpg', type: 'image' as const },
     { src: 'https://sub.projectpartyproductions.com/videob14.jpg', type: 'image' as const },
