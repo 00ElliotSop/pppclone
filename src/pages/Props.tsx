@@ -6,7 +6,7 @@ const Props = () => {
   const [selectedImage, setSelectedImage] = React.useState<number | null>(null);
 
   const galleryImages = [
-     'sub.projectpartyproductions.com/propz1.gif', 'sub.projectpartyproductions.com/propz2.jpg', 'sub.projectpartyproductions.com/propz3.jpg', 'sub.projectpartyproductions.com/photoz2.jpg', 'sub.projectpartyproductions.com/photoz3.jpg',  'sub.projectpartyproductions.com/photoz4.jpg', 'sub.projectpartyproductions.com/photoz5.jpg', 'sub.projectpartyproductions.com/photoz6.jpg',  'sub.projectpartyproductions.com/photoz7.jpg', 'sub.projectpartyproductions.com/photoz8.jpg', 'sub.projectpartyproductions.com/photoz9.jpg'
+     'https://sub.projectpartyproductions.com/public/propz1.gif', 'https://sub.projectpartyproductions.com/public/propz2.jpg', 'https://sub.projectpartyproductions.com/public/propz3.jpg', 'https://sub.projectpartyproductions.com/public/photoz2.jpg', 'https://sub.projectpartyproductions.com/public/photoz3.jpg',  'https://sub.projectpartyproductions.com/public/photoz4.jpg', 'https://sub.projectpartyproductions.com/public/photoz5.jpg', 'https://sub.projectpartyproductions.com/public/photoz6.jpg',  'https://sub.projectpartyproductions.com/public/photoz7.jpg', 'https://sub.projectpartyproductions.com/public/photoz8.jpg', 'https://sub.projectpartyproductions.com/public/photoz9.jpg'
   ];
 
   const openModal = (index: number) => {
