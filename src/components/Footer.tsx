@@ -48,31 +48,52 @@ const Footer = () => {
     
     setIsSubmitting(true);
     
-    try {
-      const response = await fetch('https://api.projectpartyproductions.com/api/newsletter-subscribe', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ email: sanitizedEmail }),
-      });
+   
+      
+      
+      
+      
+   try {
+  const response = await fetch("https://api.brevo.com/v3/contacts", {
+    method: "POST",
+    headers: {
+      "accept": "application/json",
+      "content-type": "application/json",
+      "api-key": import.meta.env.VITE_BREVO_API_KEY as string,
+    },
+    body: JSON.stringify({
+      email: sanitizedEmail,
+      listIds: [Number(import.meta.env.VITE_BREVO_LIST_ID)],
+      updateEnabled: true,
+    }),
+  });
 
-      const result = await response.json();
+  const result = await response.json();
 
-      if (result.success) {
-        setShowNewsletterPopup(true);
-        setEmail('');
-      } else {
-        setErrorMessage(result.message || 'There was an error subscribing to our newsletter. Please try again.');
-        setShowNewsletterErrorPopup(true);
-      }
-    } catch (error) {
-      console.error('Newsletter subscription error:', error);
-      setErrorMessage('There was an error subscribing to our newsletter. Please try again.');
-      setShowNewsletterErrorPopup(true);
-    } finally {
-      setIsSubmitting(false);
-    }
+  if (response.ok) {
+    setShowNewsletterPopup(true);
+    setEmail("");
+  } else {
+    setErrorMessage(result.message || "There was an error subscribing to our newsletter. Please try again.");
+    setShowNewsletterErrorPopup(true);
+  }
+} catch (error) {
+  console.error("Newsletter subscription error:", error);
+  setErrorMessage("There was an error subscribing to our newsletter. Please try again.");
+  setShowNewsletterErrorPopup(true);
+} finally {
+  setIsSubmitting(false);
+}
+
+      
+      
+      
+      
+      
+      
+      
+      
+      
   };
 
   const handleNewsletterPopupOverlayClick = (e: React.MouseEvent<HTMLDivElement>) => {
