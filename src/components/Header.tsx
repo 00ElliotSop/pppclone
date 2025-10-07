@@ -195,7 +195,7 @@ const Header = () => {
             <Link to="/faq" className="text-gray-700 hover:text-[#F7E7CE] transition-colors font-medium">
               FAQ
             </Link>
-            <Link to="/gallery" className="text-gray-700 hover:text-[#F7E7CE] transition-colors font-medium">
+            <Link to="gallery.projectpartyproductions.com/" className="text-gray-700 hover:text-[#F7E7CE] transition-colors font-medium">
               GALLERY
             </Link>
             
