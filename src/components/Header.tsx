@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { ChevronDown, Menu, X, Phone, Mail, Instagram } from 'lucide-react';
+import { SiTiktok } from "react-icons/si";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -125,6 +126,15 @@ const Header = () => {
             >
               <Instagram className="w-3 h-3 sm:w-4 sm:h-4" />
             </a>
+            
+<a
+  href="https://www.tiktok.com/@projectpartyproductions"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="hover:opacity-80 transition-opacity"
+>
+  <SiTiktok className="w-3 h-3 sm:w-4 sm:h-4" />
+</a>
           </div>
         </div>
       </div>
