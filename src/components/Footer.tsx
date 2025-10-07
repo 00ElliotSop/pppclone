@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Mail, Phone, MapPin, Instagram, Facebook, Twitter } from 'lucide-react';
+import { SiTiktok } from "react-icons/si";
 
 const Footer = () => {
   const [email, setEmail] = useState('');
@@ -169,6 +170,20 @@ const Footer = () => {
                 <Instagram size={20} />
               </a>
             </div>
+     {/* TikTok */}
+           <div className="flex space-x-4">
+ 
+      <a
+        href="https://www.tiktok.com/@projectpartyproductions"
+        className="text-gray-300 hover:text-[#F7E7CE] transition-colors"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <SiTiktok size={20} />
+      </a>
+    </div>
+
+            
           </div>
 
           {/* Quick Links */}
