@@ -169,10 +169,9 @@ const Footer = () => {
               <a href="https://instagram.com/projectpartyproductions" className="text-gray-300 hover:text-[#F7E7CE] transition-colors">
                 <Instagram size={20} />
               </a>
-            </div>
-     {/* TikTok */}
-           <div className="flex space-x-4">
- 
+              
+ {/* TikTok */}
+              
       <a
         href="https://www.tiktok.com/@projectpartyproductions"
         className="text-gray-300 hover:text-[#F7E7CE] transition-colors"
@@ -181,7 +180,9 @@ const Footer = () => {
       >
         <SiTiktok size={20} />
       </a>
-    </div>
+            </div>
+    
+  
 
             
           </div>
