@@ -6,11 +6,11 @@ const MobilePhotobooth = () => {
   const [selectedImage, setSelectedImage] = React.useState<number | null>(null);
 
   const galleryImages = [
-    'https://sub.projectpartyproductions.com/mpg1.jpg', 'https://sub.projectpartyproductions.com/mpg2.jpg', 'https://sub.projectpartyproductions.com/mpg3.jpg', 'https://sub.projectpartyproductions.com/m5.jpg',
-    'https://sub.projectpartyproductions.com/m6.jpg', 'https://sub.projectpartyproductions.com/m7.jpg', 'https://sub.projectpartyproductions.com/m8.jpg', 'https://sub.projectpartyproductions.com/m9.jpg', 'https://sub.projectpartyproductions.com/mpg10.jpg',
-    'https://sub.projectpartyproductions.com/mpg11.jpg', 'https://sub.projectpartyproductions.com/mpg12.jpg', 'https://sub.projectpartyproductions.com/mpg13.jpg', 'https://sub.projectpartyproductions.com/mpg14.jpg', 'https://sub.projectpartyproductions.com/mpg15.jpg', 'https://sub.projectpartyproductions.com/mpg16.jpg', 'https://sub.projectpartyproductions.com/mpg17.jpg', 'https://sub.projectpartyproductions.com/mpg18.jpg', 'https://sub.projectpartyproductions.com/mpg19.jpg',
-    'https://sub.projectpartyproductions.com/mpg20.jpg', 'https://sub.projectpartyproductions.com/mpg21.jpg', 'https://sub.projectpartyproductions.com/mpg22.jpg', 'https://sub.projectpartyproductions.com/mpg23.jpg', 
-    'https://sub.projectpartyproductions.com/mpg25.jpg', 'https://sub.projectpartyproductions.com/mpg26.jpg', 'https://sub.projectpartyproductions.com/mpg27.jpg', 'https://sub.projectpartyproductions.com/mpg28.jpg', 'https://sub.projectpartyproductions.com/mpg29.jpg', 'https://sub.projectpartyproductions.com/mpg24.jpg', 'https://sub.projectpartyproductions.com/m30.jpg'
+  //   'https://sub.projectpartyproductions.com/mpg1.jpg', 'https://sub.projectpartyproductions.com/mpg2.jpg', 'https://sub.projectpartyproductions.com/mpg3.jpg', 'https://sub.projectpartyproductions.com/m5.jpg',
+//     'https://sub.projectpartyproductions.com/m6.jpg', 'https://sub.projectpartyproductions.com/m7.jpg', 'https://sub.projectpartyproductions.com/m8.jpg', 'https://sub.projectpartyproductions.com/m9.jpg', 'https://sub.projectpartyproductions.com/mpg10.jpg',
+//     'https://sub.projectpartyproductions.com/mpg11.jpg', 'https://sub.projectpartyproductions.com/mpg12.jpg', 'https://sub.projectpartyproductions.com/mpg13.jpg', 'https://sub.projectpartyproductions.com/mpg14.jpg', 'https://sub.projectpartyproductions.com/mpg15.jpg', 'https://sub.projectpartyproductions.com/mpg16.jpg', 'https://sub.projectpartyproductions.com/mpg17.jpg', 'https://sub.projectpartyproductions.com/mpg18.jpg', 'https://sub.projectpartyproductions.com/mpg19.jpg',
+//     'https://sub.projectpartyproductions.com/mpg20.jpg', 'https://sub.projectpartyproductions.com/mpg21.jpg', 'https://sub.projectpartyproductions.com/mpg22.jpg', 'https://sub.projectpartyproductions.com/mpg23.jpg', 
+//     'https://sub.projectpartyproductions.com/mpg25.jpg', 'https://sub.projectpartyproductions.com/mpg26.jpg', 'https://sub.projectpartyproductions.com/mpg27.jpg', 'https://sub.projectpartyproductions.com/mpg28.jpg', 'https://sub.projectpartyproductions.com/mpg29.jpg', 'https://sub.projectpartyproductions.com/mpg24.jpg', 'https://sub.projectpartyproductions.com/m30.jpg'
   ];
 
   const openModal = (index: number) => {
