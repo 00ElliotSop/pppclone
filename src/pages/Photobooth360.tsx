@@ -225,7 +225,7 @@ const Photobooth360 = () => {
       {/* Gallery Section */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4">
-          <h2 className="text-4xl font-bold text-center text-gray-800 mb-16"><a href="https://gallery.projectpartyproductions.com/" className="hover:text-[#F7E7CE] transition-colors">GALLERY</a></h2>
+          <h2 className="text-4xl font-bold text-center text-gray-800 mb-16"><a href="https://gallery.projectpartyproductions.com/" className="hover:text-[#F7E7CE] transition-colors">CLICK HERE FOR GALLERY</a></h2>
           <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4">
             {galleryMedia.map((media, index) => (
               <div 
