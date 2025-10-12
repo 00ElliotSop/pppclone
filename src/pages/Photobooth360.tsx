@@ -132,7 +132,7 @@ const Photobooth360 = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="relative">
               <img
-                src="https://sub.projectpartyproductions.com/ultimate-360.gif"
+                src="https://sub.projectpartyproductions.com/Photobooths/ultimate-360.gif"
                 alt="360 Booth Demo"
                 className="w-full rounded-2xl shadow-lg"
                 loading="eager"
@@ -197,9 +197,9 @@ const Photobooth360 = () => {
               </p>
             </div>
             <div className="relative">
-              <link rel="preload" as="image" href="https://sub.projectpartyproductions.com/capture-moments-all-sides.gif" />
+              <link rel="preload" as="image" href="https://sub.projectpartyproductions.com/Photobooths/capture-moments-all-sides.gif" />
               <img
-                src="https://sub.projectpartyproductions.com/capture-moments-all-sides.gif"
+                src="https://sub.projectpartyproductions.com/Photobooths/capture-moments-all-sides.gif"
                 alt="360 Videobooth Experience"
                 className="w-full rounded-2xl shadow-lg"
                 loading="eager"
