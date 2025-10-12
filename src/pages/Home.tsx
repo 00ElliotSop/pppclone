@@ -7,9 +7,9 @@ const Home = () => {
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
 
   const heroImages = [
-    'https://sub.projectpartyproductions.com/main.JPG',
-    'https://sub.projectpartyproductions.com/groupgirls.jpg',
-    'https://sub.projectpartyproductions.com/20250804_204445724.jpg'
+    '/main.JPG',
+    '/groupgirls.jpg',
+    '/20250804_204445724.jpg'
   ];
 
   const testimonials = [
@@ -82,7 +82,7 @@ const Home = () => {
       description: 'Professional mobile setup with no power requirements.'
     },
     {
-      image: '/High-definition-Images.jpg',
+      image: 'https://sub.projectpartyproductions.com/High-definition-Images.jpg',
       title: 'Our photo booths deliver high-definition images, ensuring every smile and detail is captured in stunning clarity.',
       description: 'Crystal clear photos that capture every moment perfectly.'
     },
@@ -97,12 +97,12 @@ const Home = () => {
       description: 'Props for every occasion including custom options.'
     },
     {
-      image: '/We-are-fully-insured-and-incorporated.jpg',
+      image: 'https://sub.projectpartyproductions.com/We-are-fully-insured-and-incorporated.jpg',
       title: 'We are fully insured and incorporated and have a $2 million dollar insurance liability.',
       description: 'Complete insurance coverage and professional business standing.'
     },
     {
-      image: '/Minimum-of-2-professional-attendants.jpg',
+      image: 'https://sub.projectpartyproductions.com/Minimum-of-2-professional-attendants.jpg',
       title: 'We will always have a minimum of 2 professional attendants. We provide excellent customer service and having a first-class experience is our top priority.',
       description: 'Multiple professional attendants ensuring exceptional service.'
     }
@@ -279,7 +279,7 @@ const Home = () => {
             <div>
               <h3 className="font-bold text-gray-800 mb-4 px-1" style={{ 
                 fontSize: 'clamp(1.4rem, 4.5vw, 2.8rem)',
-                lineHeight: '1.2'
+                lineHeight: '1.4'
               }}>Mobile Photobooth</h3>
               <p className="text-gray-600 leading-relaxed px-1" style={{ 
                 fontSize: 'clamp(0.95rem, 2.6vw, 1.3rem)',
@@ -290,7 +290,7 @@ const Home = () => {
             </div>
             <div className="relative">
               <img
-                src="/DSC_0376 2.JPG"
+                src="https://sub.projectpartyproductions.com/DSC_0376 2.JPG"
                 alt="Mobile Photobooth"
                 className="w-full rounded-2xl shadow-lg"
                 loading="eager"
@@ -303,7 +303,7 @@ const Home = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="relative order-2 lg:order-none">
               <img
-                src="/360 Photobooth setup MCA-G.jpg"
+                src="https://sub.projectpartyproductions.com/360 Photobooth setup MCA-G.jpg"
                 alt="360 Videobooth"
                 className="w-full rounded-2xl shadow-lg"
                 loading="eager"
@@ -313,7 +313,7 @@ const Home = () => {
             <div className="order-1 lg:order-none">
               <h3 className="font-bold text-gray-800 mb-4 px-1" style={{ 
                 fontSize: 'clamp(1.4rem, 4.5vw, 2.8rem)',
-                lineHeight: '1.2'
+                lineHeight: '1.4'
               }}>360 Videobooth</h3>
               <p className="text-gray-600 leading-relaxed px-1" style={{ 
                 fontSize: 'clamp(0.95rem, 2.6vw, 1.3rem)',
@@ -450,7 +450,7 @@ const Home = () => {
             
             <div className="relative">
               <img
-                src="/king-queen2.jpg"
+                src="https://sub.projectpartyproductions.com/king-queen2.jpg"
                 alt="Our Services"
                 className="w-full rounded-2xl shadow-lg transform scale-110 object-cover"
                 style={{ transform: 'scale(1.19)', transformOrigin: '30% center' }}
