@@ -55,9 +55,9 @@ const galleryImages = [
     <div className="pt-24">
       {/* Hero Section */}
       <section className="relative h-screen">
-        <link rel="preload" as="image" href="https://sub.projectpartyproductions.com/Hero/mpbhero.jpg" />
+        <link rel="preload" as="image" href="/mpbhero.jpg" />
         <img
-          src="https://sub.projectpartyproductions.com/Hero/mpbhero.jpg"
+          src="/mpbhero.jpg"
           alt="Mobile Photobooth"
           className="w-full h-full object-cover"
           loading="eager"
@@ -85,9 +85,9 @@ const galleryImages = [
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="relative">
-              <link rel="preload" as="image" href="https://sub.projectpartyproductions.com/umobile.gif" />
+              <link rel="preload" as="image" href="https://sub.projectpartyproductions.com/Photobooths/umobile.gif" />
               <img
-                src="https://sub.projectpartyproductions.com/umobile.gif"
+                src="https://sub.projectpartyproductions.com/Photobooths/umobile.gif"
                 alt="Mobile Photobooth Setup"
                 className="w-full rounded-2xl shadow-lg"
                 loading="eager"
@@ -174,9 +174,9 @@ const galleryImages = [
      
               </div>
                       <div className="relative">
-              <link rel="preload" as="image" href="https://sub.projectpartyproductions.com/Hiiighqualtiy.gif" />
+              <link rel="preload" as="image" href="https://sub.projectpartyproductions.com/Photobooths/Hiiighqualtiy.gif" />
               <img
-                src="https://sub.projectpartyproductions.com/Hiiighqualtiy.gif"
+                src="https://sub.projectpartyproductions.com/Photobooths/Hiiighqualtiy.gif"
                 alt="Mobile Photobooth Setup"
                 className="w-full rounded-2xl shadow-lg"
                 loading="eager"
