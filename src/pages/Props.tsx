@@ -5,7 +5,7 @@ import { X, ChevronLeft, ChevronRight } from 'lucide-react';
 const Props = () => {
   const [selectedImage, setSelectedImage] = React.useState<number | null>(null);
 
-  const galleryImages = [ 'https://sub.projectpartyproductions.com/propz1.gif', 'https://sub.projectpartyproductions.com/propz2.jpg', 'https://sub.projectpartyproductions.com/propz3.jpg', 'https://sub.projectpartyproductions.com/photoz2.jpg', 'https://sub.projectpartyproductions.com/photoz3.jpg',  'https://sub.projectpartyproductions.com/photoz4.jpg', 'https://sub.projectpartyproductions.com/photoz5.jpg', 'https://sub.projectpartyproductions.com/photoz6.jpg',  'https://sub.projectpartyproductions.com/photoz7.jpg', 'https://sub.projectpartyproductions.com/photoz8.jpg', 'https://sub.projectpartyproductions.com/photoz9.jpg' ];
+  const galleryImages = [ 'https://sub.projectpartyproductions.com/propz2.jpg', 'https://sub.projectpartyproductions.com/propz3.jpg', 'https://sub.projectpartyproductions.com/photoz2.jpg', 'https://sub.projectpartyproductions.com/photoz3.jpg',  'https://sub.projectpartyproductions.com/photoz4.jpg', 'https://sub.projectpartyproductions.com/photoz5.jpg', 'https://sub.projectpartyproductions.com/photoz6.jpg',  'https://sub.projectpartyproductions.com/photoz7.jpg', 'https://sub.projectpartyproductions.com/photoz8.jpg' ];
 
   const openModal = (index: number) => {
     setSelectedImage(index);
@@ -49,9 +49,9 @@ const Props = () => {
     <div className="pt-24">
       {/* Hero Section */}
       <section className="relative h-96">
-        <link rel="preload" as="image" href="https://sub.projectpartyproductions.com/propz.jpg" />
+        <link rel="preload" as="image" href="https://sub.projectpartyproductions.com/Hero/propz.jpg" />
         <img
-          src="https://sub.projectpartyproductions.com/propz.jpg"
+          src="https://sub.projectpartyproductions.com/Hero/propz.jpg"
           alt="Fun Props"
           className="w-full h-full object-cover"
           loading="eager"
