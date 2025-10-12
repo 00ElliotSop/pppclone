@@ -5,7 +5,7 @@ import { X, ChevronLeft, ChevronRight } from 'lucide-react';
 const Props = () => {
   const [selectedImage, setSelectedImage] = React.useState<number | null>(null);
 
-  const galleryImages = [ 'https://sub.projectpartyproductions.com/propz2.jpg', 'https://sub.projectpartyproductions.com/propz3.jpg', 'https://sub.projectpartyproductions.com/photoz2.jpg', 'https://sub.projectpartyproductions.com/photoz3.jpg',  'https://sub.projectpartyproductions.com/photoz4.jpg', 'https://sub.projectpartyproductions.com/photoz5.jpg', 'https://sub.projectpartyproductions.com/photoz6.jpg',  'https://sub.projectpartyproductions.com/photoz7.jpg', 'https://sub.projectpartyproductions.com/photoz8.jpg' ];
+  const galleryImages = [ 'https://sub.projectpartyproductions.com/Propz/propz2.jpg', 'https://sub.projectpartyproductions.com/Propz/propz3.jpg', 'https://sub.projectpartyproductions.com/Propz/photoz2.jpg', 'https://sub.projectpartyproductions.com/Propz/photoz3.jpg',  'https://sub.projectpartyproductions.com/Propz/photoz4.jpg', 'https://sub.projectpartyproductions.com/Propz/photoz5.jpg', 'https://sub.projectpartyproductions.com/Propz/photoz6.jpg',  'https://sub.projectpartyproductions.com/Propz/photoz7.jpg', 'https://sub.projectpartyproductions.com/Propz/photoz8.jpg' ];
 
   const openModal = (index: number) => {
     setSelectedImage(index);
