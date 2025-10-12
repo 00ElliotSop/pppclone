@@ -5,9 +5,9 @@ import { X, ChevronLeft, ChevronRight } from 'lucide-react';
 const Lighting = () => {
   const [selectedImage, setSelectedImage] = React.useState<number | null>(null);
 
-  const galleryImages = [
+ // const galleryImages = [
  //   '/360.jpg', '/360-1.jpg', '/360.jpg', '/360-1.jpg', '/360.jpg', '/360-1.jpg'
-  ];
+//  ];
 
   const openModal = (index: number) => {
     setSelectedImage(index);
@@ -39,9 +39,9 @@ const Lighting = () => {
     <div className="pt-24">
       {/* Hero Section */}
       <section className="relative h-96">
-        <link rel="preload" as="image" href="https://sub.projectpartyproductions.com/360.jpg" />
+        <link rel="preload" as="image" href="https://sub.projectpartyproductions.com/Hero/360.jpg" />
         <img
-          src="https://sub.projectpartyproductions.com/360.jpg"
+          src="https://sub.projectpartyproductions.com/Hero/360.jpg"
           alt="Professional Lighting"
           className="w-full h-full object-cover"
           loading="eager"
