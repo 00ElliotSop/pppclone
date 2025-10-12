@@ -9,7 +9,7 @@ const Home = () => {
   const heroImages = [
     '/main.JPG',
     '/groupgirls.jpg',
-    '/20250804_204445724.jpg'
+    '/groupguyz.jpg'
   ];
 
   const testimonials = [
