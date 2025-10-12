@@ -51,9 +51,9 @@ const PowerStation = () => {
     <div className="pt-24">
       {/* Hero Section */}
       <section className="relative h-96">
-        <link rel="preload" as="image" href="https://sub.projectpartyproductions.com/Hero/ecoflow.png" />
+        <link rel="preload" as="image" href="/ecoflow.png" />
         <img
-          src="https://sub.projectpartyproductions.com/Hero/ecoflow.png"
+          src="/ecoflow.png"
           alt="Power Station"
           className="w-full h-full object-cover"
           loading="eager"
