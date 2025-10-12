@@ -197,9 +197,9 @@ const Photobooth360 = () => {
               </p>
             </div>
             <div className="relative">
-              <link rel="preload" as="image" href="https://sub.projectpartyproductions.com/Photobooths/capture-moments-all-sides.gif" />
+              <link rel="preload" as="image" href="https://sub.projectpartyproductions.com/Photobooths/cmas.gif" />
               <img
-                src="https://sub.projectpartyproductions.com/Photobooths/capture-moments-all-sides.gif"
+                src="https://sub.projectpartyproductions.com/Photobooths/cmas.gif"
                 alt="360 Videobooth Experience"
                 className="w-full rounded-2xl shadow-lg"
                 loading="eager"
