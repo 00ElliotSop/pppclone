@@ -57,9 +57,9 @@ const AboutUs = () => {
     <div className="pt-24">
       {/* Hero Section */}
       <section className="relative h-screen">
-        <link rel="preload" as="image" href="https://sub.projectpartyproductions.com/20250804_182858278 (2).jpg" fetchpriority="high" />
+        <link rel="preload" as="image" href="/boutuz.jpg" fetchpriority="high" />
         <img
-          src="https://sub.projectpartyproductions.com/20250804_182858278 (2).jpg"
+          src="/boutuz.jpg"
           alt="About Us - Project Party Productions"
           className="w-full h-full object-cover"
           fetchpriority="high"
