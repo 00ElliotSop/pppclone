@@ -85,9 +85,9 @@ const MobilePhotobooth = () => {
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="relative">
-              <link rel="preload" as="image" href="https://sub.projectpartyproductions.com/ultimate-mobile2.gif" />
+              <link rel="preload" as="image" href="https://sub.projectpartyproductions.com/umobile.gif" />
               <img
-                src="https://sub.projectpartyproductions.com/ultimate-mobile2.gif"
+                src="https://sub.projectpartyproductions.com/umobile.gif"
                 alt="Mobile Photobooth Setup"
                 className="w-full rounded-2xl shadow-lg"
                 loading="eager"
