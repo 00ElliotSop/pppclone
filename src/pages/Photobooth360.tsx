@@ -131,8 +131,9 @@ const Photobooth360 = () => {
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="relative">
+                            <link rel="preload" as="image" href="https://sub.projectpartyproductions.com/Photobooths/u360.gif" />
               <img
-                src="https://sub.projectpartyproductions.com/Photobooths/ultimate-360.gif"
+                src="https://sub.projectpartyproductions.com/Photobooths/u360.gif"
                 alt="360 Booth Demo"
                 className="w-full rounded-2xl shadow-lg"
                 loading="eager"
