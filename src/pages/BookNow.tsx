@@ -7,9 +7,9 @@ const BookNow: React.FC = () => {
    <div className="pt-24">
     {/* Hero Section */}
       <section className="relative h-96">
-        <link rel="preload" as="image" href="https://sub.projectpartyproductions.com/360.jpg" />
+        <link rel="preload" as="image" href="/360.jpg" />
         <img
-          src="https://sub.projectpartyproductions.com/360.jpg"
+          src="/360.jpg"
           alt="Book Now"
           className="w-full h-full object-cover"
           loading="eager"
