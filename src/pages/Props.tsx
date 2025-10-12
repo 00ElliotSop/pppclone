@@ -49,9 +49,9 @@ const Props = () => {
     <div className="pt-24">
       {/* Hero Section */}
       <section className="relative h-96">
-        <link rel="preload" as="image" href="https://sub.projectpartyproductions.com/Hero/propz.jpg" />
+        <link rel="preload" as="image" href="/propz.jpg" />
         <img
-          src="https://sub.projectpartyproductions.com/Hero/propz.jpg"
+          src="/propz.jpg"
           alt="Fun Props"
           className="w-full h-full object-cover"
           loading="eager"
