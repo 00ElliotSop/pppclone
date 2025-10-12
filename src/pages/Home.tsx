@@ -7,9 +7,9 @@ const Home = () => {
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
 
   const heroImages = [
-    '/main.JPG',
-    '/groupgirls.jpg',
-    '/groupguyz.jpg'
+    'https://sub.projectpartyproductions.com/Home/main.jpg',
+    'https://sub.projectpartyproductions.com/Home/groupgirls.jpg',
+    'https://sub.projectpartyproductions.com/Home/groupguyz.jpg'
   ];
 
   const testimonials = [
