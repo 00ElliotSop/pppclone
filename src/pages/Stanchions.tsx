@@ -51,9 +51,9 @@ const Stanchions = () => {
     <div className="pt-24">
       {/* Hero Section */}
       <section className="relative h-96">
-        <link rel="preload" as="image" href="https://sub.projectpartyproductions.com/360.jpg" />
+        <link rel="preload" as="image" href="https://sub.projectpartyproductions.com/Hero/360.jpg" />
         <img
-          src="https://sub.projectpartyproductions.com/360.jpg"
+          src="https://sub.projectpartyproductions.com/Hero/360.jpg"
           alt="Stanchions and Red Carpet"
           className="w-full h-full object-cover"
           loading="eager"
