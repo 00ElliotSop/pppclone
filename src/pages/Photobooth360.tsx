@@ -101,9 +101,9 @@ const Photobooth360 = () => {
     <div className="pt-24">
       {/* Hero Section */}
       <section className="relative h-screen">
-        <link rel="preload" as="image" href="https://sub.projectpartyproductions.com/360.jpg" />
+        <link rel="preload" as="image" href="/360.jpg" />
         <img
-          src="https://sub.projectpartyproductions.com/360.jpg"
+          src="/360.jpg"
           alt="360 Videobooth"
           className="w-full h-full object-cover"
           loading="eager"
