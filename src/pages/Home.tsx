@@ -77,32 +77,32 @@ const Home = () => {
 
   const whyChooseUsFeatures = [
     {
-      image: 'https://sub.projectpartyproductions.com/360.jpg',
+      image: 'https://sub.projectpartyproductions.com/Home/361.jpg',
       title: 'Project Party Productions brings a professional studio ambience to your event, all of our equipment is fully mobile, no need to connect to any outlets!',
       description: 'Professional mobile setup with no power requirements.'
     },
     {
-      image: 'https://sub.projectpartyproductions.com/High-definition-Images.jpg',
+      image: 'https://sub.projectpartyproductions.com/Home/hdiii.jpg',
       title: 'Our photo booths deliver high-definition images, ensuring every smile and detail is captured in stunning clarity.',
       description: 'Crystal clear photos that capture every moment perfectly.'
     },
     {
-      image: 'https://sub.projectpartyproductions.com/DSC_0381 2.JPG',
+      image: 'https://sub.projectpartyproductions.com/Home/varietydropz.jpg',
       title: 'We offer a variety of backdrops to suit any taste, ensuring your photos are unique and memorable. (32+ Backdrops and also custom backdrops available)',
       description: 'Choose from 32+ backdrops plus custom options.'
     },
     {
-      image: 'https://sub.projectpartyproductions.com/DSC_1148.JPG',
+      image: 'https://sub.projectpartyproductions.com/Home/hmpropz.jpg',
       title: 'Our modern, fun props will create hilarious photo opportunities and keep your guests entertained. (We offer props for different events, seasons, holidays, and custom props).',
       description: 'Props for every occasion including custom options.'
     },
     {
-      image: 'https://sub.projectpartyproductions.com/We-are-fully-insured-and-incorporated.jpg',
+      image: 'https://sub.projectpartyproductions.com/Home/insuredandinc.jpg',
       title: 'We are fully insured and incorporated and have a $2 million dollar insurance liability.',
       description: 'Complete insurance coverage and professional business standing.'
     },
     {
-      image: 'https://sub.projectpartyproductions.com/Minimum-of-2-professional-attendants.jpg',
+      image: 'https://sub.projectpartyproductions.com/Home/min2attendiez.jpg',
       title: 'We will always have a minimum of 2 professional attendants. We provide excellent customer service and having a first-class experience is our top priority.',
       description: 'Multiple professional attendants ensuring exceptional service.'
     }
@@ -290,7 +290,7 @@ const Home = () => {
             </div>
             <div className="relative">
               <img
-                src="https://sub.projectpartyproductions.com/DSC_0376 2.JPG"
+                src="https://sub.projectpartyproductions.com/Home/ourmboothz.jpg"
                 alt="Mobile Photobooth"
                 className="w-full rounded-2xl shadow-lg"
                 loading="eager"
@@ -303,7 +303,7 @@ const Home = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="relative order-2 lg:order-none">
               <img
-                src="https://sub.projectpartyproductions.com/360 Photobooth setup MCA-G.jpg"
+                src="https://sub.projectpartyproductions.com/Home/360mcagrad.jpg"
                 alt="360 Videobooth"
                 className="w-full rounded-2xl shadow-lg"
                 loading="eager"
@@ -450,7 +450,7 @@ const Home = () => {
             
             <div className="relative">
               <img
-                src="https://sub.projectpartyproductions.com/king-queen2.jpg"
+                src="https://sub.projectpartyproductions.com/Home/kc2.jpg"
                 alt="Our Services"
                 className="w-full rounded-2xl shadow-lg transform scale-110 object-cover"
                 style={{ transform: 'scale(1.19)', transformOrigin: '30% center' }}
