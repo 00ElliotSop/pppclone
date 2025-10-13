@@ -97,7 +97,7 @@ const Backdrops = () => {
       name: 'Red roses flowerwall', 
       image: 'https://sub.projectpartyproductions.com/Backdropz/rosesb.jpg', 
       category: '8ft x 8ft',
-      gallery: ['https://sub.projectpartyproductions.com/Backdropz/rosesb1.jpg', 'https://sub.projectpartyproductions.com/Backdropz/rosesb2.jpg']
+      gallery: ['https://sub.projectpartyproductions.com/Backdropz/rosesb1.jpg']
     },
     { 
       id: 14, 
