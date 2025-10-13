@@ -95,16 +95,16 @@ const Backdrops = () => {
     { 
       id: 13, 
       name: 'Red roses flowerwall', 
-      image: 'https://sub.projectpartyproductions.com/Backdropz/roses-b.jpg', 
+      image: 'https://sub.projectpartyproductions.com/Backdropz/rosesb.jpg', 
       category: '8ft x 8ft',
-      gallery: ['https://sub.projectpartyproductions.com/Backdropz/roses-b1.jpg', 'https://sub.projectpartyproductions.com/Backdropz/roses-b2.jpg']
+      gallery: ['https://sub.projectpartyproductions.com/Backdropz/rosesb1.jpg', 'https://sub.projectpartyproductions.com/Backdropz/rosesb2.jpg']
     },
     { 
       id: 14, 
       name: 'White and pink flower wall', 
-      image: 'https://sub.projectpartyproductions.com/Backdropz/white-f-b.jpg', 
+      image: 'https://sub.projectpartyproductions.com/Backdropz/whitefb.jpg', 
       category: '8ft x 8ft',
-      gallery: ['https://sub.projectpartyproductions.com/Backdropz/white-f-b1.jpg', 'https://sub.projectpartyproductions.com/Backdropz/white-f-b2.jpg']
+      gallery: ['https://sub.projectpartyproductions.com/Backdropz/whitefb1.jpg', 'https://sub.projectpartyproductions.com/Backdropz/whitefb2.jpg']
     },
     { 
       id: 15, 
