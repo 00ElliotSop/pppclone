@@ -181,23 +181,23 @@ const Backdrops = () => {
     { 
       id: 25, 
       name: 'Gold shimmers going down', 
-      image: 'https://sub.projectpartyproductions.com/goldxhanging.jpg', 
+      image: 'https://sub.projectpartyproductions.com/Backdropz/goldxhanging.jpg', 
       category: '7ft x 7ft',
-      gallery: ['https://sub.projectpartyproductions.com/goldxhanging1.jpg', 'https://sub.projectpartyproductions.com/goldxhanging2.jpg']
+      gallery: ['https://sub.projectpartyproductions.com/Backdropz/goldxhanging1.jpg', 'https://sub.projectpartyproductions.com/Backdropz/goldxhanging2.jpg']
     },
     { 
       id: 26, 
       name: 'Red shimmer wall', 
-      image: 'https://sub.projectpartyproductions.com/redxshimmers.jpg', 
+      image: 'https://sub.projectpartyproductions.com/Backdropz/redxshimmers.jpg', 
       category: '7ft x 7ft',
-      gallery: ['https://sub.projectpartyproductions.com/redxshimmers1.jpg', 'https://sub.projectpartyproductions.com/redxshimmers2.jpg']
+      gallery: ['https://sub.projectpartyproductions.com/Backdropz/redxshimmers1.jpg', 'https://sub.projectpartyproductions.com/Backdropz/redxshimmers2.jpg']
     },
     { 
       id: 27, 
       name: 'White roses flower wall', 
-      image: 'https://sub.projectpartyproductions.com/whitexfxwall.jpg', 
+      image: 'https://sub.projectpartyproductions.com/Backdropz/whitexfxwall.jpg', 
       category: '7ft x 7ft',
-      gallery: ['https://sub.projectpartyproductions.com/whitexfxwall1.jpg', 'https://sub.projectpartyproductions.com/whitexfxwall2.jpg']
+      gallery: ['https://sub.projectpartyproductions.com/Backdropz/whitexfxwall1.jpg', 'https://sub.projectpartyproductions.com/Backdropz/whitexfxwall2.jpg']
     },
     { 
       id: 28, 
