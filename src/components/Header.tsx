@@ -109,6 +109,7 @@ const Header = () => {
         isScrolled ? 'h-0 overflow-hidden opacity-0' : 'h-auto opacity-100'
       }`}>
         <div className="max-w-7xl mx-auto flex justify-end items-center" style={{ fontSize: 'clamp(0.625rem, 1.5vw, 0.875rem)' }}>
+        
           <div className="flex flex-col sm:flex-row items-end sm:items-center space-y-1 sm:space-y-0 sm:space-x-6">
             <div className="flex items-center space-x-2">
               <Phone className="w-3 h-3 sm:w-4 sm:h-4" />
@@ -118,23 +119,26 @@ const Header = () => {
               <Mail className="w-3 h-3 sm:w-4 sm:h-4" />
               <span>info@projectpartyproductions.com</span>
             </div>
-            <a 
-              href="https://instagram.com/projectpartyproductions" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="hover:opacity-80 transition-opacity"
-            >
-              <Instagram className="w-3 h-3 sm:w-4 sm:h-4" />
-            </a>
-            
-<a
-  href="https://www.tiktok.com/@projectpartyproductions"
-  target="_blank"
-  rel="noopener noreferrer"
-  className="hover:opacity-80 transition-opacity"
->
-  <SiTiktok className="w-3 h-3 sm:w-4 sm:h-4" />
-</a>
+         
+  {/* Social Icons group */}
+  <div className="flex flex-row items-center space-x-3">
+    <a 
+      href="https://instagram.com/projectpartyproductions" 
+      target="_blank" 
+      rel="noopener noreferrer"
+      className="hover:opacity-80 transition-opacity"
+    >
+      <Instagram className="w-3 h-3 sm:w-4 sm:h-4" />
+    </a>
+    <a
+      href="https://www.tiktok.com/@projectpartyproductions"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="hover:opacity-80 transition-opacity"
+    >
+      <SiTiktok className="w-3 h-3 sm:w-4 sm:h-4" />
+    </a>
+  </div>
           </div>
         </div>
       </div>
