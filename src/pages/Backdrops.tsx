@@ -11,23 +11,23 @@ const Backdrops = () => {
     { 
       id: 1, 
       name: 'White', 
-      image: 'https://sub.projectpartyproductions.com/white.jpg', 
+      image: 'https://sub.projectpartyproductions.com/Backdropz/white.jpg', 
       category: '8ft x 8ft',
-      gallery: ['https://sub.projectpartyproductions.com/white1.jpg']
+      gallery: ['https://sub.projectpartyproductions.com/Backdropz/white1.jpg']
     },
     { 
       id: 2, 
       name: 'White marble', 
-      image: 'https://sub.projectpartyproductions.com/white-m.jpg', 
+      image: 'https://sub.projectpartyproductions.com/Backdropz/white-m.jpg', 
       category: '8ft x 8ft',
-      gallery: ['https://sub.projectpartyproductions.com/white-m1.jpg', 'https://sub.projectpartyproductions.com/white-m2.jpg']
+      gallery: ['https://sub.projectpartyproductions.com/Backdropz/white-m1.jpg', 'https://sub.projectpartyproductions.com/Backdropz/white-m2.jpg']
     },
     { 
       id: 3, 
       name: 'Black', 
-      image: 'https://sub.projectpartyproductions.com/black.jpg', 
+      image: 'https://sub.projectpartyproductions.com/Backdropz/black.jpg', 
       category: '8ft x 8ft',
-      gallery: ['https://sub.projectpartyproductions.com/black1.jpg', 'https://sub.projectpartyproductions.com/black2.jpg']
+      gallery: ['https://sub.projectpartyproductions.com/Backdropz/black1.jpg', 'https://sub.projectpartyproductions.com/Backdropz/black2.jpg']
     },
     { 
       id: 4, 
