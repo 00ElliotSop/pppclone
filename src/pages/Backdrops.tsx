@@ -134,21 +134,21 @@ const Backdrops = () => {
       name: 'Green Screen', 
       image: 'https://sub.projectpartyproductions.com/Backdropz/greenxscreen.jpg', 
       category: '7ft x 7ft',
-      gallery: ['https://sub.projectpartyproductions.com/Backdropz/greenxscreen3.JPG', 'https://sub.projectpartyproductions.com/Backdropz/greenxscreen4.JPG']
+      gallery: ['https://sub.projectpartyproductions.com/Backdropz/greenxscreen3.jpg', 'https://sub.projectpartyproductions.com/Backdropz/greenxscreen4.jpg']
     },
     { 
       id: 19, 
       name: 'Green leaves heart', 
       image: 'https://sub.projectpartyproductions.com/Backdropz/greenxheart.jpg', 
       category: '7ft x 7ft',
-      gallery: ['https://sub.projectpartyproductions.com/Backdropz/greenxwallx3.jpg', 'https://sub.projectpartyproductions.com/greenxwallx2.jpg', 'https://sub.projectpartyproductions.com/greenxwallx1.jpg']
+      gallery: ['https://sub.projectpartyproductions.com/Backdropz/greenxwallx3.jpg', 'https://sub.projectpartyproductions.com/Backdropz/greenxwallx2.jpg', 'https://sub.projectpartyproductions.com/Backdropz/greenxwallx1.jpg']
     },
     { 
       id: 20, 
       name: 'Purple, blue, white, and pink flower wall', 
-      image: 'https://sub.projectpartyproductions.com/purplexbluexwhitexf.jpg', 
+      image: 'https://sub.projectpartyproductions.com/Backdropz/purplexbluexwhitexf.jpg', 
       category: '7ft x 7ft',
-      gallery: ['https://sub.projectpartyproductions.com/purple-blue-white-f1.jpg', 'https://sub.projectpartyproductions.com/purple-blue-white-f2.jpg']
+      gallery: ['https://sub.projectpartyproductions.com/Backdropz/purplexbluexwhitexf1.jpg', 'https://sub.projectpartyproductions.com/Backdropz/purplexbluexwhitexf2.jpg']
     },
     { 
       id: 21, 
