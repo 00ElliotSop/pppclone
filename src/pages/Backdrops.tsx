@@ -32,30 +32,30 @@ const Backdrops = () => {
     { 
       id: 4, 
       name: 'Black with PPP logo', 
-      image: 'https://sub.projectpartyproductions.com/pppb.jpg', 
+      image: 'https://sub.projectpartyproductions.com/Backdropz/pppb.jpg', 
       category: '8ft x 8ft',
-      gallery: ['https://sub.projectpartyproductions.com/ppp-b1.jpg', 'https://sub.projectpartyproductions.com/ppp-b2.jpg', 'https://sub.projectpartyproductions.com/ppp-b3.jpg']
+      gallery: ['https://sub.projectpartyproductions.com/Backdropz/pppb1.jpg', 'https://sub.projectpartyproductions.com/Backdropz/pppb2.jpg', 'https://sub.projectpartyproductions.com/Backdropz/pppb3.jpg']
     },
     { 
       id: 5, 
       name: 'Pink roses in enchanted forest', 
-      image: 'https://sub.projectpartyproductions.com/p-e.jpg', 
+      image: 'https://sub.projectpartyproductions.com/Backdropz/pe.jpg', 
       category: '8ft x 8ft',
-      gallery: ['https://sub.projectpartyproductions.com/p-e1.jpg', 'https://sub.projectpartyproductions.com/p-e2.jpg']
+      gallery: ['https://sub.projectpartyproductions.com/Backdropz/pe1.jpg', 'https://sub.projectpartyproductions.com/Backdropz/pe2.jpg']
     },
     { 
       id: 6, 
       name: 'White, pink and purple flowerwall', 
-      image: 'https://sub.projectpartyproductions.com/w-p.jpg', 
+      image: 'https://sub.projectpartyproductions.com/Backdropz/wp.jpg', 
       category: '8ft x 8ft',
-      gallery: ['https://sub.projectpartyproductions.com/w-p1.jpg', 'https://sub.projectpartyproductions.com/w-p2.jpg']
+      gallery: ['https://sub.projectpartyproductions.com/Backdropz/wp1.jpg', 'https://sub.projectpartyproductions.com/Backdropz/wp2.jpg']
     },
     { 
       id: 7, 
       name: 'White and pink flowers with green leaves', 
-      image: 'https://sub.projectpartyproductions.com/w-p-g.jpg', 
+      image: 'https://sub.projectpartyproductions.com/Backdropz/wpg.jpg', 
       category: '8ft x 8ft',
-      gallery: ['https://sub.projectpartyproductions.com/w-p-g1.jpg', 'https://sub.projectpartyproductions.com/w-p-g2.jpg']
+      gallery: ['https://sub.projectpartyproductions.com/Backdropz/wpg1.jpg', 'https://sub.projectpartyproductions.com/Backdropz/wpg2.jpg']
     },
     { 
       id: 8, 
