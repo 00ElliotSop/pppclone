@@ -81,9 +81,9 @@ const Backdrops = () => {
     { 
       id: 11, 
       name: 'White and pink flower wall', 
-      image: 'https://sub.projectpartyproductions.com/Backdropz/w-p-b.jpg', 
+      image: 'https://sub.projectpartyproductions.com/Backdropz/wpb.jpg', 
       category: '8ft x 8ft',
-      gallery: ['https://sub.projectpartyproductions.com/Backdropz/w-p-b1.jpg', 'https://sub.projectpartyproductions.com/Backdropz/w-p-b2.jpg']
+      gallery: ['https://sub.projectpartyproductions.com/Backdropz/wpb1.jpg', 'https://sub.projectpartyproductions.com/Backdropz/wpb2.jpg']
     },
     { 
       id: 12, 
