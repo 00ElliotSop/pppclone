@@ -109,9 +109,9 @@ const Backdrops = () => {
     { 
       id: 15, 
       name: 'Pink roses flower wall', 
-      image: 'https://sub.projectpartyproductions.com/Backdropz/pink-roses.jpg', 
+      image: 'https://sub.projectpartyproductions.com/Backdropz/pinkroses.jpg', 
       category: '8ft x 8ft',
-      gallery: ['https://sub.projectpartyproductions.com/Backdropz/pink-rose2.jpg', 'https://sub.projectpartyproductions.com/Backdropz/pink-rose3.jpg']
+      gallery: ['https://sub.projectpartyproductions.com/Backdropz/pinkrose2.jpg', 'https://sub.projectpartyproductions.com/Backdropz/pinkrose3.jpg']
     },
     { 
       id: 16, 
@@ -125,23 +125,23 @@ const Backdrops = () => {
       name: 'Red carpet going up stairs to Christmas tree', 
       image: 'https://sub.projectpartyproductions.com/Backdropz/stairsxchristmas.jpg', 
       category: '8ft x 8ft',
-      gallery: ['https://sub.projectpartyproductions.com/Backdropz/stairs-christmas1.jpg', 'https://sub.projectpartyproductions.com/Backdropz/stairs-christmas2.jpg']
+      gallery: ['https://sub.projectpartyproductions.com/Backdropz/stairsxchristmas1.jpg', 'https://sub.projectpartyproductions.com/Backdropz/stairsxchristmas2.jpg']
     },
     
     // 7ft x 7ft Backdrops
     { 
       id: 18, 
       name: 'Green Screen', 
-      image: 'https://sub.projectpartyproductions.com/greenxscreen.jpg', 
+      image: 'https://sub.projectpartyproductions.com/Backdropz/greenxscreen.jpg', 
       category: '7ft x 7ft',
-      gallery: ['https://sub.projectpartyproductions.com/green-screen3.JPG', 'https://sub.projectpartyproductions.com/green-screen4.JPG']
+      gallery: ['https://sub.projectpartyproductions.com/Backdropz/greenxscreen3.JPG', 'https://sub.projectpartyproductions.com/Backdropz/greenxscreen4.JPG']
     },
     { 
       id: 19, 
       name: 'Green leaves heart', 
-      image: 'https://sub.projectpartyproductions.com/greenxheart.jpg', 
+      image: 'https://sub.projectpartyproductions.com/Backdropz/greenxheart.jpg', 
       category: '7ft x 7ft',
-      gallery: ['https://sub.projectpartyproductions.com/green-wall-3.jpg', 'https://sub.projectpartyproductions.com/green-wall-2.jpg', 'https://sub.projectpartyproductions.com/green-wall-1.jpg']
+      gallery: ['https://sub.projectpartyproductions.com/Backdropz/greenxwallx3.jpg', 'https://sub.projectpartyproductions.com/greenxwallx2.jpg', 'https://sub.projectpartyproductions.com/greenxwallx1.jpg']
     },
     { 
       id: 20, 
