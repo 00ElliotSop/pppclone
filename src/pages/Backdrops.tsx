@@ -74,58 +74,58 @@ const Backdrops = () => {
     { 
       id: 10, 
       name: 'Rose gold shimmer wall', 
-      image: 'https://sub.projectpartyproductions.com/rose-b.jpg', 
+      image: 'https://sub.projectpartyproductions.com/Backdropz/roseb.jpg', 
       category: '8ft x 8ft',
-      gallery: ['https://sub.projectpartyproductions.com/gold-rose-w1.jpg', 'https://sub.projectpartyproductions.com/gold-rose-w2.jpg']
+      gallery: ['https://sub.projectpartyproductions.com/Backdropz/goldrosew1.jpg', 'https://sub.projectpartyproductions.com/Backdropz/goldrosew2.jpg']
     },
     { 
       id: 11, 
       name: 'White and pink flower wall', 
-      image: 'https://sub.projectpartyproductions.com/w-p-b.jpg', 
+      image: 'https://sub.projectpartyproductions.com/Backdropz/w-p-b.jpg', 
       category: '8ft x 8ft',
-      gallery: ['https://sub.projectpartyproductions.com/w-p-b1.jpg', 'https://sub.projectpartyproductions.com/w-p-b2.jpg']
+      gallery: ['https://sub.projectpartyproductions.com/Backdropz/w-p-b1.jpg', 'https://sub.projectpartyproductions.com/Backdropz/w-p-b2.jpg']
     },
     { 
       id: 12, 
       name: 'VIP hollywood red carpet', 
-      image: 'https://sub.projectpartyproductions.com/vip.jpg', 
+      image: 'https://sub.projectpartyproductions.com/Backdropz/vip.jpg', 
       category: '8ft x 8ft',
-      gallery: ['https://sub.projectpartyproductions.com/vip1.jpg', 'https://sub.projectpartyproductions.com/vip2.jpg']
+      gallery: ['https://sub.projectpartyproductions.com/Backdropz/vip1.jpg', 'https://sub.projectpartyproductions.com/Backdropz/vip2.jpg']
     },
     { 
       id: 13, 
       name: 'Red roses flowerwall', 
-      image: 'https://sub.projectpartyproductions.com/roses-b.jpg', 
+      image: 'https://sub.projectpartyproductions.com/Backdropz/roses-b.jpg', 
       category: '8ft x 8ft',
-      gallery: ['https://sub.projectpartyproductions.com/roses-b1.jpg', 'https://sub.projectpartyproductions.com/roses-b2.jpg']
+      gallery: ['https://sub.projectpartyproductions.com/Backdropz/roses-b1.jpg', 'https://sub.projectpartyproductions.com/Backdropz/roses-b2.jpg']
     },
     { 
       id: 14, 
       name: 'White and pink flower wall', 
-      image: 'https://sub.projectpartyproductions.com/white-f-b.jpg', 
+      image: 'https://sub.projectpartyproductions.com/Backdropz/white-f-b.jpg', 
       category: '8ft x 8ft',
-      gallery: ['https://sub.projectpartyproductions.com/white-f-b1.jpg', 'https://sub.projectpartyproductions.com/white-f-b2.jpg']
+      gallery: ['https://sub.projectpartyproductions.com/Backdropz/white-f-b1.jpg', 'https://sub.projectpartyproductions.com/Backdropz/white-f-b2.jpg']
     },
     { 
       id: 15, 
       name: 'Pink roses flower wall', 
-      image: 'https://sub.projectpartyproductions.com/pink-roses.jpg', 
+      image: 'https://sub.projectpartyproductions.com/Backdropz/pink-roses.jpg', 
       category: '8ft x 8ft',
-      gallery: ['https://sub.projectpartyproductions.com/pink-rose2.jpg', 'https://sub.projectpartyproductions.com/pink-rose3.jpg']
+      gallery: ['https://sub.projectpartyproductions.com/Backdropz/pink-rose2.jpg', 'https://sub.projectpartyproductions.com/Backdropz/pink-rose3.jpg']
     },
     { 
       id: 16, 
       name: 'Presents in front of fireplace and Christmas tree', 
-      image: 'https://sub.projectpartyproductions.com/christmas.jpg', 
+      image: 'https://sub.projectpartyproductions.com/Backdropz/christmas.jpg', 
       category: '8ft x 8ft',
-      gallery: ['https://sub.projectpartyproductions.com/christmas1.jpg', 'https://sub.projectpartyproductions.com/christmas2.jpg']
+      gallery: ['https://sub.projectpartyproductions.com/Backdropz/christmas1.jpg', 'https://sub.projectpartyproductions.com/Backdropz/christmas2.jpg']
     },
     { 
       id: 17, 
       name: 'Red carpet going up stairs to Christmas tree', 
-      image: 'https://sub.projectpartyproductions.com/stairsxchristmas.jpg', 
+      image: 'https://sub.projectpartyproductions.com/Backdropz/stairsxchristmas.jpg', 
       category: '8ft x 8ft',
-      gallery: ['https://sub.projectpartyproductions.com/stairs-christmas1.jpg', 'https://sub.projectpartyproductions.com/stairs-christmas2.jpg']
+      gallery: ['https://sub.projectpartyproductions.com/Backdropz/stairs-christmas1.jpg', 'https://sub.projectpartyproductions.com/Backdropz/stairs-christmas2.jpg']
     },
     
     // 7ft x 7ft Backdrops
