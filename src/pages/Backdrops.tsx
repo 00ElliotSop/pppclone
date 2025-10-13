@@ -153,23 +153,23 @@ const Backdrops = () => {
     { 
       id: 21, 
       name: 'Blue and white flower wall', 
-      image: 'https://sub.projectpartyproductions.com/bluexflowers.jpg', 
+      image: 'https://sub.projectpartyproductions.com/Backdropz/bluexflowers.jpg', 
       category: '7ft x 7ft',
-      gallery: ['https://sub.projectpartyproductions.com/blue-flowers1.jpg', 'https://sub.projectpartyproductions.com/blue-flowers2.jpg']
+      gallery: ['https://sub.projectpartyproductions.com/Backdropz/blueflowers1.jpg', 'https://sub.projectpartyproductions.com/blueflowers2.jpg']
     },
     { 
       id: 22, 
       name: 'White, pink, blue, and purple flower wall', 
-      image: 'https://sub.projectpartyproductions.com/white-pink-blue-flowers.jpg', 
+      image: 'https://sub.projectpartyproductions.com/Backdropz/whitexpinkxbluexflowers.jpg', 
       category: '7ft x 7ft',
-      gallery: ['https://sub.projectpartyproductions.com/white-pink-blue-flowers1.jpg', 'https://sub.projectpartyproductions.com/white-pink-blue-flowers2.jpg']
+      gallery: ['https://sub.projectpartyproductions.com/Backdropz/whitexpinkxbluexflowers1.jpg', 'https://sub.projectpartyproductions.com/Backdropz/whitexpinkxbluexflowers2.jpg']
     },
     { 
       id: 23, 
       name: 'Toronto Skyline', 
-      image: 'https://sub.projectpartyproductions.com/tdot.jpg', 
+      image: 'https://sub.projectpartyproductions.com/Backdropz/tdot.jpg', 
       category: '7ft x 7ft',
-      gallery: ['https://sub.projectpartyproductions.com/tdot1.jpg', 'https://sub.projectpartyproductions.com/tdot2.jpg']
+      gallery: ['https://sub.projectpartyproductions.com/Backdropz/tdot1.jpg', 'https://sub.projectpartyproductions.com/Backdropz/tdot2.jpg']
     },
     { 
       id: 24, 
