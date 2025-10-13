@@ -174,30 +174,30 @@ const Backdrops = () => {
     { 
       id: 24, 
       name: 'Flower wall going down white brick', 
-      image: 'https://sub.projectpartyproductions.com/hangingxflowers.jpg', 
+      image: 'https://sub.projectpartyproductions.com/Backdropz/hangingxflowers.jpg', 
       category: '7ft x 7ft',
-      gallery: ['https://sub.projectpartyproductions.com/hanging-flowers1.jpg', 'https://sub.projectpartyproductions.com/hanging-flowers2.jpg']
+      gallery: ['https://sub.projectpartyproductions.com/Backdropz/hangingxflowers1.jpg', 'https://sub.projectpartyproductions.com/Backdropz/hangingxflowers2.jpg']
     },
     { 
       id: 25, 
       name: 'Gold shimmers going down', 
       image: 'https://sub.projectpartyproductions.com/goldxhanging.jpg', 
       category: '7ft x 7ft',
-      gallery: ['https://sub.projectpartyproductions.com/gold-hanging1.jpg', 'https://sub.projectpartyproductions.com/gold-hanging2.jpg']
+      gallery: ['https://sub.projectpartyproductions.com/goldxhanging1.jpg', 'https://sub.projectpartyproductions.com/goldxhanging2.jpg']
     },
     { 
       id: 26, 
       name: 'Red shimmer wall', 
       image: 'https://sub.projectpartyproductions.com/redxshimmers.jpg', 
       category: '7ft x 7ft',
-      gallery: ['https://sub.projectpartyproductions.com/red-shimmers1.jpg', 'https://sub.projectpartyproductions.com/red-shimmers2.jpg']
+      gallery: ['https://sub.projectpartyproductions.com/redxshimmers1.jpg', 'https://sub.projectpartyproductions.com/redxshimmers2.jpg']
     },
     { 
       id: 27, 
       name: 'White roses flower wall', 
-      image: 'https://sub.projectpartyproductions.com/white-f-wall.jpg', 
+      image: 'https://sub.projectpartyproductions.com/whitexfxwall.jpg', 
       category: '7ft x 7ft',
-      gallery: ['https://sub.projectpartyproductions.com/white-f-wall1.jpg', 'https://sub.projectpartyproductions.com/white-f-wall2.jpg']
+      gallery: ['https://sub.projectpartyproductions.com/whitexfxwall1.jpg', 'https://sub.projectpartyproductions.com/whitexfxwall2.jpg']
     },
     { 
       id: 28, 
