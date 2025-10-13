@@ -18,9 +18,9 @@ const Backdrops = () => {
     { 
       id: 2, 
       name: 'White marble', 
-      image: 'https://sub.projectpartyproductions.com/Backdropz/white-m.jpg', 
+      image: 'https://sub.projectpartyproductions.com/Backdropz/whitem.jpg', 
       category: '8ft x 8ft',
-      gallery: ['https://sub.projectpartyproductions.com/Backdropz/white-m1.jpg', 'https://sub.projectpartyproductions.com/Backdropz/white-m2.jpg']
+      gallery: ['https://sub.projectpartyproductions.com/Backdropz/whitem1.jpg', 'https://sub.projectpartyproductions.com/Backdropz/whitem2.jpg']
     },
     { 
       id: 3, 
