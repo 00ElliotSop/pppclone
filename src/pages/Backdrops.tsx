@@ -202,30 +202,30 @@ const Backdrops = () => {
     { 
       id: 28, 
       name: 'Gold shimmer wall', 
-      image: 'https://sub.projectpartyproductions.com/goldxshimmers.jpg', 
+      image: 'https://sub.projectpartyproductions.com/Backdropz/goldxshimmers.jpg', 
       category: '7ft x 7ft',
-      gallery: ['https://sub.projectpartyproductions.com/gold-wall-7x71.jpg', 'https://sub.projectpartyproductions.com/gold-wall-7x72.jpg']
+      gallery: ['https://sub.projectpartyproductions.com/Backdropz/goldxwallx7x71.jpg', 'https://sub.projectpartyproductions.com/Backdropz/goldxwallx7x72.jpg']
     },
     { 
       id: 29, 
       name: 'Silver shimmer wall', 
-      image: 'https://sub.projectpartyproductions.com/silverxwall.jpg', 
+      image: 'https://sub.projectpartyproductions.com/Backdropz/silverxwall.jpg', 
       category: '7ft x 7ft',
-      gallery: ['https://sub.projectpartyproductions.com/silver-wall1.jpg', 'https://sub.projectpartyproductions.com/silver-wall2.jpg']
+      gallery: ['https://sub.projectpartyproductions.com/Backdropz/silverxwall1.jpg', 'https://sub.projectpartyproductions.com/Backdropz/silverxwall2.jpg']
     },
     { 
       id: 30, 
       name: 'Ornaments from tree and wood', 
-      image: 'https://sub.projectpartyproductions.com/ornaments.jpg', 
+      image: 'https://sub.projectpartyproductions.com/Backdropz/ornaments.jpg', 
       category: '7ft x 7ft',
-      gallery: ['https://sub.projectpartyproductions.com/ornaments1.jpg', 'https://sub.projectpartyproductions.com/ornaments2.jpg']
+      gallery: ['https://sub.projectpartyproductions.com/Backdropz/ornaments1.jpg', 'https://sub.projectpartyproductions.com/Backdropz/ornaments2.jpg']
     },
     { 
       id: 31, 
       name: 'Gold lights around wood boards', 
-      image: 'https://sub.projectpartyproductions.com/goldxxwood.jpg', 
+      image: 'https://sub.projectpartyproductions.com/Backdropz/goldxxwood.jpg', 
       category: '7ft x 7ft',
-      gallery: ['https://sub.projectpartyproductions.com/gold-over-wood1.jpg', 'https://sub.projectpartyproductions.com/gold-over-wood2.jpg']
+      gallery: ['https://sub.projectpartyproductions.com/Backdropz/goldxoverxwood1.jpg', 'https://sub.projectpartyproductions.com/Backdropz/goldxoverxwood2.jpg']
     }
   ];
 
