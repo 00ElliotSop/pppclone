@@ -60,16 +60,16 @@ const Backdrops = () => {
     { 
       id: 8, 
       name: 'Flowers around wedding arch', 
-      image: 'https://sub.projectpartyproductions.com/wedd.jpg', 
+      image: 'https://sub.projectpartyproductions.com/Backdropz/wedd.jpg', 
       category: '8ft x 8ft',
-      gallery: ['https://sub.projectpartyproductions.com/wedd1.jpg', 'https://sub.projectpartyproductions.com/wedd2.jpg', 'https://sub.projectpartyproductions.com/wedd3.jpg']
+      gallery: ['https://sub.projectpartyproductions.com/Backdropz/wedd1.jpg', 'https://sub.projectpartyproductions.com/Backdropz/wedd2.jpg', 'https://sub.projectpartyproductions.com/Backdropz/wedd3.jpg']
     },
     { 
       id: 9, 
       name: 'Gold shimmer wall', 
-      image: 'https://sub.projectpartyproductions.com/goldb.jpg', 
+      image: 'https://sub.projectpartyproductions.com/Backdropz/goldb.jpg', 
       category: '8ft x 8ft',
-      gallery: ['https://sub.projectpartyproductions.com/gold-b1.jpg', 'https://sub.projectpartyproductions.com/gold-b2.jpg']
+      gallery: ['https://sub.projectpartyproductions.com/Backdropz/goldb1.jpg', 'https://sub.projectpartyproductions.com/Backdropz/goldb2.jpg']
     },
     { 
       id: 10, 
