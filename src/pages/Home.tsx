@@ -142,7 +142,7 @@ const Home = () => {
   };
 
   return (
-    <div className="pt-[140px] lg:pt-20">
+<div className="pt-[90px] lg:pt-16">
       {/* Hero Section with Carousel */}
 <section className="relative min-h-[90vh] lg:h-screen overflow-visible lg:overflow-hidden bg-white">
         {/* Preload critical images */}
@@ -163,7 +163,7 @@ const Home = () => {
        <img
   src={image}
   alt={`Hero ${index + 1}`}
-  className="w-full h-[90vh] lg:h-full object-cover object-center transition-all duration-500 ease-in-out"
+  className="w-full h-[100vh] lg:h-full object-cover object-center transition-all duration-500 ease-in-out"
   loading="eager"
   decoding="sync"
 />
@@ -235,7 +235,7 @@ const Home = () => {
           </button>
           <button
             onClick={nextSlide}
-            className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-[#B5A99A]/60 hover:bg-[#B5A99A]/80 text-white p-3 rounded-full transition-all z-20 block"
+            className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-[#B5A99A]/60 hover:bg-[#B5A99A]/80 text-white p-3 rounded-full transition-all z-20 block"
           >
             <ChevronRight size={24} />
           </button>
