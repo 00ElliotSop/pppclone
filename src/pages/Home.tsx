@@ -142,9 +142,9 @@ const Home = () => {
   };
 
   return (
-    <div className="pt-24">
+    <div className="pt-[140px] lg:pt-24">
       {/* Hero Section with Carousel */}
-     <section className="relative h-screen overflow-hidden bg-white">
+<section className="relative lg:h-screen overflow-visible lg:overflow-hidden bg-white">
         {/* Preload critical images */}
         <link rel="preload" as="image" href={heroImages[0]} fetchpriority="high" />
         <link rel="preload" as="image" href={heroImages[1]} fetchpriority="high" />
@@ -163,15 +163,16 @@ const Home = () => {
          <img
   src={image}
   alt={`Hero ${index + 1}`}
-  className="w-full h-full object-contain lg:object-cover object-center transition-all duration-500 ease-in-out"
+  className="w-full h-[70vh] lg:h-full object-contain lg:object-cover object-center transition-all duration-500 ease-in-out"
   loading="eager"
   decoding="sync"
 />
 
 
 
+
               
-              <div className="absolute inset-0 bg-black bg-opacity-40" />
+              <div className="hidden lg:block absolute inset-0 bg-black bg-opacity-40" />
             </div>
           ))}
 
