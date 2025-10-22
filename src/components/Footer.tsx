@@ -254,7 +254,7 @@ const Footer = () => {
               </li>
               <li>
                 <Link 
-                  to="gallery.projectpartyproductions.com/" 
+                  to="https://gallery.projectpartyproductions.com/" 
                   onClick={() => window.scrollTo(0, 0)}
                   className="text-gray-300 hover:text-[#F7E7CE] transition-colors"
                 >
