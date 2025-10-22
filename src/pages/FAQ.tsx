@@ -12,7 +12,7 @@ const FAQ = () => {
     },
     {
       question: "What's included in your photobooth packages?",
-      answer: "All packages include professional lighting, backdrop of your choice, props, on-site attendant, digital copies of all photos, and custom photo templates. Print packages also include unlimited prints during your event.",
+      answer: "All packages include professional lighting, backdrop of your choice, props, a minimum of 2 on-site attendant, digital copies of all photos, and custom photo templates. Print packages also include unlimited prints during your event.",
      // image: "/360-1.jpg"
     },
     {
