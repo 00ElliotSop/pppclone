@@ -174,33 +174,56 @@ const Home = () => {
               <div className="absolute inset-0 bg-black bg-opacity-40" />
             </div>
           ))}
-          
-          {/* Hero Content */}
-          <div className="absolute inset-0 flex items-center justify-center text-center text-white z-10 px-2">
-            <div className="w-full max-w-4xl px-2">
-              <h1 className="font-bold mb-4 leading-tight" style={{ 
-                fontSize: 'clamp(1.9rem, 7.7vw, 5.8rem)',
-                wordWrap: 'break-word',
-                hyphens: 'auto'
-              }}>
-                PROJECT PARTY PRODUCTIONS
-              </h1>
-              <p className="mb-6 leading-tight px-1" style={{ 
-                fontSize: 'clamp(0.95rem, 3.8vw, 1.6rem)',
-                wordWrap: 'break-word'
-              }}>
-                Creating Unforgettable Moments with Professional Photobooth Services
-              </p>
-              <Link
-                to="/book-now"
-                className="bg-[#B5A99A] text-white px-4 sm:px-6 md:px-8 py-2 sm:py-3 md:py-4 rounded-full font-semibold hover:bg-[#F7E7CE] hover:text-black transition-all duration-300 inline-block"
-                style={{ fontSize: 'clamp(1.1rem, 3.2vw, 1.4rem)' }}
-              >
-                BOOK NOW
-              </Link>
-            </div>
-          </div>
 
+
+
+
+
+          
+ {/* Hero Content */}
+{/* --- Desktop / lg and up --- */}
+<div className="hidden lg:flex absolute inset-0 items-center justify-center text-center text-white z-10 px-2">
+  <div className="w-full max-w-4xl px-2">
+    <h1 className="font-bold mb-4 leading-tight" style={{ 
+      fontSize: 'clamp(1.9rem, 7.7vw, 5.8rem)',
+      wordWrap: 'break-word',
+      hyphens: 'auto'
+    }}>
+      PROJECT PARTY PRODUCTIONS
+    </h1>
+    <p className="mb-6 leading-tight px-1" style={{ 
+      fontSize: 'clamp(0.95rem, 3.8vw, 1.6rem)',
+      wordWrap: 'break-word'
+    }}>
+      Creating Unforgettable Moments with Professional Photobooth Services
+    </p>
+    <Link
+      to="/book-now"
+      className="bg-[#B5A99A] text-white px-4 sm:px-6 md:px-8 py-2 sm:py-3 md:py-4 rounded-full font-semibold hover:bg-[#F7E7CE] hover:text-black transition-all duration-300 inline-block"
+      style={{ fontSize: 'clamp(1.1rem, 3.2vw, 1.4rem)' }}
+    >
+      BOOK NOW
+    </Link>
+  </div>
+</div>
+
+{/* --- Mobile / below lg --- */}
+<div className="block lg:hidden text-center text-black w-full py-8 px-4 bg-white z-10 relative">
+  <h1 className="font-bold mb-2" style={{ 
+    fontSize: 'clamp(1.8rem, 6vw, 2.8rem)', 
+    wordWrap: 'break-word'
+  }}>
+    PROJECT PARTY PRODUCTIONS
+  </h1>
+  <p className="uppercase tracking-wide text-sm font-medium mb-6">
+    PRIVATE AND CORPORATE EVENTS
+  </p>
+</div>
+
+
+
+
+          
           {/* Carousel Controls */}
           <button
             onClick={prevSlide}
@@ -228,8 +251,28 @@ const Home = () => {
             ))}
           </div>
         </div>
+
+
+{/* --- Mobile footer text below hero --- */}
+<div className="block lg:hidden text-center text-black py-8 bg-white">
+  <p className="max-w-md mx-auto leading-relaxed text-base px-4">
+    Creating Unforgettable Moments with Professional Photobooth Services
+  </p>
+  <Link
+    to="/book-now"
+    className="mt-6 inline-block bg-[#B5A99A] text-white px-6 py-3 rounded-full font-semibold hover:bg-[#F7E7CE] hover:text-black transition-all duration-300"
+  >
+    BOOK NOW
+  </Link>
+</div>
+
+      
+      
       </section>
 
+
+
+    
       {/* Meet the Team Section */}
       <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-2 sm:px-4">
