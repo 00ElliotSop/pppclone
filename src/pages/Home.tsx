@@ -9,7 +9,8 @@ const Home = () => {
   const heroImages = [
     '/main.jpg',
     '/groupgirls.jpg',
-    '/groupguyz.jpg'
+    '/groupguyz.jpg',
+    '/insuredandinc.jpg'
   ];
 
   const testimonials = [
@@ -97,7 +98,7 @@ const Home = () => {
       description: 'Props for every occasion including custom options.'
     },
     {
-      image: 'https://sub.projectpartyproductions.com/Home/insuredandinc.jpg',
+      image: 'https://sub.projectpartyproductions.com/Home/newfullyinsuranced.jpg',
       title: 'We are fully insured and incorporated and have a $2 million dollar insurance liability.',
       description: 'Complete insurance coverage and professional business standing.'
     },
@@ -143,7 +144,7 @@ const Home = () => {
   return (
     <div className="pt-24">
       {/* Hero Section with Carousel */}
-      <section className="relative h-screen overflow-hidden">
+     <section className="relative h-screen overflow-hidden bg-white">
         {/* Preload critical images */}
         <link rel="preload" as="image" href={heroImages[0]} fetchpriority="high" />
         <link rel="preload" as="image" href={heroImages[1]} fetchpriority="high" />
@@ -158,13 +159,18 @@ const Home = () => {
                 index === currentSlide ? 'opacity-100' : 'opacity-0'
               }`}
             >
-              <img
-                src={image}
-                alt={`Hero ${index + 1}`}
-                className="w-full h-full object-cover"
-                loading="eager"
-                decoding="sync"
-              />
+             
+         <img
+  src={image}
+  alt={`Hero ${index + 1}`}
+  className="w-full h-full object-contain lg:object-cover object-center transition-all duration-500 ease-in-out"
+  loading="eager"
+  decoding="sync"
+/>
+
+
+
+              
               <div className="absolute inset-0 bg-black bg-opacity-40" />
             </div>
           ))}
