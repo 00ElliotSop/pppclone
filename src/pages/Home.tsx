@@ -142,9 +142,9 @@ const Home = () => {
   };
 
   return (
-    <div className="pt-[140px] lg:pt-24">
+    <div className="pt-[140px] lg:pt-20">
       {/* Hero Section with Carousel */}
-<section className="relative lg:h-screen overflow-visible lg:overflow-hidden bg-white">
+<section className="relative min-h-[90vh] lg:h-screen overflow-visible lg:overflow-hidden bg-white">
         {/* Preload critical images */}
         <link rel="preload" as="image" href={heroImages[0]} fetchpriority="high" />
         <link rel="preload" as="image" href={heroImages[1]} fetchpriority="high" />
@@ -160,13 +160,14 @@ const Home = () => {
               }`}
             >
              
-         <img
+       <img
   src={image}
   alt={`Hero ${index + 1}`}
-  className="w-full h-[70vh] lg:h-full object-contain lg:object-cover object-center transition-all duration-500 ease-in-out"
+  className="w-full h-[90vh] lg:h-full object-cover object-center transition-all duration-500 ease-in-out"
   loading="eager"
   decoding="sync"
 />
+
 
 
 
@@ -209,7 +210,7 @@ const Home = () => {
 </div>
 
 {/* --- Mobile / below lg --- */}
-<div className="block lg:hidden text-center text-black w-full py-8 px-4 bg-white z-10 relative">
+<div className="block lg:hidden text-center text-black w-full py-4 px-4 bg-white z-10 relative">
   <h1 className="font-bold mb-2" style={{ 
     fontSize: 'clamp(1.8rem, 6vw, 2.8rem)', 
     wordWrap: 'break-word'
@@ -228,13 +229,13 @@ const Home = () => {
           {/* Carousel Controls */}
           <button
             onClick={prevSlide}
-            className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-20 hover:bg-opacity-30 text-white p-2 rounded-full transition-all z-20"
+            className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-[#B5A99A]/60 hover:bg-[#B5A99A]/80 text-white p-3 rounded-full transition-all z-20 block"
           >
             <ChevronLeft size={24} />
           </button>
           <button
             onClick={nextSlide}
-            className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-20 hover:bg-opacity-30 text-white p-2 rounded-full transition-all z-20"
+            className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-[#B5A99A]/60 hover:bg-[#B5A99A]/80 text-white p-3 rounded-full transition-all z-20 block"
           >
             <ChevronRight size={24} />
           </button>
@@ -271,6 +272,7 @@ const Home = () => {
       
       </section>
 
+<div className="mt-12 lg:mt-20"></div>
 
 
     
