@@ -141,7 +141,7 @@ const Backdrops = () => {
       name: 'Green leaves heart', 
       image: 'https://sub.projectpartyproductions.com/Backdropz/greenxheart.jpg', 
       category: '7ft x 7ft',
-      gallery: ['https://sub.projectpartyproductions.com/Backdropz/greenxwallx3.jpg', 'https://sub.projectpartyproductions.com/Backdropz/greenxwallx2.jpg', 'https://sub.projectpartyproductions.com/Backdropz/greenxwallx1.jpg']
+      gallery: ['https://sub.projectpartyproductions.com/Backdropz/greenxwallx4.jpg', 'https://sub.projectpartyproductions.com/Backdropz/greenxwallx2.jpg']
     },
     { 
       id: 20, 
@@ -225,7 +225,7 @@ const Backdrops = () => {
       name: 'Gold lights around wood boards', 
       image: 'https://sub.projectpartyproductions.com/Backdropz/goldxxwood.jpg', 
       category: '7ft x 7ft',
-      gallery: ['https://sub.projectpartyproductions.com/Backdropz/goldxoverxwood1.jpg', 'https://sub.projectpartyproductions.com/Backdropz/goldxoverxwood2.jpg']
+      gallery: ['https://sub.projectpartyproductions.com/Backdropz/goldxoverxwood3.jpg', 'https://sub.projectpartyproductions.com/Backdropz/goldxoverxwood2.jpg']
     }
   ];
 
