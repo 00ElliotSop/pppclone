@@ -163,7 +163,7 @@ const Home = () => {
        <img
   src={image}
   alt={`Hero ${index + 1}`}
-className="w-full h-auto max-h-[90vh] object-contain lg:object-cover object-center transition-all duration-500 ease-in-out"
+  className="w-full h-[60vh] lg:h-full object-contain lg:object-cover lg:max-h-none object-center transition-all duration-500 ease-in-out"
   loading="eager"
   decoding="sync"
 />
@@ -229,13 +229,13 @@ className="w-full h-auto max-h-[90vh] object-contain lg:object-cover object-cent
           {/* Carousel Controls */}
           <button
             onClick={prevSlide}
-            className="absolute left-4 top-[55%] transform -translate-y-1/2 bg-[#B5A99A]/60 hover:bg-[#B5A99A]/80 text-white p-3 rounded-full transition-all z-20 block"
+            className="absolute left-4 top-[55%] lg:top-1/2 transform -translate-y-1/2 bg-[#B5A99A]/60 hover:bg-[#B5A99A]/80 text-white p-3 rounded-full transition-all z-20 block"
           >
             <ChevronLeft size={24} />
           </button>
           <button
             onClick={nextSlide}
-            className="absolute right-4 top-[55%] transform -translate-y-1/2 bg-[#B5A99A]/60 hover:bg-[#B5A99A]/80 text-white p-3 rounded-full transition-all z-20 block"
+            className="absolute right-4 top-[55%] lg:top-1/2 transform -translate-y-1/2 bg-[#B5A99A]/60 hover:bg-[#B5A99A]/80 text-white p-3 rounded-full transition-all z-20 block"
           >
             <ChevronRight size={24} />
           </button>
