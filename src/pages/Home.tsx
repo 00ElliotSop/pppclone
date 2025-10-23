@@ -144,14 +144,14 @@ const Home = () => {
   return (
 <div className="pt-[130px] lg:pt-16">
       {/* Hero Section with Carousel */}
-<section className="relative mt-8 min-h-[90vh] lg:mt-0 lg:h-screen overflow-visible lg:overflow-hidden bg-white">
+<section className="relative mt-8 lg:mt-0 lg:h-screen bg-white">
         {/* Preload critical images */}
         <link rel="preload" as="image" href={heroImages[0]} fetchpriority="high" />
         <link rel="preload" as="image" href={heroImages[1]} fetchpriority="high" />
         <link rel="preload" as="image" href={heroImages[2]} fetchpriority="high" />
         <link rel="preload" as="image" href={heroImages[3]} fetchpriority="high" />
         <link rel="preload" as="image" href="/Meetdateam.gif" fetchpriority="high" />
-        <div className="relative w-full h-full">
+<div className="relative w-full h-[58vh] lg:h-full">
           {heroImages.map((image, index) => (
             <div
               key={index}
@@ -160,13 +160,14 @@ const Home = () => {
               }`}
             >
              
-       <img
+      <img
   src={image}
   alt={`Hero ${index + 1}`}
-  className="w-full h-[60vh] lg:h-full object-contain lg:object-cover lg:max-h-none object-center transition-all duration-500 ease-in-out"
+  className="absolute inset-0 w-full h-full object-contain lg:object-cover object-center transition-all duration-500 ease-in-out"
   loading="eager"
   decoding="sync"
 />
+
 
 
 
@@ -229,13 +230,13 @@ const Home = () => {
           {/* Carousel Controls */}
           <button
             onClick={prevSlide}
-            className="absolute left-4 top-[62%] lg:top-1/2 transform -translate-y-1/2 bg-[#B5A99A]/60 hover:bg-[#B5A99A]/80 text-white p-3 rounded-full transition-all z-20 block"
+            className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-[#B5A99A]/60 hover:bg-[#B5A99A]/80 text-white p-3 rounded-full transition-all z-20 block"
           >
             <ChevronLeft size={24} />
           </button>
           <button
             onClick={nextSlide}
-            className="absolute right-4 top-[62%] lg:top-1/2 transform -translate-y-1/2 bg-[#B5A99A]/60 hover:bg-[#B5A99A]/80 text-white p-3 rounded-full transition-all z-20 block"
+            className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-[#B5A99A]/60 hover:bg-[#B5A99A]/80 text-white p-3 rounded-full transition-all z-20 block"
           >
             <ChevronRight size={24} />
           </button>
@@ -255,8 +256,15 @@ const Home = () => {
         </div>
 
 
+
+
+      
+      
+      </section>
+
+    
 {/* --- Mobile footer text below hero --- */}
-<div className="block lg:hidden text-center text-black pt-16 pb-14 bg-white">
+<div className="block lg:hidden text-center text-black pt-10 pb-10 bg-white">
   <p className="max-w-md mx-auto leading-relaxed text-base px-4">
     Creating Unforgettable Moments with Professional Photobooth Services
   </p>
@@ -268,10 +276,7 @@ const Home = () => {
   </Link>
 </div>
 
-      
-      
-      </section>
-
+  
 <div className="mt-12 lg:mt-20"></div>
 
 
