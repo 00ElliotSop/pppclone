@@ -147,14 +147,14 @@ const Home = () => {
 
   
   
-<section className="relative mt-[.9rem] lg:mt-0 lg:h-screen bg-white">
+<section className="relative mt-[1.9rem] lg:mt-0 lg:h-screen bg-white">
         {/* Preload critical images */}
         <link rel="preload" as="image" href={heroImages[0]} fetchpriority="high" />
         <link rel="preload" as="image" href={heroImages[1]} fetchpriority="high" />
         <link rel="preload" as="image" href={heroImages[2]} fetchpriority="high" />
         <link rel="preload" as="image" href={heroImages[3]} fetchpriority="high" />
         <link rel="preload" as="image" href="/Meetdateam.gif" fetchpriority="high" />
-<div className="relative w-full h-[47vh] lg:h-full mt-[1.47vh]">
+<div className="relative w-full h-[70vh] lg:h-full mt-[2.5vh]">
           {heroImages.map((image, index) => (
             <div
               key={index}
@@ -286,7 +286,7 @@ const Home = () => {
 </div>
 
   
-<div className="mt-12 lg:mt-4"></div>
+ {/* <div className="mt-12 lg:mt-4"></div> */}
 
 
     
