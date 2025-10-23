@@ -144,14 +144,17 @@ const Home = () => {
   return (
 <div className="pt-[130px] lg:pt-16">
       {/* Hero Section with Carousel */}
-<section className="relative mt-8 lg:mt-0 lg:h-screen bg-white">
+
+  
+  
+<section className="relative mt-[1.6rem] lg:mt-0 lg:h-screen bg-white">
         {/* Preload critical images */}
         <link rel="preload" as="image" href={heroImages[0]} fetchpriority="high" />
         <link rel="preload" as="image" href={heroImages[1]} fetchpriority="high" />
         <link rel="preload" as="image" href={heroImages[2]} fetchpriority="high" />
         <link rel="preload" as="image" href={heroImages[3]} fetchpriority="high" />
         <link rel="preload" as="image" href="/Meetdateam.gif" fetchpriority="high" />
-<div className="relative w-full h-[58vh] lg:h-full">
+<div className="relative w-full h-[68vh] lg:h-full mt-[2.5vh]">
           {heroImages.map((image, index) => (
             <div
               key={index}
@@ -163,10 +166,11 @@ const Home = () => {
       <img
   src={image}
   alt={`Hero ${index + 1}`}
-  className="absolute inset-0 w-full h-full object-contain lg:object-cover object-center transition-all duration-500 ease-in-out"
+  className="absolute inset-0 w-full h-[110%] object-cover object-center transition-all duration-700 ease-in-out"
   loading="eager"
   decoding="sync"
 />
+
 
 
 
@@ -261,6 +265,11 @@ const Home = () => {
       
       
       </section>
+
+
+
+
+
 
     
 {/* --- Mobile footer text below hero --- */}
