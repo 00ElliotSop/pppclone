@@ -144,7 +144,7 @@ const Home = () => {
   return (
 <div className="pt-[130px] lg:pt-16">
       {/* Hero Section with Carousel */}
-<section className="relative min-h-[90vh] lg:h-screen overflow-visible lg:overflow-hidden bg-white">
+<section className="relative mt-8 min-h-[90vh] lg:mt-0 lg:h-screen overflow-visible lg:overflow-hidden bg-white">
         {/* Preload critical images */}
         <link rel="preload" as="image" href={heroImages[0]} fetchpriority="high" />
         <link rel="preload" as="image" href={heroImages[1]} fetchpriority="high" />
@@ -229,13 +229,13 @@ const Home = () => {
           {/* Carousel Controls */}
           <button
             onClick={prevSlide}
-            className="absolute left-4 top-[55%] lg:top-1/2 transform -translate-y-1/2 bg-[#B5A99A]/60 hover:bg-[#B5A99A]/80 text-white p-3 rounded-full transition-all z-20 block"
+            className="absolute left-4 top-[62%] lg:top-1/2 transform -translate-y-1/2 bg-[#B5A99A]/60 hover:bg-[#B5A99A]/80 text-white p-3 rounded-full transition-all z-20 block"
           >
             <ChevronLeft size={24} />
           </button>
           <button
             onClick={nextSlide}
-            className="absolute right-4 top-[55%] lg:top-1/2 transform -translate-y-1/2 bg-[#B5A99A]/60 hover:bg-[#B5A99A]/80 text-white p-3 rounded-full transition-all z-20 block"
+            className="absolute right-4 top-[62%] lg:top-1/2 transform -translate-y-1/2 bg-[#B5A99A]/60 hover:bg-[#B5A99A]/80 text-white p-3 rounded-full transition-all z-20 block"
           >
             <ChevronRight size={24} />
           </button>
@@ -256,7 +256,7 @@ const Home = () => {
 
 
 {/* --- Mobile footer text below hero --- */}
-<div className="block lg:hidden text-center text-black py-12 bg-white">
+<div className="block lg:hidden text-center text-black pt-16 pb-14 bg-white">
   <p className="max-w-md mx-auto leading-relaxed text-base px-4">
     Creating Unforgettable Moments with Professional Photobooth Services
   </p>
