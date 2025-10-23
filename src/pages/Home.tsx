@@ -166,7 +166,7 @@ const Home = () => {
       <img
   src={image}
   alt={`Hero ${index + 1}`}
-  className="absolute inset-0 w-[90%] h-[80%] object-contain object-center transition-all duration-700 ease-in-out"
+  className="absolute inset-0 w-full h-full object-cover object-center transition-all duration-700 ease-in-out"
   loading="eager"
   decoding="sync"
 />
