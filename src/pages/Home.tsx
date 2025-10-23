@@ -277,7 +277,7 @@ const Home = () => {
 </div>
 
   
-<div className="mt-12 lg:mt-20"></div>
+<div className="mt-12 lg:mt-17"></div>
 
 
     
