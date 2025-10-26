@@ -147,14 +147,14 @@ const Home = () => {
 
   
   
-<section className="relative mt-[.5rem] lg:mt-0 lg:h-screen bg-white">
+<section className="relative mt-[.5rem] lg:mt-0 min-[1046px]:h-screen bg-white">
         {/* Preload critical images */}
         <link rel="preload" as="image" href={heroImages[0]} fetchpriority="high" />
         <link rel="preload" as="image" href={heroImages[1]} fetchpriority="high" />
         <link rel="preload" as="image" href={heroImages[2]} fetchpriority="high" />
         <link rel="preload" as="image" href={heroImages[3]} fetchpriority="high" />
         <link rel="preload" as="image" href="/Meetdateam.gif" fetchpriority="high" />
-<div className="relative w-full h-[70vh] lg:h-full mt-[.47vh]">
+<div className="relative w-full h-[70vh] min-[1046px]:h-full mt-[.47vh]">
           {heroImages.map((image, index) => (
             <div
               key={index}
@@ -166,7 +166,7 @@ const Home = () => {
       <img
   src={image}
   alt={`Hero ${index + 1}`}
-  className="absolute inset-0 w-full h-[90%] object-cover object-center transition-all duration-700 ease-in-out"
+  className="absolute inset-0 w-full h-full transition-all duration-700 ease-in-out object-cover object-[center_top] min-[1046px]:object-center"
   loading="eager"
   decoding="sync"
 />
@@ -177,8 +177,8 @@ const Home = () => {
 
 
 
-              
-              <div className="hidden lg:block absolute inset-0 bg-black bg-opacity-40" />
+
+              <div className="hidden min-[1046px]:block absolute inset-0 bg-black bg-opacity-40" />
             </div>
           ))}
 
@@ -188,8 +188,8 @@ const Home = () => {
 
           
  {/* Hero Content */}
-{/* --- Desktop / lg and up --- */}
-<div className="hidden lg:flex absolute inset-0 items-center justify-center text-center text-white z-10 px-2">
+{/* --- Desktop / 1046px and up --- */}
+<div className="hidden min-[1046px]:flex absolute inset-0 items-center justify-center text-center text-white z-10 px-2">
   <div className="w-full max-w-4xl px-2">
     <h1 className="font-bold mb-4 leading-tight" style={{ 
       fontSize: 'clamp(1.9rem, 7.7vw, 5.8rem)',
@@ -214,8 +214,8 @@ const Home = () => {
   </div>
 </div>
 
-{/* --- Mobile / below lg --- */}
-<div className="block lg:hidden text-center text-black w-full py-4 px-4 bg-white z-10 relative">
+{/* --- Mobile / below 1046px --- */}
+<div className="block min-[1046px]:hidden text-center text-black w-full py-4 px-4 bg-white z-10 relative">
   <h1 className="font-bold mb-2" style={{ 
     fontSize: 'clamp(1.8rem, 6vw, 2.8rem)', 
     wordWrap: 'break-word'
@@ -273,7 +273,7 @@ const Home = () => {
 
     
 {/* --- Mobile footer text below hero --- */}
-<div className="block lg:hidden text-center text-black pt-10 pb-10 bg-white">
+<div className="block min-[1046px]:hidden text-center text-black pt-10 pb-10 bg-white">
   <p className="max-w-md mx-auto leading-relaxed text-base px-4">
     Creating Unforgettable Moments with Professional Photobooth Services
   </p>
