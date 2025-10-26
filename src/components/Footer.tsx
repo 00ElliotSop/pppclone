@@ -111,7 +111,6 @@ if (response.status === 201) {
   } else {
     setErrorMessage(errorText);
   }
-  setShowNewsletterErrorPopup(true);
 }
 
 
