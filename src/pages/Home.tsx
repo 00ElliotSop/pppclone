@@ -154,110 +154,158 @@ const Home = () => {
         <link rel="preload" as="image" href={heroImages[2]} fetchpriority="high" />
         <link rel="preload" as="image" href={heroImages[3]} fetchpriority="high" />
         <link rel="preload" as="image" href="/Meetdateam.gif" fetchpriority="high" />
-<div className="relative w-full h-[70vh] min-[1046px]:h-full mt-[.47vh]">
-          {heroImages.map((image, index) => (
-            <div
-              key={index}
-              className={`absolute inset-0 transition-opacity duration-1000 ${
-                index === currentSlide ? 'opacity-100' : 'opacity-0'
-              }`}
-            >
-             
-      <img
-  src={image}
-  alt={`Hero ${index + 1}`}
-  className="absolute inset-0 w-full h-full transition-all duration-700 ease-in-out object-cover object-[center_top] min-[1046px]:object-center"
-  loading="eager"
-  decoding="sync"
-/>
 
-
-
-
-
-
-
-
-              <div className="hidden min-[1046px]:block absolute inset-0 bg-black bg-opacity-40" />
-            </div>
-          ))}
-
-
-
-
-
-          
- {/* Hero Content */}
-{/* --- Desktop / 1046px and up --- */}
-<div className="hidden min-[1046px]:flex absolute inset-0 items-center justify-center text-center text-white z-10 px-2">
-  <div className="w-full max-w-4xl px-2">
-    <h1 className="font-bold mb-4 leading-tight" style={{ 
-      fontSize: 'clamp(1.9rem, 7.7vw, 5.8rem)',
-      wordWrap: 'break-word',
-      hyphens: 'auto'
+{/* --- Mobile Layout / below 1046px --- */}
+<div className="block min-[1046px]:hidden bg-white">
+  {/* Mobile Header Text */}
+  <div className="text-center text-black w-full pt-4 pb-6 px-4">
+    <h1 className="font-bold mb-2" style={{
+      fontSize: 'clamp(1.8rem, 6vw, 2.8rem)',
+      wordWrap: 'break-word'
     }}>
       PROJECT PARTY PRODUCTIONS
     </h1>
-    <p className="mb-6 leading-tight px-1" style={{ 
-      fontSize: 'clamp(0.95rem, 3.8vw, 1.6rem)',
-      wordWrap: 'break-word'
-    }}>
+    <p className="uppercase tracking-wide text-sm font-medium">
+      PRIVATE AND CORPORATE EVENTS
+    </p>
+  </div>
+
+  {/* Mobile Hero Carousel - Contained Window */}
+  <div className="relative w-full px-4 pb-6">
+    <div className="relative w-full h-[50vh] rounded-2xl overflow-hidden shadow-lg">
+      {heroImages.map((image, index) => (
+        <div
+          key={index}
+          className={`absolute inset-0 transition-opacity duration-1000 ${
+            index === currentSlide ? 'opacity-100' : 'opacity-0'
+          }`}
+        >
+          <img
+            src={image}
+            alt={`Hero ${index + 1}`}
+            className="w-full h-full object-cover object-center"
+            loading="eager"
+            decoding="sync"
+          />
+        </div>
+      ))}
+
+      {/* Mobile Carousel Controls */}
+      <button
+        onClick={prevSlide}
+        className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-[#B5A99A]/60 hover:bg-[#B5A99A]/80 text-white p-2 rounded-full transition-all z-20"
+      >
+        <ChevronLeft size={20} />
+      </button>
+      <button
+        onClick={nextSlide}
+        className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-[#B5A99A]/60 hover:bg-[#B5A99A]/80 text-white p-2 rounded-full transition-all z-20"
+      >
+        <ChevronRight size={20} />
+      </button>
+
+      {/* Mobile Carousel Indicators */}
+      <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2 z-20">
+        {heroImages.map((_, index) => (
+          <button
+            key={index}
+            onClick={() => setCurrentSlide(index)}
+            className={`w-2 h-2 rounded-full transition-all ${
+              index === currentSlide ? 'bg-white' : 'bg-white bg-opacity-50'
+            }`}
+          />
+        ))}
+      </div>
+    </div>
+  </div>
+
+  {/* Mobile Footer Text */}
+  <div className="text-center text-black pb-4 px-4">
+    <p className="max-w-md mx-auto leading-relaxed text-base mb-4">
       Creating Unforgettable Moments with Professional Photobooth Services
     </p>
     <Link
       to="/book-now"
-      className="bg-[#B5A99A] text-white px-4 sm:px-6 md:px-8 py-2 sm:py-3 md:py-4 rounded-full font-semibold hover:bg-[#F7E7CE] hover:text-black transition-all duration-300 inline-block"
-      style={{ fontSize: 'clamp(1.1rem, 3.2vw, 1.4rem)' }}
+      className="inline-block bg-[#B5A99A] text-white px-6 py-3 rounded-full font-semibold hover:bg-[#F7E7CE] hover:text-black transition-all duration-300"
     >
       BOOK NOW
     </Link>
   </div>
 </div>
 
-{/* --- Mobile / below 1046px --- */}
-<div className="block min-[1046px]:hidden text-center text-black w-full py-4 px-4 bg-white z-10 relative">
-  <h1 className="font-bold mb-2" style={{ 
-    fontSize: 'clamp(1.8rem, 6vw, 2.8rem)', 
-    wordWrap: 'break-word'
-  }}>
-    PROJECT PARTY PRODUCTIONS
-  </h1>
-  <p className="uppercase tracking-wide text-sm font-medium mb-6">
-    PRIVATE AND CORPORATE EVENTS
-  </p>
+{/* --- Desktop Layout / 1046px and up --- */}
+<div className="hidden min-[1046px]:block relative w-full h-full">
+  {heroImages.map((image, index) => (
+    <div
+      key={index}
+      className={`absolute inset-0 transition-opacity duration-1000 ${
+        index === currentSlide ? 'opacity-100' : 'opacity-0'
+      }`}
+    >
+      <img
+        src={image}
+        alt={`Hero ${index + 1}`}
+        className="absolute inset-0 w-full h-full transition-all duration-700 ease-in-out object-cover object-center"
+        loading="eager"
+        decoding="sync"
+      />
+      <div className="absolute inset-0 bg-black bg-opacity-40" />
+    </div>
+  ))}
+
+  {/* Desktop Hero Content */}
+  <div className="absolute inset-0 flex items-center justify-center text-center text-white z-10 px-2">
+    <div className="w-full max-w-4xl px-2">
+      <h1 className="font-bold mb-4 leading-tight" style={{
+        fontSize: 'clamp(1.9rem, 7.7vw, 5.8rem)',
+        wordWrap: 'break-word',
+        hyphens: 'auto'
+      }}>
+        PROJECT PARTY PRODUCTIONS
+      </h1>
+      <p className="mb-6 leading-tight px-1" style={{
+        fontSize: 'clamp(0.95rem, 3.8vw, 1.6rem)',
+        wordWrap: 'break-word'
+      }}>
+        Creating Unforgettable Moments with Professional Photobooth Services
+      </p>
+      <Link
+        to="/book-now"
+        className="bg-[#B5A99A] text-white px-4 sm:px-6 md:px-8 py-2 sm:py-3 md:py-4 rounded-full font-semibold hover:bg-[#F7E7CE] hover:text-black transition-all duration-300 inline-block"
+        style={{ fontSize: 'clamp(1.1rem, 3.2vw, 1.4rem)' }}
+      >
+        BOOK NOW
+      </Link>
+    </div>
+  </div>
+
+  {/* Desktop Carousel Controls */}
+  <button
+    onClick={prevSlide}
+    className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-[#B5A99A]/60 hover:bg-[#B5A99A]/80 text-white p-3 rounded-full transition-all z-20"
+  >
+    <ChevronLeft size={24} />
+  </button>
+  <button
+    onClick={nextSlide}
+    className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-[#B5A99A]/60 hover:bg-[#B5A99A]/80 text-white p-3 rounded-full transition-all z-20"
+  >
+    <ChevronRight size={24} />
+  </button>
+
+  {/* Desktop Carousel Indicators */}
+  <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-2 z-20">
+    {heroImages.map((_, index) => (
+      <button
+        key={index}
+        onClick={() => setCurrentSlide(index)}
+        className={`w-3 h-3 rounded-full transition-all ${
+          index === currentSlide ? 'bg-white' : 'bg-white bg-opacity-50'
+        }`}
+      />
+    ))}
+  </div>
 </div>
-
-
-
-
-          
-          {/* Carousel Controls */}
-          <button
-            onClick={prevSlide}
-            className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-[#B5A99A]/60 hover:bg-[#B5A99A]/80 text-white p-3 rounded-full transition-all z-20 block"
-          >
-            <ChevronLeft size={24} />
-          </button>
-          <button
-            onClick={nextSlide}
-            className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-[#B5A99A]/60 hover:bg-[#B5A99A]/80 text-white p-3 rounded-full transition-all z-20 block"
-          >
-            <ChevronRight size={24} />
-          </button>
-
-          {/* Carousel Indicators */}
-          <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-2 z-20">
-            {heroImages.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => setCurrentSlide(index)}
-                className={`w-3 h-3 rounded-full transition-all ${
-                  index === currentSlide ? 'bg-white' : 'bg-white bg-opacity-50'
-                }`}
-              />
-            ))}
-          </div>
-        </div>
 
 
 
@@ -265,25 +313,6 @@ const Home = () => {
       
       
       </section>
-
-
-
-
-
-
-    
-{/* --- Mobile footer text below hero --- */}
-<div className="block min-[1046px]:hidden text-center text-black pt-10 pb-10 bg-white">
-  <p className="max-w-md mx-auto leading-relaxed text-base px-4">
-    Creating Unforgettable Moments with Professional Photobooth Services
-  </p>
-  <Link
-    to="/book-now"
-    className="mt-6 inline-block bg-[#B5A99A] text-white px-6 py-3 rounded-full font-semibold hover:bg-[#F7E7CE] hover:text-black transition-all duration-300"
-  >
-    BOOK NOW
-  </Link>
-</div>
 
   
  {/* <div className="mt-12 lg:mt-4"></div> */}
