@@ -53,12 +53,11 @@ const Footer = () => {
       
       
       
-      
    try {
   const response = await fetch("https://api.brevo.com/v3/contacts", {
     method: "POST",
     headers: {
-      "accept": "application/json",
+      accept: "application/json",
       "content-type": "application/json",
       "api-key": import.meta.env.VITE_BREVO_API_KEY as string,
     },
@@ -71,20 +70,32 @@ const Footer = () => {
 
   const result = await response.json();
 
-
   if (response.ok) {
+    // ✅ Success
     setShowNewsletterPopup(true);
     setEmail("");
   } else {
-    // Check for 'already subscribed' cases
+    // ✅ Extract message safely from multiple possible structures
+    const errorText =
+      result?.error?.message ||
+      result?.message ||
+      result?.message?.text ||
+      "There was an error subscribing to our newsletter. Please try again.";
+
+    const errorCode =
+      result?.error?.code || result?.code || "unknown_error";
+
+    // ✅ Check for already subscribed / duplicate contact
     if (
-      result.code === "duplicate_parameter" ||
-      (result.message && result.message.toLowerCase().includes("already exist"))
+      errorCode === "duplicate_parameter" ||
+      /already exist/i.test(errorText) ||
+      /duplicate/i.test(errorText)
     ) {
       setErrorMessage("You're already subscribed to our newsletter.");
     } else {
-      setErrorMessage(result.message || "There was an error subscribing to our newsletter. Please try again.");
+      setErrorMessage(errorText);
     }
+
     setShowNewsletterErrorPopup(true);
   }
 } catch (error) {
@@ -94,6 +105,7 @@ const Footer = () => {
 } finally {
   setIsSubmitting(false);
 }
+
 
       
       
