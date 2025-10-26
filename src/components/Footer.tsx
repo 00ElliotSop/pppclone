@@ -78,40 +78,51 @@ try {
     }
   }
 
-  if (response.ok || response.status === 204) {
-    // ✅ Success (created or updated)
-    setShowNewsletterPopup(true);
-    setEmail("");
+ 
+  
+if (response.status === 201) {
+  // ✅ Newly created contact
+  setShowNewsletterPopup(true);
+  setEmail("");
+} else if (response.status === 204) {
+  // ⚪ Already subscribed (contact existed and updateEnabled handled it)
+  setErrorMessage("You're already subscribed to our newsletter.");
+  setShowNewsletterErrorPopup(true);
+} else if (response.ok) {
+  // Generic success (fallback)
+  setShowNewsletterPopup(true);
+  setEmail("");
+} else {
+  // ❌ Other API errors
+  const errorText =
+    result?.error?.message ||
+    result?.message ||
+    result?.message?.text ||
+    "There was an error subscribing to our newsletter. Please try again.";
+  const errorCode = result?.error?.code || result?.code || "unknown_error";
+
+  if (
+    errorCode === "duplicate_parameter" ||
+    errorText.toLowerCase().includes("duplicate") ||
+    errorText.toLowerCase().includes("already") ||
+    errorText.toLowerCase().includes("exist")
+  ) {
+    setErrorMessage("You're already subscribed to our newsletter.");
   } else {
-    // ✅ Extract message safely
-    const errorText =
-      result?.error?.message ||
-      result?.message ||
-      result?.message?.text ||
-      "There was an error subscribing to our newsletter. Please try again.";
-
-    const errorCode = result?.error?.code || result?.code || "unknown_error";
-
-    if (
-      errorCode === "duplicate_parameter" ||
-      errorText.toLowerCase().includes("duplicate") ||
-      errorText.toLowerCase().includes("already") ||
-      errorText.toLowerCase().includes("exist")
-    ) {
-      setErrorMessage("You're already subscribed to our newsletter.");
-    } else {
-      setErrorMessage(errorText);
-    }
-
-    setShowNewsletterErrorPopup(true);
+    setErrorMessage(errorText);
   }
-} catch (error) {
-  console.error("Newsletter subscription error:", error);
-  setErrorMessage("There was an error subscribing to our newsletter. Please try again.");
+  setShowNewsletterErrorPopup(true);
+}
+
+
+
+  
   setShowNewsletterErrorPopup(true);
 } finally {
   setIsSubmitting(false);
 }
+
+    
 
 
       
