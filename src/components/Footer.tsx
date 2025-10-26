@@ -92,6 +92,8 @@ if (response.status === 201) {
   // Generic success (fallback)
   setShowNewsletterPopup(true);
   setEmail("");
+
+
 } else {
   // ❌ Other API errors
   const errorText =
@@ -111,7 +113,10 @@ if (response.status === 201) {
   } else {
     setErrorMessage(errorText);
   }
+
+  setShowNewsletterErrorPopup(true);
 }
+
 
 
 
