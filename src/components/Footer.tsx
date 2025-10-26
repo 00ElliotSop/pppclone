@@ -71,11 +71,20 @@ const Footer = () => {
 
   const result = await response.json();
 
+
   if (response.ok) {
     setShowNewsletterPopup(true);
     setEmail("");
   } else {
-    setErrorMessage(result.message || "There was an error subscribing to our newsletter. Please try again.");
+    // Check for 'already subscribed' cases
+    if (
+      result.code === "duplicate_parameter" ||
+      (result.message && result.message.toLowerCase().includes("already exist"))
+    ) {
+      setErrorMessage("You're already subscribed to our newsletter.");
+    } else {
+      setErrorMessage(result.message || "There was an error subscribing to our newsletter. Please try again.");
+    }
     setShowNewsletterErrorPopup(true);
   }
 } catch (error) {
@@ -378,12 +387,17 @@ const Footer = () => {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                   </svg>
                 </div>
-                <h3 className="text-xl font-bold mb-4 text-red-800">
-                  Subscription Error
-                </h3>
-                <p className="text-gray-600 mb-6">
-                  {errorMessage}
-                </p>
+                
+                
+           <h3 className={`text-xl font-bold mb-4 ${errorMessage.includes("already subscribed") ? "text-yellow-700" : "text-red-800"}`}>
+  {errorMessage.includes("already subscribed") ? "Already Subscribed" : "Subscription Error"}
+</h3>
+<p className="text-gray-600 mb-6">
+  {errorMessage}
+</p>
+
+                
+                
                 <button
                   onClick={closeNewsletterErrorPopup}
                   className="w-full py-3 px-4 rounded-lg font-semibold transition-colors bg-red-600 text-white hover:bg-red-700"
