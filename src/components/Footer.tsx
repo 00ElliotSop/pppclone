@@ -117,7 +117,6 @@ if (response.status === 201) {
 
 
   
-  setShowNewsletterErrorPopup(true);
 } finally {
   setIsSubmitting(false);
 }
