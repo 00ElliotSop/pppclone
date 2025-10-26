@@ -51,9 +51,7 @@ const Footer = () => {
     
    
       
-      
-      
-   try {
+try {
   const response = await fetch("https://api.brevo.com/v3/contacts", {
     method: "POST",
     headers: {
@@ -68,43 +66,43 @@ const Footer = () => {
     }),
   });
 
-  const result = await response.json();
-console.log("Brevo API response:", JSON.stringify(result, null, 2));
+  let result = null;
 
-  if (response.ok) {
-    // ✅ Success
+  // ✅ Only attempt to parse JSON if there is content
+  if (response.status !== 204) {
+    try {
+      result = await response.json();
+      console.log("Brevo API response:", result);
+    } catch {
+      console.warn("No JSON body in Brevo response.");
+    }
+  }
+
+  if (response.ok || response.status === 204) {
+    // ✅ Success (created or updated)
     setShowNewsletterPopup(true);
     setEmail("");
   } else {
-    // ✅ Extract message safely from multiple possible structures
+    // ✅ Extract message safely
     const errorText =
       result?.error?.message ||
       result?.message ||
       result?.message?.text ||
       "There was an error subscribing to our newsletter. Please try again.";
 
-    const errorCode =
-      result?.error?.code || result?.code || "unknown_error";
+    const errorCode = result?.error?.code || result?.code || "unknown_error";
 
-    // ✅ Check for already subscribed / duplicate contact 
-if (
-  errorCode === "duplicate_parameter" ||
-  errorText.toLowerCase().includes("duplicate") ||
-  errorText.toLowerCase().includes("already") ||
-  errorText.toLowerCase().includes("exist") ||
-  (result?.code && result.code.toLowerCase() === "duplicate_parameter")
-) {
-  // ✅ Handle “already subscribed” gracefully
-  setErrorMessage("You're already subscribed to our newsletter.");
-} else {
-  // ❌ Other errors (invalid key, bad request, etc.)
-  setErrorMessage(errorText);
-}
+    if (
+      errorCode === "duplicate_parameter" ||
+      errorText.toLowerCase().includes("duplicate") ||
+      errorText.toLowerCase().includes("already") ||
+      errorText.toLowerCase().includes("exist")
+    ) {
+      setErrorMessage("You're already subscribed to our newsletter.");
+    } else {
+      setErrorMessage(errorText);
+    }
 
-
-
-
-    
     setShowNewsletterErrorPopup(true);
   }
 } catch (error) {
