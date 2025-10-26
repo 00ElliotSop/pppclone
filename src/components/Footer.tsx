@@ -85,17 +85,25 @@ const Footer = () => {
     const errorCode =
       result?.error?.code || result?.code || "unknown_error";
 
-    // ✅ Check for already subscribed / duplicate contact
-    if (
-      errorCode === "duplicate_parameter" ||
-      /already exist/i.test(errorText) ||
-      /duplicate/i.test(errorText)
-    ) {
-      setErrorMessage("You're already subscribed to our newsletter.");
-    } else {
-      setErrorMessage(errorText);
-    }
+    // ✅ Check for already subscribed / duplicate contact 
+if (
+  errorCode === "duplicate_parameter" ||
+  errorText.toLowerCase().includes("duplicate") ||
+  errorText.toLowerCase().includes("already") ||
+  errorText.toLowerCase().includes("exist") ||
+  (result?.code && result.code.toLowerCase() === "duplicate_parameter")
+) {
+  // ✅ Handle “already subscribed” gracefully
+  setErrorMessage("You're already subscribed to our newsletter.");
+} else {
+  // ❌ Other errors (invalid key, bad request, etc.)
+  setErrorMessage(errorText);
+}
 
+
+
+
+    
     setShowNewsletterErrorPopup(true);
   }
 } catch (error) {
