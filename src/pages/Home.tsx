@@ -172,7 +172,7 @@ const Home = () => {
 
   {/* Mobile Hero Carousel - Contained Window */}
   <div className="relative w-full px-4 pb-6">
-    <div className="relative w-full h-[50vh] rounded-2xl overflow-hidden shadow-lg">
+    <div className="relative w-full h-[50vh] rounded-2xl overflow-hidden shadow-lg bg-gray-100">
       {heroImages.map((image, index) => (
         <div
           key={index}
@@ -183,7 +183,7 @@ const Home = () => {
           <img
             src={image}
             alt={`Hero ${index + 1}`}
-            className="w-full h-full object-cover object-center"
+            className="w-full h-full object-contain"
             loading="eager"
             decoding="sync"
           />
