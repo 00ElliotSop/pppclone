@@ -1,6 +1,6 @@
 # Project Party Productions Website
 
-## Deployment Instructions for CloudPanel/Nginx
+## Deployment Instructions for CloudPanel/Caddy
 
 ### 1. Build the Application
 ```bash
