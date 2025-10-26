@@ -69,6 +69,7 @@ const Footer = () => {
   });
 
   const result = await response.json();
+console.log("Brevo API response:", JSON.stringify(result, null, 2));
 
   if (response.ok) {
     // ✅ Success
