@@ -155,10 +155,21 @@ const Home = () => {
         <link rel="preload" as="image" href={heroImages[3]} fetchpriority="high" />
         <link rel="preload" as="image" href="/Meetdateam.gif" fetchpriority="high" />
 
+
+
+
+
+
+
+
+
+  
+
+  
 {/* --- Mobile Layout / below 1046px --- */}
-<div className="block min-[1046px]:hidden bg-white">
+<div className="block min-[1046px]:hidden bg-white mobile-hero">
   {/* Mobile Header Text */}
-  <div className="text-center text-black w-full pt-4 pb-2 px-4">
+  <div className="text-center text-black w-full pt-4 pb-2 px-4 mobile-hero-text">
     <h1 className="font-bold mb-2" style={{
       fontSize: 'clamp(1.8rem, 6vw, 2.8rem)',
       wordWrap: 'break-word'
@@ -170,9 +181,12 @@ const Home = () => {
     </p>
   </div>
 
-  {/* Mobile Hero Carousel - Contained Window */}
+
+
+  
+    {/* Mobile Hero Carousel - Contained Window */}
   <div className="relative w-full px-4 pb-2">
-    <div className="relative w-full h-[50vh] rounded-2xl overflow-hidden shadow-lg">
+    <div className="relative w-full rounded-2xl overflow-hidden shadow-lg">
       {heroImages.map((image, index) => (
         <div
           key={index}
@@ -183,11 +197,18 @@ const Home = () => {
           <img
             src={image}
             alt={`Hero ${index + 1}`}
-            className="w-full h-full object-contain"
+            className="w-full mobile-hero-image"
             loading="eager"
             decoding="sync"
           />
         </div>
+      ))}
+      {/* (Keep carousel controls unchanged) */}
+    </div>
+  </div>
+
+
+  
       ))}
 
       {/* Mobile Carousel Controls */}
@@ -219,20 +240,28 @@ const Home = () => {
     </div>
   </div>
 
-  {/* Mobile Footer Text */}
-  <div className="text-center text-black pb-4 px-4">
+
+
+  
+  
+{/* Mobile Footer Text */}
+  <div className="text-center text-black pb-4 px-4 mobile-hero-desc">
     <p className="max-w-md mx-auto leading-relaxed text-base mb-4">
       Creating Unforgettable Moments with Professional Photobooth Services
     </p>
     <Link
       to="/book-now"
-      className="inline-block bg-[#B5A99A] text-white px-6 py-3 rounded-full font-semibold hover:bg-[#F7E7CE] hover:text-black transition-all duration-300"
+      className="inline-block bg-[#B5A99A] text-white px-6 py-3 rounded-full font-semibold hover:bg-[#F7E7CE] hover:text-black transition-all duration-300 mobile-hero-btn"
     >
       BOOK NOW
     </Link>
   </div>
 </div>
 
+
+
+
+  
 {/* --- Desktop Layout / 1046px and up --- */}
 <div className="hidden min-[1046px]:block relative w-full h-full">
   {heroImages.map((image, index) => (
