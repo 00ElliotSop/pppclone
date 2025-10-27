@@ -167,7 +167,7 @@ const Home = () => {
 {/* --- Mobile Layout / below 1046px --- */}
 <div className="block min-[1024px]:hidden bg-white mobile-hero">
   {/* Mobile Header Text */}
-  <div className="text-center text-black w-full pt-1/2 pb-2 px-4 mobile-hero-text">
+  <div className="text-center text-black w-full pt-1 pb-1 px-4 mobile-hero-text">
     <h1
       className="font-bold mb-2"
       style={{
@@ -229,7 +229,7 @@ const Home = () => {
       </button>
 
       {/* Mobile Carousel Indicators */}
-      <div className="absolute bottom-2/3 left-1/2 transform -translate-x-1/2 flex space-x-2 z-20">
+      <div className="absolute bottom-1 left-1/2 transform -translate-x-1/2 flex space-x-2 z-20">
         {heroImages.map((_, index) => (
           <button
             key={index}
@@ -244,7 +244,7 @@ const Home = () => {
   </div>
 
   {/* Mobile Footer Text */}
-  <div className="text-center text-black pb-3 px-4 mobile-hero-desc">
+  <div className="text-center text-black pt-1 pb-2 px-4 mobile-hero-desc">
     <p className="max-w-md mx-auto leading-relaxed text-base mb-4">
       Creating Unforgettable Moments with Professional Photobooth Services
     </p>
