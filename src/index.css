@@ -93,9 +93,6 @@ img {
   }
 
   .mobile-hero .relative.w-full.rounded-2xl {
-     position: relative !important;
-  width: 100%;
-    min-height: 50vh;
       padding-left: 0 !important;
     padding-right: 0 !important;
   }
