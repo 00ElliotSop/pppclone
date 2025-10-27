@@ -169,7 +169,7 @@ const Home = () => {
   {/* Mobile Header Text */}
   <div className="text-center text-black w-full pt-4 pb-2 px-4 mobile-hero-text">
     <h1
-      className="font-bold mb-2"
+      className="font-bold mb-4"
       style={{
         fontSize: 'clamp(1.8rem, 6vw, 2.8rem)',
         wordWrap: 'break-word',
@@ -229,7 +229,7 @@ const Home = () => {
       </button>
 
       {/* Mobile Carousel Indicators */}
-      <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2 z-20">
+      <div className="absolute bottom-1 left-1/2 transform -translate-x-1/2 flex space-x-2 z-20">
         {heroImages.map((_, index) => (
           <button
             key={index}
