@@ -25,3 +25,44 @@ img {
   -webkit-touch-callout: none;
   -webkit-tap-highlight-color: transparent;
 }
+
+
+
+
+
+/* =======================
+   MOBILE HERO OPTIMIZATION
+   ======================= */
+@media (max-width: 768px) {
+  /* Remove vertical dead space above/below hero */
+  .mobile-hero {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    min-height: 70vh;           /* Ensures text + image + button fit in viewport */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .mobile-hero-image {
+    height: 45vh !important;     /* Fit image + text nicely */
+    object-fit: contain !important;
+  }
+
+  .mobile-hero-text {
+    padding-top: 0.5rem !important;
+    padding-bottom: 0 !important;
+    margin-bottom: 0 !important;
+  }
+
+  .mobile-hero-desc {
+    margin-top: 0.5rem !important;
+    margin-bottom: 0.5rem !important;
+  }
+
+  .mobile-hero-btn {
+    margin-top: 0 !important;
+  }
+}
