@@ -44,7 +44,7 @@ img {
   }
 
   .mobile-hero-image {
-    height: 48vh !important;
+    height: 52vh !important;
     object-fit: cover !important;      /* fill, no letterboxing */
   }
 
