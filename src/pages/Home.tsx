@@ -185,7 +185,7 @@ const Home = () => {
   {/* Mobile Hero Carousel - Contained Window */}
   <div className="relative w-full px-4 pb-2">
     {/* This wrapper is relative so buttons/dots can be absolutely placed */}
-    <div className="relative w-full rounded-2xl overflow-hidden shadow-lg">
+<div className="relative w-full rounded-2xl overflow-hidden shadow-lg" style={{ height: '60vh' }}>
       {heroImages.map((image, index) => (
         <div
           key={index}
