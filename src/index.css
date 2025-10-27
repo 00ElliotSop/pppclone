@@ -74,7 +74,7 @@ img {
 
 
 /* --- Tablets 769–1023px --- */
-@media (min-width: 769px) and (max-width: 1064px) {
+@media (max-width: 1047px) {
   .mobile-hero {
     display: flex;
     flex-direction: column;
@@ -85,6 +85,7 @@ img {
   .mobile-hero-image {
     height: 50vh !important;
     object-fit: cover !important;
+      object-position: center center !important;
   }
 
   .mobile-hero .relative.w-full.rounded-2xl {
