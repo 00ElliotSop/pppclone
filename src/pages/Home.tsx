@@ -244,7 +244,7 @@ const Home = () => {
   </div>
 
   {/* Mobile Footer Text */}
-  <div className="text-center text-black pt-4 pb-6 px-3 mobile-hero-desc mt-[48px]">
+  <div className="text-center text-black pt-4 pb-5 px-4 mobile-hero-desc mt-[48px]">
     <p className="max-w-md mx-auto leading-relaxed text-base mb-[2rem]">
       Creating Unforgettable Moments with Professional Photobooth Services
     </p>
