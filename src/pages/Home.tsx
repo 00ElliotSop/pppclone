@@ -189,7 +189,12 @@ const Home = () => {
     {/* This wrapper is relative so buttons/dots can be absolutely placed */}
 <div className="relative w-full overflow-hidden" style={{ height: '60vh' }}>
       {heroImages.map((image, index) => (
-       
+               <div
+          key={index}
+          className={`absolute inset-0 transition-opacity duration-1000 ${
+            index === currentSlide ? 'opacity-100' : 'opacity-0'
+          }`}
+        >
  <div
           key={index}
           className={`absolute inset-0 transition-opacity duration-1000 ${
