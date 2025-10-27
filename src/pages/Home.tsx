@@ -193,14 +193,20 @@ const Home = () => {
             index === currentSlide ? 'opacity-100' : 'opacity-0'
           }`}
         >
-     <img
-  src={image}
-  alt={`Hero ${index + 1}`}
-  className="w-full mobile-hero-image"
-  loading="eager"
-  decoding="sync"
-  style={{ objectPosition: 'center center' }}
-/>
+<div
+  className="mobile-hero-image"
+  style={{
+    backgroundImage: `url(${image})`,
+    backgroundSize: 'cover',
+    backgroundPosition: 'center center',
+    backgroundRepeat: 'no-repeat',
+    width: '100%',
+    height: '100%',
+    position: 'absolute',
+    top: 0,
+    left: 0
+  }}
+></div>
 
         </div>
       ))}
