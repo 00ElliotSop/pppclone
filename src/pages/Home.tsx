@@ -164,16 +164,17 @@ const Home = () => {
 
 
   
-
-  
 {/* --- Mobile Layout / below 1046px --- */}
 <div className="block min-[1046px]:hidden bg-white mobile-hero">
   {/* Mobile Header Text */}
   <div className="text-center text-black w-full pt-4 pb-2 px-4 mobile-hero-text">
-    <h1 className="font-bold mb-2" style={{
-      fontSize: 'clamp(1.8rem, 6vw, 2.8rem)',
-      wordWrap: 'break-word'
-    }}>
+    <h1
+      className="font-bold mb-2"
+      style={{
+        fontSize: 'clamp(1.8rem, 6vw, 2.8rem)',
+        wordWrap: 'break-word',
+      }}
+    >
       PROJECT PARTY PRODUCTIONS
     </h1>
     <p className="uppercase tracking-wide text-sm font-medium">
@@ -181,11 +182,9 @@ const Home = () => {
     </p>
   </div>
 
-
-
-  
-    {/* Mobile Hero Carousel - Contained Window */}
+  {/* Mobile Hero Carousel - Contained Window */}
   <div className="relative w-full px-4 pb-2">
+    {/* This wrapper is relative so buttons/dots can be absolutely placed */}
     <div className="relative w-full rounded-2xl overflow-hidden shadow-lg">
       {heroImages.map((image, index) => (
         <div
@@ -203,13 +202,6 @@ const Home = () => {
           />
         </div>
       ))}
-      {/* (Keep carousel controls unchanged) */}
-    </div>
-  </div>
-
-
-  
-      
 
       {/* Mobile Carousel Controls */}
       <button
@@ -240,11 +232,7 @@ const Home = () => {
     </div>
   </div>
 
-
-
-  
-  
-{/* Mobile Footer Text */}
+  {/* Mobile Footer Text */}
   <div className="text-center text-black pb-4 px-4 mobile-hero-desc">
     <p className="max-w-md mx-auto leading-relaxed text-base mb-4">
       Creating Unforgettable Moments with Professional Photobooth Services
@@ -259,7 +247,7 @@ const Home = () => {
 </div>
 
 
-
+  
 
   
 {/* --- Desktop Layout / 1046px and up --- */}
