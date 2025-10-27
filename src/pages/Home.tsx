@@ -196,14 +196,14 @@ const Home = () => {
  <div
           key={index}
           className={`absolute inset-0 transition-opacity duration-1000 ${
-            index === currentSlide ? 'opacity-75' : 'opacity-0'
+            index === currentSlide ? 'opacity-100' : 'opacity-0'
           }`}
         >
           <img
             src={image}
             alt={`Hero ${index + 1}`}
-            className="w-full mobile-hero-image rounded-2xl shadow-lg transform scale-110 object-cover"
-            style={{ transform: 'scale(1.19)', transformOrigin: '30% center' }}
+            className="w-full mobile-hero-image transform scale-110 object-cover"
+            style={{ transform: 'scale(1.19)', transformOrigin: 'center' }}
             loading="eager"
             decoding="sync"
           />
