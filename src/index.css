@@ -44,7 +44,7 @@ img {
   }
 
   .mobile-hero-image {
-    height: 52vh !important;
+    height: 48vh !important;
     object-fit: cover !important;      /* fill, no letterboxing */
   }
 
@@ -75,17 +75,6 @@ img {
     min-height: 95vh !important;
   }
 
-
-  @media (max-width: 768px) {
-  .mobile-hero {
-    height: 100svh !important; /* fill visual viewport, accounts for browser toolbars */
-  }
-  .mobile-hero-image {
-    height: 50svh !important; /* ensures balance between text and button */
-  }
-}
-
-  
   .mobile-hero-image {
     height: 50vh !important;
     object-fit: cover !important;
