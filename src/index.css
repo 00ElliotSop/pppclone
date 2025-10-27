@@ -66,3 +66,21 @@ img {
     margin-top: 0 !important;
   }
 }
+
+
+
+
+
+
+@media (max-width: 768px) {
+  /* Ensure mobile hero image wrapper has height */
+  .mobile-hero .relative.w-full.rounded-2xl {
+    min-height: 45vh;            /* was collapsing to 0 — gives it presence */
+    position: relative;
+  }
+
+  /* Optional: soften vertical spacing slightly now that image is visible */
+  .mobile-hero {
+    min-height: 85vh !important; /* make room for image + text + button */
+  }
+}
