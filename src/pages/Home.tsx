@@ -165,7 +165,7 @@ const Home = () => {
 
   
 {/* --- Mobile Layout / below 1046px --- */}
-<div className="block min-[1046px]:hidden bg-white mobile-hero">
+<div className="block min-[1024px]:hidden bg-white mobile-hero">
   {/* Mobile Header Text */}
   <div className="text-center text-black w-full pt-4 pb-2 px-4 mobile-hero-text">
     <h1
@@ -251,7 +251,7 @@ const Home = () => {
 
   
 {/* --- Desktop Layout / 1046px and up --- */}
-<div className="hidden min-[1046px]:block relative w-full h-full">
+<div className="hidden min-[1024px]:block relative w-full h-full">
   {heroImages.map((image, index) => (
     <div
       key={index}
