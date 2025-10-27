@@ -147,7 +147,7 @@ const Home = () => {
 
   
   
-<section className="relative mt-[.5rem] lg:mt-0 min-[1046px]:h-screen bg-white">
+<section className="relative mt-[.5rem] lg:mt-0 min-[1046px]:h-screen bg-white pb-8 lg:pb-0">
         {/* Preload critical images */}
         <link rel="preload" as="image" href={heroImages[0]} fetchpriority="high" />
         <link rel="preload" as="image" href={heroImages[1]} fetchpriority="high" />
@@ -165,7 +165,7 @@ const Home = () => {
 
   
 {/* --- Mobile Layout / below 1046px --- */}
-<div className="block min-[1024px]:hidden bg-white mobile-hero">
+<div className="block min-[1024px]:hidden bg-white mobile-hero mb-8">
   {/* Mobile Header Text */}
   <div className="text-center text-black w-full pb-[4px] px-4 mobile-hero-text">
     <h1
@@ -177,7 +177,7 @@ const Home = () => {
     >
       PROJECT PARTY PRODUCTIONS
     </h1>
-    <p className="uppercase tracking-wide text-sm font-medium mb-[8px]">
+    <p className="uppercase tracking-wide text-sm font-medium mb-[16px]">
       PRIVATE AND CORPORATE EVENTS
     </p>
   </div>
@@ -244,8 +244,8 @@ const Home = () => {
   </div>
 
   {/* Mobile Footer Text */}
-  <div className="text-center text-black pb-1 px-4 mobile-hero-desc mt-[4px]">
-    <p className="max-w-md mx-auto leading-relaxed text-base mb-[1rem]">
+  <div className="text-center text-black pb-4 px-4 mobile-hero-desc mt-[8px]">
+    <p className="max-w-md mx-auto leading-relaxed text-base mb-[2rem]">
       Creating Unforgettable Moments with Professional Photobooth Services
     </p>
     <Link
