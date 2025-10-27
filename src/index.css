@@ -88,7 +88,7 @@ img {
   left: 0;
   width: 100% !important;
   height: 100% !important;    
-    object-fit: cover !important;
+    object-fit: contain !important;
       object-position: center center !important;
   }
 
@@ -96,5 +96,7 @@ img {
      position: relative !important;
   width: 100%;
     min-height: 50vh;
+      padding-left: 0 !important;
+    padding-right: 0 !important;
   }
 }
