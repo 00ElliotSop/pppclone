@@ -167,7 +167,7 @@ const Home = () => {
 {/* --- Mobile Layout / below 1046px --- */}
 <div className="block min-[1024px]:hidden bg-white mobile-hero">
   {/* Mobile Header Text */}
-  <div className="text-center text-black w-full pb-1 px-4 mobile-hero-text">
+  <div className="text-center text-black w-full pb-[4px] px-4 mobile-hero-text">
     <h1
       className="font-bold mb-2"
       style={{
@@ -177,7 +177,7 @@ const Home = () => {
     >
       PROJECT PARTY PRODUCTIONS
     </h1>
-    <p className="uppercase tracking-wide text-sm font-medium mb-1">
+    <p className="uppercase tracking-wide text-sm font-medium mb-[8px]">
       PRIVATE AND CORPORATE EVENTS
     </p>
   </div>
@@ -244,8 +244,8 @@ const Home = () => {
   </div>
 
   {/* Mobile Footer Text */}
-  <div className="text-center text-black pb-1 px-4 mobile-hero-desc">
-    <p className="max-w-md mx-auto leading-relaxed text-base mb-4">
+  <div className="text-center text-black pb-1 px-4 mobile-hero-desc mt-[4px]">
+    <p className="max-w-md mx-auto leading-relaxed text-base mb-[1rem]">
       Creating Unforgettable Moments with Professional Photobooth Services
     </p>
     <Link
