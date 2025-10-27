@@ -177,7 +177,7 @@ const Home = () => {
     >
       PROJECT PARTY PRODUCTIONS
     </h1>
-    <p className="uppercase tracking-wide text-sm font-medium mb-[47px]">
+    <p className="uppercase tracking-wide text-sm font-medium mb-[39px]">
       PRIVATE AND CORPORATE EVENTS
     </p>
   </div>
@@ -244,7 +244,7 @@ const Home = () => {
   </div>
 
   {/* Mobile Footer Text */}
-  <div className="text-center text-black pb-8 px-4 mobile-hero-desc mt-[16px]">
+  <div className="text-center text-black pb-8 px-4 mobile-hero-desc mt-[24px]">
     <p className="max-w-md mx-auto leading-relaxed text-base mb-[2rem]">
       Creating Unforgettable Moments with Professional Photobooth Services
     </p>
