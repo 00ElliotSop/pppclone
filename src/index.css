@@ -36,7 +36,7 @@ img {
   .mobile-hero {
     margin: 0 !important;
     padding: 0 !important;
-    min-height: 92vh !important;
+    min-height: 75vh !important;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -79,7 +79,7 @@ img {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    min-height: 95vh !important;
+    min-height: 75vh !important;
   }
 
   .mobile-hero-image {
