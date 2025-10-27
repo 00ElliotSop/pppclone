@@ -32,24 +32,30 @@ img {
    MOBILE + TABLET HERO OPTIMIZATION
    ======================= */
 
-/* --- Mobile up to 768px --- */
 @media (max-width: 768px) {
   .mobile-hero {
     margin: 0 !important;
     padding: 0 !important;
-    min-height: 92vh !important;       /* full viewport height */
+    min-height: 92vh !important;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;    /* spaces text/image/button nicely */
+    justify-content: space-between;
   }
 
+  /* ✅ Fix image cropping */
   .mobile-hero-image {
-    height: 48vh !important;
-    object-fit: cover !important;      /* fill, no letterboxing */
+    width: 100vw !important;              /* full screen width */
+    height: auto !important;              /* scale naturally */
+    max-height: 60vh !important;          /* limit vertical size */
+    object-fit: contain !important;       /* no cropping */
+    object-position: center center !important;
+    background-color: #000;               /* optional, clean backdrop */
   }
 
-  .mobile-hero .relative.w-full.rounded-2xl {
-    min-height: 48vh;
+  /* ✅ Remove horizontal padding that caused cut-off */
+  .mobile-hero > .relative.w-full.px-4.pb-2 {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
   }
 
   .mobile-hero-text {
@@ -66,8 +72,9 @@ img {
   }
 }
 
+
 /* --- Tablets 769–1023px --- */
-@media (min-width: 769px) and (max-width: 1023px) {
+@media (min-width: 769px) and (max-width: 1064px) {
   .mobile-hero {
     display: flex;
     flex-direction: column;
