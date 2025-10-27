@@ -209,7 +209,7 @@ const Home = () => {
 
 
   
-      ))}
+      
 
       {/* Mobile Carousel Controls */}
       <button
