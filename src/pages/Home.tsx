@@ -167,9 +167,9 @@ const Home = () => {
 {/* --- Mobile Layout / below 1046px --- */}
 <div className="block min-[1024px]:hidden bg-white mobile-hero">
   {/* Mobile Header Text */}
-  <div className="text-center text-black w-full pt-4 pb-2 px-4 mobile-hero-text">
+  <div className="text-center text-black w-full pt-3 pb-2 px-4 mobile-hero-text">
     <h1
-      className="font-bold mb-4"
+      className="font-bold mb-2"
       style={{
         fontSize: 'clamp(1.8rem, 6vw, 2.8rem)',
         wordWrap: 'break-word',
@@ -177,7 +177,7 @@ const Home = () => {
     >
       PROJECT PARTY PRODUCTIONS
     </h1>
-    <p className="uppercase tracking-wide text-sm font-medium">
+    <p className="uppercase tracking-wide text-sm font-medium mb-2">
       PRIVATE AND CORPORATE EVENTS
     </p>
   </div>
