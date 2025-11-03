@@ -69,7 +69,7 @@ const Backdrops = () => {
       name: 'Gold shimmer wall', 
       image: 'https://sub.projectpartyproductions.com/Backdropz/goldb.jpg', 
       category: '8ft x 8ft',
-      gallery: ['https://sub.projectpartyproductions.com/Backdropz/goldb1.jpg', 'https://sub.projectpartyproductions.com/Backdropz/goldb2.jpg']
+      gallery: ['https://sub.projectpartyproductions.com/Backdropz/goldb2.jpg', 'https://sub.projectpartyproductions.com/Backdropz/goldb11.jpg']
     },
     { 
       id: 10, 
@@ -97,7 +97,7 @@ const Backdrops = () => {
       name: 'Red roses flowerwall', 
       image: 'https://sub.projectpartyproductions.com/Backdropz/rosesb.jpg', 
       category: '8ft x 8ft',
-      gallery: ['https://sub.projectpartyproductions.com/Backdropz/rosesb1.jpg']
+      gallery: ['https://sub.projectpartyproductions.com/Backdropz/rosesb1.jpg', 'https://sub.projectpartyproductions.com/Backdropz/roses-b2.jpg']
     },
     { 
       id: 14, 
@@ -155,7 +155,7 @@ const Backdrops = () => {
       name: 'Blue and white flower wall', 
       image: 'https://sub.projectpartyproductions.com/Backdropz/bluexflowers.jpg', 
       category: '7ft x 7ft',
-      gallery: ['https://sub.projectpartyproductions.com/Backdropz/blueflowers1.jpg', 'https://sub.projectpartyproductions.com/blueflowers2.jpg']
+      gallery: ['https://sub.projectpartyproductions.com/Backdropz/blueflowers1.jpg', 'https://sub.projectpartyproductions.com//Backdropz/blueflowers2.jpg']
     },
     { 
       id: 22, 
